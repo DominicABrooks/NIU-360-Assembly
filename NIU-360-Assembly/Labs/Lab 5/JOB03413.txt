@@ -1,0 +1,666 @@
+
+                   J E S 2  J O B  L O G  --  S Y S T E M  2 9 6 4  --  N O D E  S V S C J E S 2        
+
+ 
+23.49.27 JOB03413 ---- FRIDAY,    11 NOV 2022 ----
+23.49.27 JOB03413  IRR010I  USERID KC03ABD  IS ASSIGNED TO THIS JOB.
+23.49.28 JOB03413  ICH70001I KC03ABD  LAST ACCESS AT 23:47:40 ON FRIDAY, NOVEMBER 11, 2022
+23.49.28 JOB03413  $HASP373 KC03ABDA STARTED - INIT 1    - CLASS A        - SYS 2964
+23.49.28 JOB03413  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+23.49.28 JOB03413  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+23.49.28 JOB03413  -JSTEP01              00     31      4       .00       .00     .0             8  BATCH        0     0     0     0
+23.49.28 JOB03413  -KC03ABDA ENDED.  NAME-DOMINIC BROOKS       TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+23.49.28 JOB03413  $HASP395 KC03ABDA ENDED - RC=0000
+
+------ JES2 JOB STATISTICS ------
+
+
+  11 NOV 2022 JOB EXECUTION DATE
+
+
+          509 CARDS READ
+
+
+          607 SYSOUT PRINT RECORDS
+
+
+            0 SYSOUT PUNCH RECORDS
+
+
+           56 SYSOUT SPOOL KBYTES
+
+
+         0.00 MINUTES EXECUTION TIME
+!! END OF JES SPOOL FILE !!
+       1 //KC03ABDA JOB ,'DOMINIC BROOKS',MSGCLASS=H                             JOB03413
+       2 //JSTEP01  EXEC PGM=ASSIST                                                      
+       3 //STEPLIB  DD DSN=KC00NIU.ASSIST.LOADLIB,DISP=SHR                               
+       4 //SYSPRINT DD SYSOUT=*                                                          
+       5 //SYSIN    DD *                                                                 
+         //*                                                                             
+         //* IN-STREAM PROGRAM DATA                                                      
+       6 //FT05F001 DD *                                                                 
+       7 //                                                                              
+!! END OF JES SPOOL FILE !!
+ICH70001I KC03ABD  LAST ACCESS AT 23:47:40 ON FRIDAY, NOVEMBER 11, 2022
+IEFA111I KC03ABDA IS USING THE FOLLOWING JOB RELATED SETTINGS:
+         SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+IEF236I ALLOC. FOR KC03ABDA JSTEP01
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IEF237I JES2 ALLOCATED TO FT05F001
+IEF142I KC03ABDA JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC00NIU.ASSIST.LOADLIB                       RETAINED,  DDNAME=STEPLIB 
+IEF285I   KC03ABD.KC03ABDA.JOB03413.D0000103.?         SYSOUT        
+IEF285I   KC03ABD.KC03ABDA.JOB03413.D0000101.?         SYSIN         
+IEF285I   KC03ABD.KC03ABDA.JOB03413.D0000102.?         SYSIN         
+IEF373I STEP/JSTEP01 /START 2022315.2349
+IEF032I STEP/JSTEP01 /STOP  2022315.2349 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:   584K  SYS:   248K  EXT:        0K  SYS:    11356K
+        ATB- REAL:                  1056K  SLOTS:                     0K
+             VIRT- ALLOC:      13M SHRD:       0M
+IEF375I  JOB/KC03ABDA/START 2022315.2349
+IEF033I  JOB/KC03ABDA/STOP  2022315.2349 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+!! END OF JES SPOOL FILE !!
+
+*** ASSIST 4.0/A2-05/15/82  470/V7A/0:OS/VS2  INS=SDFP7/X=BGHO, CHECK/TRC/=1180, OPTS=CDKMPR FROM PENN ST*NIU COMPSCI*LT            
+
+                                                                                                                                    
+
+                                                                                                               PAGE    1            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                      1 ******************************************************************                          
+                                      2 *                                                                *                          
+                                      3 * CSCI 360-1            LAB EXERCISE 5               SPRING 2022 *                          
+                                      4 *                                                                *                          
+                                      5 * NAME:  DOMINIC BROOKS                                          *                          
+                                      6 * DATE:  11/11/22                                                *                          
+                                      7 *                                                                *                          
+                                      8 * INTERNAL SUBROUTINES AND EXTERNAL SUBPROGRAMS                  *                          
+                                      9 *                                                                *                          
+                                     10 * REGISTER USAGE:                                                *                          
+                                     11 * R2 - HOLDS PARAM 1                                             *                          
+                                     12 * R3 - HOLDS PARAM 2                                             *                          
+                                     13 * R4 - HOLDS TMP ADDRESS TO STORE IN  FROM PARAMLIST & PARAM 3   *                          
+                                     14 *                                                                *                          
+                                     15 ******************************************************************                          
+                                     16 *                                                                                           
+000000                               17 $TABLE   DSECT               TABLE TO STORE THE SEQ                                         
+000000 0000000C                      18 $NUM1    DC    PL4'0'        FIRST NUM ROW                                                  
+000004 0000000C                      19 $NUM2    DC    PL4'0'        SECOND NUM ROW                                                 
+000008 0000000C                      20 $NUM3    DC    PL4'0'        THIRD NUM ROW                                                  
+000000                               21 MAIN     CSECT                                                                              
+                                     22 * ==== ENTRY LINKAGE ===========                                                            
+                                     23 *      Back up caller's register state                                                      
+000000 90EC D00C            0000C    24          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+                                     25 *      Establish local addressability                                                       
+000004 18CF                          26          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+000000                               27          USING MAIN,12        ESTABLISH R12 AS THE BASE REG                                 
+                                     28 *      Store backwards, forwards pointers                                                   
+000006 41E0 C138            00138    29          LA    14,MAINSAVE    R14 POINTS TO THIS CSECT'S SAVE AREA                          
+00000A 50D0 E004            00004    30          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+00000E 50E0 D008            00008    31          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+                                     32 *      Preemptively point r13 at local save area                                            
+000012 18DE                          33          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                     34 *                                                                                           
+                                     35 * EXERCISE 1                                                                                
+000014 E000 C0D8 0050 000D8          36          XREAD BUFFER,80            READ NEXT LINE FROM BUFFER                              
+00001A F211 C130 C0D8 00130 000D8    37          PACK  Q12SQR(2),BUFFER(2)  PACK 2 BYTES INTO PMULT                                 
+000020 4110 C0B0            000B0    38          LA    1,=A(Q12SQR,Q1SQRD)   POINT R1 AT PARMLIST                                   
+000024 45B0 C238            00238    39          BAL   11,INSQUARE           BRANCH AND LINK TO SUBRTN                              
+000028 E060 C130 0006 00130          40          XDUMP Q12SQR,6                                                                     
+                                     41 * EXERCISE 2                                                                                
+00002E E000 C0D8 0050 000D8          42          XREAD BUFFER,80            READ NEXT LINE FROM BUFFER                              
+000034 4110 C0B8            000B8    43          LA    1,=A(BUFFER,Q2PSEQ)  POINT R1 AT PARMLIST                                    
+000038 45B0 C260            00260    44          BAL   11,LOADPSEQ          BRANCH AND LINK TO SUBRTN                               
+00003C E060 C180 0040 00180          45          XDUMP Q2PSEQ,64                                                                    
+                                     46 * EXERCISE 3                                                                                
+000042 4120 C180            00180    47          LA    2,Q2PSEQ          LOAD SEQ IN R2                                             
+000046 4130 C180            00180    48          LA    3,Q2PSEQ          LOAD SEQ IN R3                                             
+00004A 4133 0040            00040    49          LA    3,64(3)           PUT END OF SEQ IN R3                                       
+00004E                               50 SQRSEQ   DS    0H                START OF SEQ SQR LOOP                                      
+00004E 4110 C0C8            000C8    51          LA    1,=A(Q2PSEQ)      R1 -> PARAMETER                                            
+000052 58F0 C0CC            000CC    52          L     15,=V(EXSQUARE)   LOAD ADDRESS OF SUBPROGRAM INTO R15                        
+
+                                                                                                               PAGE    2            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000056 05EF                          53          BALR  14,15             BRANCH AND LINK TO SUBPROGRAM                              
+000058 4122 0008            00008    54          LA    2,8(2)            LOADS NEXT INT INTO SEQ                                    
+00005C 1923                          55          CR    2,3               IF AT END                                                  
+00005E 4780 C066            00066    56          BE    EOLOOP            EXIT LOOP                                                  
+000062 47F0 C04E            0004E    57          B     SQRSEQ            ELSE BACK TO TOP OF LOOP                                   
+000066                               58 EOLOOP   DS    0H                END OF LOOP                                                
+000066 E060 C180 0040 00180          59          XDUMP Q2PSEQ,64         DUMP THE SEQ                                               
+                                     60 * EXERCISE 4                                                                                
+00006C 4110 C0C0            000C0    61          LA    1,=A(BUFFER,TSSTABL) LOAD ADDRESS OF BUFFER AND TABLE                        
+000070 58F0 C0D0            000D0    62          L     15,=V(LOADDATA)   LOAD ADDRESS OF SUBPROGRAM INTO R15                        
+000074 05EF                          63          BALR  14,15             BRANCH AND LINK TO SUBPROGRAM                              
+000076 E060 C1C0 003C 001C0          64          XDUMP TSSTABL,60        DUMP TABLE                                                 
+                                     65 * EXERCISE 5                                                                                
+00007C 4120 C1C0            001C0    66          LA    2,TSSTABL         LOAD BEGINNING OF TABLE                                    
+000080 4132 0078            00078    67          LA    3,120(2)          LOAD END       OF TABLE                                    
+000084 4140 C128            00128    68          LA    4,TSS             LOAD TSS                                                   
+000088 58F0 C0D4            000D4    69          L     15,=V(TSUMSQRS)   LOAD ADDRESS OF SUBPROGRAM INTO R15                        
+00008C 05EF                          70          BALR  14,15             BRANCH AND LINK TO SUBPROGRAM                              
+00008E E060 C1C0 003C 001C0          71          XDUMP TSSTABL,60        DUMP TABLE                                                 
+000094 E060 C128 0008 00128          72          XDUMP TSS,8             DUMP TSS                                                   
+                                     73 *                                                                                           
+                                     74 * ==== EXIT LINKAGE ============                                                            
+00009A 41F0 0000            00000    75 PRGEXIT  LA    15,0           R15 = RETURN CODE OF 0                                        
+00009E 58D0 D004            00004    76          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+0000A2 58E0 D00C            0000C    77          L     14,12(,13)     RESTORE REGISTER 14                                           
+0000A6 980C D014            00014    78          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+0000AA 07FE                          79          BR    14             RETURN TO CALLER                                              
+                                     80 * (vv Program storage vv)                                                                   
+                                     81 *                                                                                           
+                                     82          LTORG                LITERAL ORGANIZATION                                          
+0000B0 0000013000000132              83                =A(Q12SQR,Q1SQRD)                                                            
+0000B8 000000D800000180              84                =A(BUFFER,Q2PSEQ)                                                            
+0000C0 000000D8000001C0              85                =A(BUFFER,TSSTABL)                                                           
+0000C8 00000180                      86                =A(Q2PSEQ)                                                                   
+0000CC 000002E8                      87                =V(EXSQUARE)                                                                 
+0000D0 00000368                      88                =V(LOADDATA)                                                                 
+0000D4 00000458                      89                =V(TSUMSQRS)                                                                 
+                                     90 *                                                                                           
+0000D8                               91 BUFFER   DS    CL80           BUFFER                                                        
+000128 000000000000000C              92 TSS      DC    PL8'0'         SQUARED SUM                                                   
+000130 000C                          93 Q12SQR   DC    PL2'0'         OUTPUT SEQ                                                    
+000132 0000000C                      94 Q1SQRD   DC    PL4'0'         INPUT  SEQ                                                    
+000138 FFFFFFFFFFFFFFFF              95 MAINSAVE DC    18F'-1'                                                                      
+000180 000000000000000C              96 Q2PSEQ   DC    PL8'0,0,0,0,0,0,0,0' EXER 3 TABLE                                            
+0001C0 0000000000000000              97 TSSTABL  DC    10PL12'0'                                                                    
+                                     98 *                                                                                           
+                                     99 ******************************************************************                          
+                                    100 *                                                                *                          
+                                    101 * INSQUARE SUBROUTINE                                            *                          
+                                    102 *                                                                *                          
+                                    103 * PARAMLIST:                                                     *                          
+                                    104 *   R2: (PL2) INPUT VAL                                          *                          
+                                    105 *   R3: (PL4) OUTPUT VAL                                         *                          
+                                    106 *                                                                *                          
+                                    107 * REGISTER USAGE:                                                *                          
+                                    108 *   R2 - STORE INPUT  VALUE                                      *                          
+                                    109 *   R3 - STORE OUTPUT VALUE                                      *                          
+
+                                                                                                               PAGE    3            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    110 *                                                                *                          
+                                    111 ******************************************************************                          
+000238 9023 C258            00258   112 INSQUARE STM   2,3,INSAVE                                                                   
+00023C 9823 1000            00000   113          LM    2,3,0(1)        LOAD PARAMER ADDRESES INTO R2,3                              
+                                    114 *                                                                                           
+000240 F831 3000 2000 00000 00000   115          ZAP   0(4,3),0(2,2)   STORE INPUT INTO OUTPUT VAL                                  
+000246 FC31 3000 2000 00000 00000   116          MP    0(4,3),0(2,2)   MULTIPLY THE TWO TOGETHER                                    
+                                    117 *                                                                                           
+00024C 9823 C258            00258   118          LM    2,3,INSAVE     RESTORE R2,3                                                  
+000250 07FB                         119          BR    11                                                                           
+                                    120          LTORG             LITERAL ORGANIZATION                                             
+                                    121 *                                                                                           
+000258                              122 INSAVE   DS    2F                                                                           
+                                    123 *                                                                                           
+                                    124 ******************************************************************                          
+                                    125 *                                                                *                          
+                                    126 * LOADPSEQ SUBROUTINE                                            *                          
+                                    127 *                                                                *                          
+                                    128 * PARAMLIST:                                                     *                          
+                                    129 *   R2: (80F) BUFFER                                             *                          
+                                    130 *   R3: (8PL8) SEQ                                               *                          
+                                    131 *                                                                *                          
+                                    132 * REGISTER USAGE:                                                *                          
+                                    133 *   R2 - HOLDS BUFFER                                            *                          
+                                    134 *   R3 - HOLDS SEQUENCE                                          *                          
+                                    135 *                                                                *                          
+                                    136 ******************************************************************                          
+000260 9023 C2E0            002E0   137 LOADPSEQ STM   2,3,LDSAVE                                                                   
+000264 9823 1000            00000   138          LM    2,3,0(1)        LOAD PARAMER ADDRESES INTO R2,3                              
+                                    139 *                                                                                           
+000268 F275 3000 2000 00000 00000   140          PACK  0(8,3),0(6,2)          LOAD INT 1                                            
+00026E 4122 0007            00007   141          LA    2,7(2)                 LOAD NEXT INT TO BUFFER                               
+000272 4133 0008            00008   142          LA    3,8(3)                 LOAD NEXT INT TO SEQ                                  
+000276 F275 3000 2000 00000 00000   143          PACK  0(8,3),0(6,2)          LOAD INT 2                                            
+00027C 4122 0007            00007   144          LA    2,7(2)                 LOAD NEXT INT TO BUFFER                               
+000280 4133 0008            00008   145          LA    3,8(3)                 LOAD NEXT INT TO SEQ                                  
+000284 F275 3000 2000 00000 00000   146          PACK  0(8,3),0(6,2)          LOAD INT 3                                            
+00028A 4122 0007            00007   147          LA    2,7(2)                 LOAD NEXT INT TO BUFFER                               
+00028E 4133 0008            00008   148          LA    3,8(3)                 LOAD NEXT INT TO SEQ                                  
+000292 F275 3000 2000 00000 00000   149          PACK  0(8,3),0(6,2)          LOAD INT 4                                            
+000298 4122 0007            00007   150          LA    2,7(2)                 LOAD NEXT INT TO BUFFER                               
+00029C 4133 0008            00008   151          LA    3,8(3)                 LOAD NEXT INT TO SEQ                                  
+0002A0 F275 3000 2000 00000 00000   152          PACK  0(8,3),0(6,2)          LOAD INT 5                                            
+0002A6 4122 0007            00007   153          LA    2,7(2)                 LOAD NEXT INT TO BUFFER                               
+0002AA 4133 0008            00008   154          LA    3,8(3)                 LOAD NEXT INT TO SEQ                                  
+0002AE F275 3000 2000 00000 00000   155          PACK  0(8,3),0(6,2)          LOAD INT 6                                            
+0002B4 4122 0007            00007   156          LA    2,7(2)                 LOAD NEXT INT TO BUFFER                               
+0002B8 4133 0008            00008   157          LA    3,8(3)                 LOAD NEXT INT TO SEQ                                  
+0002BC F275 3000 2000 00000 00000   158          PACK  0(8,3),0(6,2)          LOAD INT 7                                            
+0002C2 4122 0007            00007   159          LA    2,7(2)                 LOAD NEXT INT TO BUFFER                               
+0002C6 4133 0008            00008   160          LA    3,8(3)                 LOAD NEXT INT TO SEQ                                  
+0002CA F275 3000 2000 00000 00000   161          PACK  0(8,3),0(6,2)          LOAD INT 8                                            
+0002D0 4122 0007            00007   162          LA    2,7(2)                 LOAD NEXT INT TO BUFFER                               
+0002D4 4133 0008            00008   163          LA    3,8(3)                 LOAD NEXT INT TO SEQ                                  
+                                    164 *                                                                                           
+0002D8 9823 C2E0            002E0   165          LM    2,3,LDSAVE             RESTORE R2,3                                          
+0002DC 07FB                         166          BR    11                                                                           
+
+                                                                                                               PAGE    4            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    167          LTORG             LITERAL ORGANIZATION                                             
+                                    168 *                                                                                           
+0002E0                              169 LDSAVE   DS    2F                                                                           
+                                    170 *                                                                                           
+                                    171 ******************************************************************                          
+                                    172 *                                                                *                          
+                                    173 * EXTERNAL SUBPROGRAM: EXSQUARE                                  *                          
+                                    174 *                                                                *                          
+                                    175 * PARAMLIST:                                                     *                          
+                                    176 *   R2: (PL8) NUM TO BE SQRD                                     *                          
+                                    177 *                                                                *                          
+                                    178 * REGISTER USAGE:                                                *                          
+                                    179 *   R2 - HOLDS NUMBER TO SQUARE                                  *                          
+                                    180 *                                                                *                          
+                                    181 ******************************************************************                          
+0002E8                              182 EXSQUARE CSECT                                                                              
+0002E8 90EC D00C            0000C   183          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+0002EC 18CF                         184          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+0002E8                              185          USING EXSQUARE,12    ESTABLISH R12 AS THE BASE REG                                 
+0002EE 41E0 C030            00318   186          LA    14,EXSAVE      R14 POINTS TO THIS CSECT'S SAVE AREA                          
+0002F2 50E0 D008            00008   187          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+0002F6 50D0 E004            00004   188          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+0002FA 18DE                         189          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    190 *                                                                                           
+                                    191 *  DEREFERENCE PARAMETER LIST                                                               
+                                    192 *                                                                                           
+0002FC F837 C078 2000 00360 00000   193          ZAP   EXSTMP,0(8,2)                                                                
+000302 FC73 2000 C078 00000 00360   194          MP    0(8,2),EXSTMP                                                                
+                                    195 *                                                                                           
+                                    196 *  RESTORE ALL OF THE CALLER'S REGISTERS AND RETURN                                         
+                                    197 *                                                                                           
+000308 1BFF                         198          SR    15,15          R15 = RETURN CODE OF 0                                        
+00030A 58D0 D004            00004   199          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+00030E 58E0 D00C            0000C   200          L     14,12(,13)     RESTORE REGISTER 14                                           
+000312 980C D014            00014   201          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+000316 07FE                         202          BR    14             RETURN TO CALLER                                              
+                                    203 *                                                                                           
+                                    204          LTORG                LITERAL ORGANIZATION                                          
+                                    205 *                                                                                           
+000318 FFFFFFFFFFFFFFFF             206 EXSAVE   DC    18F'-1'     SAVE AREA                                                        
+000360 0000000C                     207 EXSTMP   DC    PL4'0'      TEMP                                                             
+                                    208 *                                                                                           
+                                    209 ******************************************************************                          
+                                    210 *                                                                *                          
+                                    211 * EXTERNAL SUBPROGRAM: LOADDATA                                  *                          
+                                    212 *                                                                *                          
+                                    213 * PARAMLIST:                                                     *                          
+                                    214 *   R2: (80F) BUFFER                                             *                          
+                                    215 *   R3: (15PL3) TSSTABLE                                         *                          
+                                    216 *                                                                *                          
+                                    217 * REGISTER USAGE:                                                *                          
+                                    218 *   R2 - HOLD BUFFER                                             *                          
+                                    219 *   R3 - HOLD TABLE ADDR                                         *                          
+                                    220 *   R4 - HOLD ADDR TEMP TO PUT IN VARS                           *                          
+                                    221 *                                                                *                          
+                                    222 ******************************************************************                          
+000368                              223 LOADDATA CSECT                                                                              
+
+                                                                                                               PAGE    5            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000368 90EC D00C            0000C   224          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+00036C 18CF                         225          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+000368                              226          USING LOADDATA,12    ESTABLISH R12 AS THE BASE REG                                 
+00036E 41E0 C084            003EC   227          LA    14,ELSAVE      R14 POINTS TO THIS CSECT'S SAVE AREA                          
+000372 50E0 D008            00008   228          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+000376 50D0 E004            00004   229          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+00037A 18DE                         230          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    231 *                                                                                           
+                                    232 *  DEREFERENCE PARAMETER LIST                                                               
+                                    233 *                                                                                           
+000000                              234          USING $TABLE,3           LOAD DSECT INTO R3                                        
+00037C 9823 1000            00000   235          LM    2,3,0(1)           LOAD PARAMS INTO R2 AND R3                                
+000380 E002 0000 0050 00000         236 LOOP     XREAD 0(2),80            READ 80 BYTES                                             
+000386 4770 C06A            003D2   237          BNZ   ENDOLOOP           BRANCH IF AT END                                          
+                                    238 *                                                                                           
+00038A 4142 0000            00000   239          LA    4,0(2)             LOAD BUFFER ADDR INTO R4                                  
+00038E 5040 C0D8            00440   240          ST    4,TAB              STORE IN TRAIL                                            
+                                    241 *                                                                                           
+000392 4142 0050            00050   242          LA    4,80(2)            LOAD EOBUFFER ADDR INTO R4                                
+000396 5040 C0DC            00444   243          ST    4,EOTAB            STORE IN TAB                                              
+                                    244 *                                                                                           
+00039A 4110 C0D8            00440   245          LA    1,PARMS            LOAD PARMS INTO R1                                        
+00039E 58F0 C080            003E8   246          L     15,=V(PARSEDEC)    LOAD ADDRESS OF SUBPROGRAM INTO R15                       
+0003A2 05EF                         247          BALR  14,15              BRANCH AND LINK TO SUBPROGRAM                             
+                                    248 *                                                                                           
+0003A4 F837 3000 C0D0 00000 00438   249          ZAP   $NUM1(4),ELSTMP(8) STORE IN TABLE                                            
+                                    250 *                                                                                           
+0003AA 4142 0008            00008   251          LA    4,8(2)             LOAD NEXT INTO TRAIL                                      
+0003AE 5040 C0D8            00440   252          ST    4,TAB                                                                        
+                                    253 *                                                                                           
+0003B2 4142 0050            00050   254          LA    4,80(2)            LOAD END INTO TRAIL                                       
+0003B6 5040 C0DC            00444   255          ST    4,EOTAB                                                                      
+                                    256 *                                                                                           
+0003BA 4110 C0D8            00440   257          LA    1,PARMS            LOAD PARMS INTO R1                                        
+0003BE 58F0 C080            003E8   258          L     15,=V(PARSEDEC)    LOAD ADDRESS OF SUBPROGRAM INTO R15                       
+0003C2 05EF                         259          BALR  14,15              BRANCH AND LINK TO SUBPROGRAM                             
+                                    260 *                                                                                           
+0003C4 F837 3004 C0D0 00004 00438   261          ZAP   $NUM2(4),ELSTMP(8) STORE IN 2ND COLUMN                                       
+0003CA 4133 000C            0000C   262          LA    3,12(3)            MOVE TO NEXT PRT OF TABLE                                 
+                                    263 *                                                                                           
+0003CE 47F0 C018            00380   264          B     LOOP               LOOP TO TOP                                               
+0003D2                              265 ENDOLOOP DS    0H                 END OF LOOP                                               
+                                    266 *                                                                                           
+                                    267 *                                                                                           
+                                    268 *  RESTORE ALL OF THE CALLER'S REGISTERS AND RETURN                                         
+                                    269 *                                                                                           
+0003D2 1BFF                         270          SR    15,15          R15 = RETURN CODE OF 0                                        
+0003D4 58D0 D004            00004   271          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+0003D8 58E0 D00C            0000C   272          L     14,12(,13)     RESTORE REGISTER 14                                           
+0003DC 980C D014            00014   273          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+0003E0 07FE                         274          BR    14             RETURN TO CALLER                                              
+                                    275 *                                                                                           
+                                    276          LTORG                LITERAL ORGANIZATION                                          
+0003E8 000004E8                     277                =V(PARSEDEC)                                                                 
+                                    278 *                                                                                           
+0003EC FFFFFFFFFFFFFFFF             279 ELSAVE   DC    18F'-1'     SAVE AREA                                                        
+000434                              280 IMPDP    DS    F           IMPLIED DECIMALS                                                 
+
+                                                                                                               PAGE    6            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000438 000000000000000C             281 ELSTMP   DC    PL8'0'      TEMPORARY                                                        
+000440                              282 PARMS    DS    0H          PARAMETERS                                                       
+000440                              283 TAB      DS    F           TABLE                                                            
+000444                              284 EOTAB    DS    F           END OF TABLE                                                     
+000448 00000438                     285          DC    A(ELSTMP) RESULT                                                             
+00044C 00000440                     286          DC    A(TAB)    TRAIL ADDR                                                         
+000450 00000434                     287          DC    A(IMPDP)  # OF IMPLIED DEC PLACES                                            
+                                    288 *                                                                                           
+                                    289 *                                                                                           
+                                    290 ******************************************************************                          
+                                    291 *                                                                *                          
+                                    292 * EXTERNAL SUBPROGRAM: TSUMSQRS                                  *                          
+                                    293 *                                                                *                          
+                                    294 * PARAMLIST:                                                     *                          
+                                    295 * REGISTER USAGE:                                                *                          
+                                    296 ******************************************************************                          
+000458                              297 TSUMSQRS CSECT                                                                              
+000458 90EC D00C            0000C   298          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+00045C 18CF                         299          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+000458                              300          USING TSUMSQRS,12    ESTABLISH R12 AS THE BASE REG                                 
+00045E 41E0 C028            00480   301          LA    14,TSSAVE      R14 POINTS TO THIS CSECT'S SAVE AREA                          
+000462 50E0 D008            00008   302          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+000466 50D0 E004            00004   303          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+00046A 18DE                         304          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    305 *                                                                                           
+                                    306 *  DEREFERENCE PARAMETER LIST                                                               
+                                    307 *                                                                                           
+000000                              308          USING $TABLE,3                                                                     
+00046C 5832 0000            00000   309          L     3,0(2)                                                                       
+                                    310 *                                                                                           
+                                    311 *  RESTORE ALL OF THE CALLER'S REGISTERS AND RETURN                                         
+                                    312 *                                                                                           
+000470 1BFF                         313          SR    15,15          R15 = RETURN CODE OF 0                                        
+000472 58D0 D004            00004   314          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+000476 58E0 D00C            0000C   315          L     14,12(,13)     RESTORE REGISTER 14                                           
+00047A 980C D014            00014   316          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+00047E 07FE                         317          BR    14             RETURN TO CALLER                                              
+                                    318 *                                                                                           
+                                    319          LTORG                LITERAL ORGANIZATION                                          
+                                    320 *                                                                                           
+000480 FFFFFFFFFFFFFFFF             321 TSSAVE   DC    18F'-1'     SAVE AREA                                                        
+0004C8 0000000000000000             322 TEMP     DC    8F'0'                                                                        
+                                    323 *                                                                                           
+                                    324 ******************************************************************                          
+                                    325 *                                                                *                          
+                                    326 * DECIMAL PARSING EXTERNAL SUBPROGRAM                            *                          
+                                    327 *                                                                *                          
+                                    328 * TAKES AN EBCDIC REPRESENTATION OF A DECIMAL VALUE AND CONVERTS *                          
+                                    329 * IT TO A PACKED DECIMAL REPRESENTATION. THE PROVIDED START AND  *                          
+                                    330 * TRAILING ADDRESSES DETERMINE THE REGION OF STORAGE THAT WILL   *                          
+                                    331 * BE SCANNED, WITH THE TRAILING ADDRESS 1 POS PAST THE END. SETS *                          
+                                    332 * THE SIGN DIGIT OF THE RESULTING PACKED DECIMAL IF A PRECEDING  *                          
+                                    333 * SIGN CHARACTER ACCOMPANIES THE NUMERIC CHARACTERS. IF NO SIGN  *                          
+                                    334 * CHARACTER IS FOUND ASSUMES A POSITIVE QUANTITY. COUNTS AND     *                          
+                                    335 * RETURNS THE NUMBER OF IMPLIED DECIMAL PLACES, WHICH WILL BE    *                          
+                                    336 * BE NON-ZERO IF A DECIMAL CHARACTER IS FOUND.                   *                          
+                                    337 *                                                                *                          
+
+                                                                                                               PAGE    7            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    338 * RETURN CODES:                                                  *                          
+                                    339 *   0 - PARSE WAS SUCCESSFUL                                     *                          
+                                    340 *   1 - PARSE WAS UNSUCCESSFUL                                   *                          
+                                    341 *                                                                *                          
+                                    342 *   NOTE: IF PARSE WAS UNSUCCESSFUL THEN RETURN FIELD WILL NOT   *                          
+                                    343 *         CONTAIN A VALID PACKED DECIMAL, BUT WILL CONTAIN PREV  *                          
+                                    344 *         DATA WITH THE LAST BYTE OVERWRITTEN WITH X'00'         *                          
+                                    345 *         (GUARANTEEING IT WILL NOT CONTAIN A VALID PACKED DEC)  *                          
+                                    346 *                                                                *                          
+                                    347 * PARSING WILL FAIL IN THE FOLLOWING CASES:                      *                          
+                                    348 *   1.) THE SUBPROGRAM ATTEMPTED TO PARSE AN INVALID CHARACTER   *                          
+                                    349 *       (I.E., NOT C'+', C'-', C'.' OR NUMERIC)                  *                          
+                                    350 *   2.) NO NUMERIC CHARACTERS WERE FOUND                         *                          
+                                    351 *   3.) NO TRAILING SPACE CHARACTER WAS FOUND                    *                          
+                                    352 *   4.) THE NUMBER BEING PARSED CONTAINED MORE THAN 15 DIGITS    *                          
+                                    353 *                                                                *                          
+                                    354 * TODO: IMPLEMENT PARSE END CONSTRAINTS (STOP AT BUFFER END,     *                          
+                                    355 *       > 15 SOURCE DIGITS)                                      *                          
+                                    356 *                                                                *                          
+                                    357 * REGISTER USAGE:                                                *                          
+                                    358 *   2 - (IN) PTR TO BUFFERING LOC BEGIN ADDR (F)                 *                          
+                                    359 *   3 - (IN) PTR TO BUFFERING LOC TRAILING ADDR (F)              *                          
+                                    360 *   4 - (OUT) PTR TO PACKED DECIMAL'S RECEIVING FIELD (PL8)      *                          
+                                    361 *   5 - (OUT) ADDRESS OF FIRST TRAILING SPACE IN BUFFER (F)      *                          
+                                    362 *   6 - (OUT) IMPLIED DECIMALS (F)                               *                          
+                                    363 *   7 - BUFFER READ PTR                                          *                          
+                                    364 *   8 - COPY FIELD WRITE PTR                                     *                          
+                                    365 *   9 - COUNTER, IMPLIED DECIMAL PLACES                          *                          
+                                    366 *                                                                *                          
+                                    367 ******************************************************************                          
+0004E8                              368 PARSEDEC CSECT                                                                              
+                                    369 * ==== Entry linkage ===========                                                            
+                                    370 *      Back up caller's register state                                                      
+0004E8 90EC D00C            0000C   371          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+                                    372 *      Establish local addressability                                                       
+0004EC 18CF                         373          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+0004E8                              374          USING PARSEDEC,12    ESTABLISH R12 AS THE BASE REG                                 
+                                    375 *      Store backwards, forwards pointers                                                   
+0004EE 41E0 C12C            00614   376          LA    14,PARSSAVE    R14 POINTS TO THIS CSECT'S SAVE AREA                          
+0004F2 50D0 E004            00004   377          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+0004F6 50E0 D008            00008   378          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+                                    379 *      Preemptively point r13 at local save area                                            
+0004FA 18DE                         380          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    381 *                                                                                           
+0004FC 9826 1000            00000   382          LM    2,6,0(1)       R2 -> PARSE START ADDR                                        
+                                    383 *                             R3 -> PARSE END ADDR                                          
+                                    384 *                             R4 -> PACKED RETURN FIELD                                     
+                                    385 *                             R5 -> ADDR IN BUFFER, TRAILING SPACE                          
+                                    386 *                             R6 -> IMPLIED DECIMAL PLACES                                  
+                                    387 *                                                                                           
+000500 9826 1000            00000   388          LM    2,6,0(1)       R2 -> PARSE START ADDR                                        
+                                    389 *                             R3 -> PARSE END ADDR                                          
+                                    390 *                             R4 -> PACKED RETURN FIELD                                     
+                                    391 *                             R5 -> ADDR IN BUFFER, TRAILING SPACE                          
+                                    392 *                             R6 -> IMPLIED DECIMAL PLACES                                  
+                                    393 *                                                                                           
+                                    394 * (RE)INITIALIZE STATE VARS                                                                 
+
+                                                                                                               PAGE    8            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000504 9200 4007      00007         395          MVI   7(4),X'00'     SET LAST BYTE TO ERROR CODE                                   
+000508 9200 C174      0065C         396          MVI   SCODE,X'00'    (RE)SET DEFAULT SIGN CODE                                     
+00050C 9200 C175      0065D         397          MVI   DECFLAG,X'00'  (RE)SET DECIMAL FLAG                                          
+000510 1872                         398          LR    7,2            SET SCAN HEAD TO BUFFER START                                 
+000512 4190 0000            00000   399          LA    9,0            RESET DECIMAL PLACE COUNTER                                   
+                                    400 *                                                                                           
+                                    401 * FAST-FORWARD PAST LEADING SPACES                                                          
+000516 9540 7000      00000         402 FFLOOP   CLI   0(7),C' '      TEST FOR LEADING SPACE                                        
+00051A 4770 C042            0052A   403          BNE   TESTNEG        NON-SPACE CHAR FOUND, BEGIN PARSE                             
+00051E 4120 2001            00001   404          LA    2,1(,2)        MOVE START ADDR FORWARD 1 POS                                 
+000522 4170 7001            00001   405          LA    7,1(,7)        MOVE READ HEAD FORWARD 1 POS                                  
+000526 47F0 C02E            00516   406          B     FFLOOP         TEST NEXT POS                                                 
+                                    407 *                                                                                           
+                                    408 ** TEST FOR LEADING +/-                                                                     
+                                    409 *                                                                                           
+                                    410 * TEST IF FIRST CHAR IS '-'                                                                 
+00052A 9560 7000      00000         411 TESTNEG  CLI   0(7),C'-'      TEST FOR NEGATIVE SIGN                                        
+00052E 4770 C056            0053E   412          BNE   TESTPOS        NO NEGATIVE SIGN, TEST FOR +                                  
+000532 92FF C174      0065C         413          MVI   SCODE,X'FF'    SET SIGN CODE BYTE TO -1                                      
+000536 4120 7001            00001   414          LA    2,1(,7)        MOVE BUFFER START PAST SIGN                                   
+00053A 47F0 C0BE            005A6   415          B     UPDTSCHD       GO TO NEXT CHAR                                               
+                                    416 *                                                                                           
+                                    417 * TEST IF FIRST CHAR IS '+'                                                                 
+00053E 954E 7000      00000         418 TESTPOS  CLI   0(7),C'+'      TEST FOR POSITIVE SIGN                                        
+000542 4770 C066            0054E   419          BNE   SCANLOOP       NO POSITIVE SIGN, START SCANNING                              
+000546 4120 7001            00001   420          LA    2,1(,7)        MOVE BUFFER START PAST SIGN                                   
+00054A 4780 C0BE            005A6   421          BE    UPDTSCHD       POS SIGN FOUND, GO TO NEXT CHAR                               
+                                    422 *                                                                                           
+                                    423 ** SCAN FROM LEFT TO RIGHT FOR FIRST TRAILING SPACE **                                      
+                                    424 *                                                                                           
+                                    425 * TEST AND HANDLE SPACE FOUND CASE                                                          
+00054E 9540 7000      00000         426 SCANLOOP CLI   0(7),C' '      TEST FOR SPACE CHAR                                           
+000552 4770 C07C            00564   427          BNE   TSTDEC         NOT A SPACE, TEST FOR DECIMAL CHAR                            
+000556 1972                         428          CR    7,2            TEST OFFSET INTO BUFFER                                       
+000558 4770 C0D2            005BA   429          BNE   COPYPREP       FOUND TRAIL SPC, BEGIN NEXT STEPS                             
+00055C 41F0 0001            00001   430          LA    15,1           OTHERWISE SET R15 = 1 (PARSE ERROR)                           
+000560 47F0 C11A            00602   431          B     PARSEXIT       EXIT IMMEDIATELY                                              
+                                    432 *                                                                                           
+                                    433 * TEST FOR DECIMAL CHARACTER                                                                
+000564 954B 7000      00000         434 TSTDEC   CLI   0(7),C'.'      TEST FOR DECIMAL CHAR                                         
+000568 4770 C09E            00586   435          BNE   TSTCXLOW       NOT FOUND, TEST FOR NON-NUMERIC                               
+00056C 9501 C175      0065D         436          CLI   DECFLAG,X'01'  TEST IF FLAG ALREADY SET                                      
+000570 4770 C094            0057C   437          BNE   SETDFLAG       IF NOT THEN SET FLAG BYTE                                     
+000574 41F0 0001            00001   438          LA    15,1           OTHERWISE SET R15 = 1 (PARSE ERROR)                           
+000578 47F0 C11A            00602   439          B     PARSEXIT       EXIT IMMEDIATELY                                              
+00057C 9201 C175      0065D         440 SETDFLAG MVI   DECFLAG,X'01'  SET DECIMAL FLAG TO 1 (TRUE)                                  
+000580 0690                         441          BCTR  9,0            SET COUNT TO -1 (IGNORES DEC CHAR)                            
+000582 47F0 C0BE            005A6   442          B     UPDTSCHD       UPDATE AND CONTINUE                                           
+                                    443 *                                                                                           
+                                    444 * TEST FOR NON-NUMERIC CHARACTERS                                                           
+000586 95F0 7000      00000         445 TSTCXLOW CLI   0(7),X'F0'     TEST IF < X'F0' (CHAR 0)                                      
+00058A 47B0 C0AE            00596   446          BNL   TSTCXHI        IF NOT LOW THEN TEST IF HIGH                                  
+00058E 41F0 0001            00001   447          LA    15,1           R15 = 1 (PARSE ERROR)                                         
+000592 47F0 C11A            00602   448          B     PARSEXIT       OTHERWISE DO NOTHING AND EXIT                                 
+000596 95F9 7000      00000         449 TSTCXHI  CLI   0(7),X'F9'     TEST IF > X'F9' (CHAR 9)                                      
+00059A 47D0 C0BE            005A6   450          BNH   UPDTSCHD       IF NOT HIGH THEN UPDATE AND CONTINUE                          
+00059E 41F0 0001            00001   451          LA    15,1           OTHERWISE R15 = 1 (PARSE ERROR)                               
+
+                                                                                                               PAGE    9            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+0005A2 47F0 C11A            00602   452          B     PARSEXIT       DO NOTHING AND EXIT                                           
+                                    453 *                                                                                           
+                                    454 * UPDATE AND CONTINUE                                                                       
+0005A6 4170 7001            00001   455 UPDTSCHD LA    7,1(,7)        INCREMENT READ PTR                                            
+0005AA 9501 C175      0065D         456          CLI   DECFLAG,X'01'  TEST IF DECIMAL FLAG IS SET                                   
+0005AE 4770 C066            0054E   457          BNE   SCANLOOP       IF NOT THEN TEST NEXT CHAR                                    
+0005B2 4190 9001            00001   458          LA    9,1(,9)        INCREMENT IMPLIED DEC COUNTER                                 
+0005B6 47F0 C066            0054E   459          B     SCANLOOP       TEST NEXT CHAR                                                
+                                    460 *                                                                                           
+                                    461 * PREPARE FOR COPY INTO TEMP FIELD                                                          
+0005BA 5070 5000            00000   462 COPYPREP ST    7,0(,5)         WRITE OUT TRAILING SPACE ADDR                                
+0005BE 92F0 C176      0065E         463          MVI   ZNTEMP,X'F0'    RESET COPY FIELD TO 0                                        
+0005C2 D20D C177 C176 0065F 0065E   464          MVC   ZNTEMP+1(14),ZNTEMP                                                          
+0005C8 4180 C184            0066C   465          LA    8,ZNTEMP+14     GET ADDR OF LAST CHAR IN COPY FIELD                          
+0005CC 0670                         466          BCTR  7,0             MOVE READ PTR BACK TO LAST DIGIT                             
+                                    467 *                                                                                           
+                                    468 * COPY EBCDIC CODES RIGHT TO LEFT INTO CONVERSION FIELD                                     
+0005CE 954B 7000      00000         469 COPYLOOP CLI   0(7),C'.'      TEST IF DECIMAL CHARACTER                                     
+0005D2 4780 C0F6            005DE   470          BE    UPDTNCPY       SKIP THIS POS IF SO (NO COPY)                                 
+0005D6 D200 8000 7000 00000 00000   471          MVC   0(1,8),0(7)    COPY EBCDIC CODE                                              
+0005DC 0680                         472 UPDTCPY  BCTR  8,0            DECREMENT COPY HEAD                                           
+0005DE 0670                         473 UPDTNCPY BCTR  7,0            DECREMENT SCAN HEAD                                           
+0005E0 1972                         474          CR    7,2            TEST IF BACK AT FIRST DIGIT                                   
+0005E2 47B0 C0E6            005CE   475          BNL   COPYLOOP       IF NOT THEN CONTINUE                                          
+                                    476 *                                                                                           
+                                    477 * SET RESULTS IN RECEIVER FIELDS                                                            
+0005E6 5090 6000            00000   478          ST    9,0(,6)            WRITE BACK # IMPLIED DECIMALS                             
+0005EA F27E 4000 C176 00000 0065E   479          PACK  0(8,4),ZNTEMP(15)  WRITE BACK PACKED DECIMAL                                 
+0005F0 95FF C174      0065C         480          CLI   SCODE,X'FF'        SET SIGN DIGIT IF NEGATIVE                                
+0005F4 4770 C116            005FE   481          BNE   SETRCODE                                                                     
+0005F8 FC70 4000 C128 00000 00610   482          MP    0(8,4),=PL1'-1'                                                              
+                                    483 *                                                                                           
+                                    484 * ==== Exit linkage ============                                                            
+0005FE 41F0 0000            00000   485 SETRCODE LA    15,0           R15 = RETURN CODE OF 0                                        
+000602 58D0 D004            00004   486 PARSEXIT L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+000606 58E0 D00C            0000C   487          L     14,12(,13)     RESTORE REGISTER 14                                           
+00060A 980C D014            00014   488          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+00060E 07FE                         489          BR    14             RETURN TO CALLER                                              
+                                    490 *                                                                                           
+                                    491          LTORG                                                                              
+000610 1D                           492                =PL1'-1'                                                                     
+                                    493 *                                                                                           
+000614                              494 PARSSAVE DS    18F'-1'        PARSE SUBPROGRAM'S SAVE AREA                                  
+                                    495 *                                                                                           
+00065C 00                           496 SCODE    DC    X'00'          SIGN CODE BYTE, DEFAULT 0 (POSITIVE)                          
+00065D 00                           497 DECFLAG  DC    X'00'          DECIMAL FOUND FLAG, DEFAULT 0 (FALSE)                         
+00065E                              498 ZNTEMP   DS    CL15           CONVERSION COPY FIELD                                         
+                                    499 *                                                                                           
+                                    500          END   MAIN                                                                         
+
+***  NO   STATEMENTS FLAGGED -  NO   WARNINGS,  NO   ERRORS                                                                         
+
+*** DYNAMIC CORE AREA USED:  LOW:   28296 HIGH:    1788 LEAVING:  463484 FREE BYTES. AVERAGE:       60 BYTES/STMT ***               
+
+*** ASSEMBLY TIME =    0.001 SECS,   501000 STATEMENTS/SEC ***                                                                      
+
+*** PROGRAM EXECUTION BEGINNING - ANY OUTPUT BEFORE EXECUTION TIME MESSAGE IS PRODUCED BY USER PROGRAM ***                          
+
+BEGIN XSNAP - CALL     1 AT E000002E USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     000130 TO 000136                                                         
+000120   40404040 40404040 00000000 0000000C    050F0002 500CF5F5 FFFFFFFF 00000670   *        ..............55........*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     2 AT C0000042 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     000180 TO 0001C0                                                         
+000180   00000000 0082770F 00000000 0019928F    00000000 0000192F 00000000 0729900F   *................................*            
+0001A0   00000000 0081992F 00000000 0290019F    00000000 0100203F 00000000 0177290F   *................................*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     3 AT C000006C USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     000180 TO 0001C0                                                         
+000180   00000685 0872900C 00000039 7125184C    00000000 0036864C 00053275 4010000C   *............................ ...*            
+0001A0   00000672 2688064C 00008411 1020361C    00001004 0641209C 00003143 1744100C   *................................*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     4 AT C000007C USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0001C0 TO 0001FC                                                         
+0001C0   0199928C 0199938C 0000000C 0027819C    0025274C 0000000C 1092837C 1092861C   *................................*            
+0001E0   0000000C 0092409C 0092312C 0000000C    0719822C 0720081C 0000000C 00000000   *...... .........................*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     5 AT C0000094 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0001C0 TO 0001FC                                                         
+0001C0   0199928C 0199938C 0000000C 0027819C    0025274C 0000000C 1092837C 1092861C   *................................*            
+0001E0   0000000C 0092409C 0092312C 0000000C    0719822C 0720081C 0000000C 00000000   *...... .........................*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     6 AT C000009A USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     000128 TO 000130                                                         
+000120   40404040 40404040 00000000 0000000C    050F0002 500CF5F5 FFFFFFFF 00000670   *        ..............55........*            
+
+                                                                                                                                    
+
+*** EXECUTION TIME =    0.000 SECS.      1984 INSTRUCTIONS EXECUTED -  1984000 INSTRUCTIONS/SEC ***                                 
+
+*** AM004 - NORMAL USER TERMINATION BY RETURN ***                                                                                   
+!! END OF JES SPOOL FILE !!

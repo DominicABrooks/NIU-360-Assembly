@@ -1,0 +1,251 @@
+
+                   J E S 2  J O B  L O G  --  S Y S T E M  2 9 6 4  --  N O D E  S V S C J E S 2        
+
+ 
+17.39.17 JOB00218 ---- SUNDAY,    18 SEP 2022 ----
+17.39.17 JOB00218  IRR010I  USERID KC03ABD  IS ASSIGNED TO THIS JOB.
+17.39.17 JOB00218  ICH70001I KC03ABD  LAST ACCESS AT 17:35:21 ON SUNDAY, SEPTEMBER 18, 2022
+17.39.17 JOB00218  $HASP373 KC03ABDA STARTED - INIT 1    - CLASS A        - SYS 2964
+17.39.17 JOB00218  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+17.39.17 JOB00218  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+17.39.17 JOB00218  -JSTEP01              00     24      3       .00       .00     .0             4  BATCH        0     0     0     0
+17.39.17 JOB00218  -KC03ABDA ENDED.  NAME-DOMINIC BROOKS       TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+17.39.17 JOB00218  $HASP395 KC03ABDA ENDED - RC=0000
+
+------ JES2 JOB STATISTICS ------
+
+
+  18 SEP 2022 JOB EXECUTION DATE
+
+
+          120 CARDS READ
+
+
+          202 SYSOUT PRINT RECORDS
+
+
+            0 SYSOUT PUNCH RECORDS
+
+
+           20 SYSOUT SPOOL KBYTES
+
+
+         0.00 MINUTES EXECUTION TIME
+!! END OF JES SPOOL FILE !!
+       1 //KC03ABDA JOB ,'DOMINIC BROOKS',MSGCLASS=H                             JOB00218
+       2 //JSTEP01  EXEC PGM=ASSIST                                                      
+       3 //STEPLIB  DD DSN=KC00NIU.ASSIST.LOADLIB,DISP=SHR                               
+       4 //SYSPRINT DD SYSOUT=*                                                          
+       5 //SYSIN    DD *                                                                 
+       6 //                                                                              
+!! END OF JES SPOOL FILE !!
+ICH70001I KC03ABD  LAST ACCESS AT 17:35:21 ON SUNDAY, SEPTEMBER 18, 2022
+IEFA111I KC03ABDA IS USING THE FOLLOWING JOB RELATED SETTINGS:
+         SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+IEF236I ALLOC. FOR KC03ABDA JSTEP01
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IEF142I KC03ABDA JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC00NIU.ASSIST.LOADLIB                       RETAINED,  DDNAME=STEPLIB 
+IEF285I   KC03ABD.KC03ABDA.JOB00218.D0000103.?         SYSOUT        
+IEF285I   KC03ABD.KC03ABDA.JOB00218.D0000101.?         SYSIN         
+IEF373I STEP/JSTEP01 /START 2022261.1739
+IEF032I STEP/JSTEP01 /STOP  2022261.1739 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:   584K  SYS:   248K  EXT:        0K  SYS:    11252K
+        ATB- REAL:                  1056K  SLOTS:                     0K
+             VIRT- ALLOC:      13M SHRD:       0M
+IEF375I  JOB/KC03ABDA/START 2022261.1739
+IEF033I  JOB/KC03ABDA/STOP  2022261.1739 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+!! END OF JES SPOOL FILE !!
+
+*** ASSIST 4.0/A2-05/15/82  470/V7A/0:OS/VS2  INS=SDFP7/X=BGHO, CHECK/TRC/=1180, OPTS=CDKMPR FROM PENN ST*NIU COMPSCI*LT            
+
+                                                                                                                                    
+
+                                                                                                               PAGE    1            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                      1 ******************************************************************                          
+                                      2 *                                                                *                          
+                                      3 * CSCI 360-1            LAB EXERCISE 1               SPRING 2022 *                          
+                                      4 *                                                                *                          
+                                      5 * NAME:  DOMINIC BROOKS                                          *                          
+                                      6 * DATE:  9/18/22                                                 *                          
+                                      7 *                                                                *                          
+                                      8 * SERIES OF BASIC ARITHMETIC, ADDRESSING, AND OUTPUT EXERCISES   *                          
+                                      9 *                                                                *                          
+                                     10 * REGISTER USAGE:                                                *                          
+                                     11 * 2 - USAGE GIVEN IN EXERCISE HEADER                             *                          
+                                     12 * 3 - USAGE GIVEN IN EXERCISE HEADER                             *                          
+                                     13 * 4 - USAGE GIVEN IN EXERCISE HEADER                             *                          
+                                     14 *                                                                *                          
+                                     15 ******************************************************************                          
+                                     16 *                                                                                           
+                                     17 *| Code body goes here, beginning with CSECT + USING and         |                          
+                                     18 *| ending with return to caller (i.e., the BCR instruction)      |                          
+                                     19 *                                                                                           
+000000                               20 MAIN     CSECT                                                                              
+000000                               21          USING MAIN,15      ESTABLISH ADDRESSABILITY ON REG 15                              
+                                     22 *| Exercise 1                                                    |                          
+                                     23 *| REGISTER USAGE:                                               |                          
+                                     24 *| 2 - HOLD ADDEND, 5                                            |                          
+                                     25 *| 3 - HOLD SUBTRAHEND, 10                                       |                          
+                                     26 *| 4 - HOLD MINUEND, 200 AND FINAL SUM                           |                          
+000000 4120 0005            00005    27          LA    2,5          LOAD 5   INTO REGISTER 2                                        
+000004 4130 000A            0000A    28          LA    3,10         LOAD 10  INTO REGISTER 3                                        
+000008 4140 00C8            000C8    29          LA    4,200        LOAD 200 INTO REGISTER 4                                        
+00000C 1B43                          30          SR    4,3          SUBTRACT REG 3'S CONTENT TO REG 4'S                             
+00000E 1A42                          31          AR    4,2          ADD REG 2'S CONTENT TO REG 4'S                                  
+000010 E160 0000 0000 00000          32          XDUMP ,            DUMP CONTENTS OF ALL 16 REGS                                    
+                                     33 *| Exercise 2                                                    |                          
+                                     34 *| REGISTER USAGE:                                               |                          
+                                     35 *| 2 - HOLD MINUEND, 15 AND FINAL SUM                            |                          
+                                     36 *| 3 - HOLD SUBTRAHEND, 87, AND ADDEND 9                         |                          
+000016 4120 000F            0000F    37          LA    2,15         LOAD 15  INTO REGISTER 2                                        
+00001A 4130 0057            00057    38          LA    3,87         LOAD 87  INTO REGISTER 3                                        
+00001E 1B23                          39          SR    2,3          SUBTRACT REG 3'S CONTENT TO REG 2'S                             
+000020 4130 0009            00009    40          LA    3,9          LOAD 9   INTO REGISTER 3                                        
+000024 1A23                          41          AR    2,3          ADD REG 3'S CONTENT TO REG 2'S                                  
+000026 E160 0000 0000 00000          42          XDUMP ,            DUMP CONTENTS OF ALL 16 REGS                                    
+                                     43 *| Execrise 3                                                    |                          
+                                     44 *| REGISTER USAGE:                                               |                          
+                                     45 *| 2 - STORE SUM OF EXERCISE 2, STORED IN REG 2 INTO FW @ RESA   |                          
+00002C 5020 F0C0            000C0    46          ST    2,RESA       STORE CONTENTS OF REG 2 INTO RESA                               
+000030 E060 F0C0 0004 000C0          47          XDUMP RESA,4       DUMPS CONTENTS AT RESA                                          
+                                     48 *| Execrise 4                                                    |                          
+                                     49 *| REGISTER USAGE:                                               |                          
+                                     50 *| 2 - HOLD LEFT  HAND FACTORS AND ADDEND AND SUM                |                          
+                                     51 *| 3 - HOLD RIGHT HAND FACTORS AND ADDEND                        |                          
+000036 4120 0005            00005    52          LA    2,5          LOAD 5 INTO REGISTER 2                                          
+
+                                                                                                               PAGE    2            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+00003A 4130 0004            00004    53          LA    3,4          LOAD 4 INTO REGISTER 3                                          
+00003E 5A20 F0A0            000A0    54          A     2,=F'5'      ADD 5 TO REGISTER 2 TO FIND PRODUCT OF 2*5                      
+000042 5A30 F0A4            000A4    55          A     3,=F'4'      ADD 4 TO REGISTER 3,                                            
+000046 5A30 F0A4            000A4    56          A     3,=F'4'      TWICE TO FIND THE PRODUCT OF 3*4                                
+00004A 1A23                          57          AR    2,3          ADD REGISTER 3'S CONTENTS INTO REGISTER 2                       
+00004C 5020 F0C4            000C4    58          ST    2,RESB       STORE CONTENTS OF REG 2 INTO RESB                               
+000050 E060 F0C4 0004 000C4          59          XDUMP RESB,4       DUMPS CONTENTS AS RESB                                          
+                                     60 *| Execrise 5                                                    |                          
+                                     61 *| REGISTER USAGE:                                               |                          
+                                     62 *| 2 - HOLD FINAL VALUE OF EXERCISE 2 IN HEX                     |                          
+                                     63 *| 3 - HOLD FINAL VALUE OF EXERCISE 3 IN HEX                     |                          
+000056 5820 F0C0            000C0    64          L     2,RESA       LOAD RESA INTO REGISTER 2                                       
+00005A 5830 F0C4            000C4    65          L     3,RESB       LOAD RESB INTO REGISTER 3                                       
+00005E 5220 F0CE            000CE    66          XDECO 2,ORESA      CONVERT AND STORE IN ORESA                                      
+000062 5230 F0E3            000E3    67          XDECO 3,ORESB      CONVERT AND STORE IN ORESB                                      
+000066 E020 F0C8 0085 000C8          68          XPRNT PRNTLINE,133 PRINT STARTING AT ORESA                                         
+                                     69 *| Execrise 6                                                    |                          
+                                     70 *| REGISTER USAGE:                                               |                          
+                                     71 *| 2 - HOLD FINAL VALUE OF EXERCISE 2 TO BE LOADED INTO SEQA     |                          
+                                     72 *| 3 - HOLD FINAL VALUE OF EXERCISE 3 TO BE LOADED INTO SEQA     |                          
+                                     73 *| 4 - HOLD ADDRESS OF SEQA                                      |                          
+00006C 4140 F0A8            000A8    74          LA    4,SEQA       LOAD SEQA ADDRESS INTO REGISTER 4                               
+000070 5024 0000            00000    75          ST    2,0(4)       STORE RESA INTO SEQA                                            
+000074 5034 0004            00004    76          ST    3,4(4)       STORE RESB INTO SEQA                                            
+000078 E060 F0A8 000C 000A8          77          XDUMP SEQA,12      DUMP CONTENTS OF SEQA                                           
+                                     78 *| Execrise 7                                                    |                          
+                                     79 *| REGISTER USAGE:                                               |                          
+                                     80 *| 2 - HOLD FINAL VALUE OF EXERCISE 2 TO BE LOADED INTO SEQA     |                          
+                                     81 *| 3 - HOLD FINAL VALUE OF EXERCISE 3 TO BE LOADED INTO SEQA     |                          
+                                     82 *| 4 - HOLD ADDRESS OF SEQA                                      |                          
+                                     83 *| 5 - HOLD ADDRESS OF SEQB                                      |                          
+00007E 4150 F0B4            000B4    84          LA    5,SEQB       LOAD SEQB ADDRESS INTO REGISTER 5                               
+000082 5824 0000            00000    85          L     2,0(4)       LOAD WHAT'S AT SEQA0 INTO REGISTER 2                            
+000086 5834 0004            00004    86          L     3,4(4)       LOAD WHAT'S AT SEQA1 INTO REGISTER 3                            
+00008A 5025 0000            00000    87          ST    2,0(5)       STORE CONTENTS OF REGISTER 2 INTO SEQB0                         
+00008E 5035 0004            00004    88          ST    3,4(5)       STORE CONTENTS OF REGISTER 2 INTO SEQB1                         
+000092 E060 F0B4 000C 000B4          89          XDUMP SEQB,12      DUMP CONTENTS OF SEQB                                           
+                                     90 *                                                                                           
+000098 07FE                          91          BCR   B'1111',14   UNCONDITIONAL RETURN TO CALLER (OS)                             
+                                     92 *                                                                                           
+                                     93          LTORG              LITERAL ORGANIZATION                                            
+0000A0 00000005                      94                =F'5'                                                                        
+0000A4 00000004                      95                =F'4'                                                                        
+                                     96 *                                                                                           
+                                     97 *| Declared storage follows. Your declarations may go anywhere   |                          
+                                     98 *| you choose, except beteen the print line declarations.        |                          
+0000A8 FFFFFFFFFFFFFFFF              99 SEQA     DC    F'-1,-1,-1'                                                                  
+0000B4 FFFFFFFFFFFFFFFF             100 SEQB     DC    F'-1,-1,-1'                                                                  
+0000C0                              101 RESA     DS    F                                                                            
+0000C4                              102 RESB     DS    F                                                                            
+                                    103 *                                                                                           
+                                    104 * Print line begin ----------------------------------------------                           
+0000C8 F1                           105 PRNTLINE DC    C'1'           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+0000C9 4040404040404040             106          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+0000C9                              107          ORG   PRNTLINE+1     GO BACK TO PRINTLN1 START LOC + 1                             
+0000C9 D9C5E2C17A                   108          DC    C'RESA:'                                                                     
+0000CE                              109 ORESA    DS    CL12           RESA OUTPUT FIELD                                             
+
+                                                                                                               PAGE    3            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+0000DA 40404040D9C5E2C2             110          DC    C'    RESB:'                                                                 
+0000E3                              111 ORESB    DS    CL12           RESB OUTPUT FIELD                                             
+00014D                              112          ORG   PRNTLINE+133   JUMP PAST END OF PRINTLN1                                     
+                                    113 * Print line end ------------------------------------------------                           
+                                    114          END   MAIN                                                                         
+
+***  NO   STATEMENTS FLAGGED -  NO   WARNINGS,  NO   ERRORS                                                                         
+
+*** DYNAMIC CORE AREA USED:  LOW:    6244 HIGH:     508 LEAVING:  486816 FREE BYTES. AVERAGE:       58 BYTES/STMT ***               
+
+*** ASSEMBLY TIME =    0.000 SECS,   115000 STATEMENTS/SEC ***                                                                      
+
+*** PROGRAM EXECUTION BEGINNING - ANY OUTPUT BEFORE EXECUTION TIME MESSAGE IS PRODUCED BY USER PROGRAM ***                          
+
+BEGIN XSNAP - CALL     1 AT E0000016 USER REGISTERS                                                                                 
+
+ REGS 0-7      F4F4F4F4    F4F4F4F4    00000005    0000000A    000000C3    F4F4F4F4    F4F4F4F4    F4F4F4F4                         
+ REGS 8-15     F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    00000150    FFFE7960    00000000                         
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     2 AT D000002C USER REGISTERS                                                                                 
+
+ REGS 0-7      F4F4F4F4    F4F4F4F4    FFFFFFC1    00000009    000000C3    F4F4F4F4    F4F4F4F4    F4F4F4F4                         
+ REGS 8-15     F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    F4F4F4F4    00000150    FFFE7960    00000000                         
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     3 AT D0000036 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0000C0 TO 0000C4                                                         
+0000C0   FFFFFFC1 F5F5F5F5 F1D9C5E2 C17A4040    40404040 40404040 40404040 4040D9C5   *...A55551RESA.                RE*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     4 AT E0000056 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0000C4 TO 0000C8                                                         
+0000C0   FFFFFFC1 00000016 F1D9C5E2 C17A4040    40404040 40404040 40404040 4040D9C5   *...A....1RESA.                RE*            
+
+                                                                                                                                    
+
+RESA:         -63    RESB:          22                                                                                              
+
+BEGIN XSNAP - CALL     5 AT E000007E USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0000A8 TO 0000B4                                                         
+0000A0   00000005 00000004 FFFFFFC1 00000016    FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF   *...........A....................*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     6 AT E0000098 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0000B4 TO 0000C0                                                         
+0000A0   00000005 00000004 FFFFFFC1 00000016    FFFFFFFF FFFFFFC1 00000016 FFFFFFFF   *...........A...........A........*            
+
+                                                                                                                                    
+
+*** EXECUTION TIME =    0.000 SECS.        38 INSTRUCTIONS EXECUTED -    38000 INSTRUCTIONS/SEC ***                                 
+
+*** FIRST CARD NOT READ: NO CARDS READ:FILE UNOPENED                                                                                
+
+*** AM004 - NORMAL USER TERMINATION BY RETURN ***                                                                                   
+!! END OF JES SPOOL FILE !!

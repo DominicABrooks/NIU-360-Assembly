@@ -1,0 +1,291 @@
+
+                   J E S 2  J O B  L O G  --  S Y S T E M  2 9 6 4  --  N O D E  S V S C J E S 2        
+
+ 
+16.17.49 JOB06408 ---- TUESDAY,   01 NOV 2022 ----
+16.17.49 JOB06408  IRR010I  USERID KC03ABD  IS ASSIGNED TO THIS JOB.
+16.17.49 JOB06408  ICH70001I KC03ABD  LAST ACCESS AT 16:03:19 ON TUESDAY, NOVEMBER 1, 2022
+16.17.49 JOB06408  $HASP373 KC03ABDA STARTED - INIT 1    - CLASS A        - SYS 2964
+16.17.49 JOB06408  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+16.17.49 JOB06408  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+16.17.49 JOB06408  -JSTEP01              00     29      3       .00       .00     .0             5  BATCH        0     0     0     0
+16.17.49 JOB06408  -KC03ABDA ENDED.  NAME-DOMINIC BROOKS       TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+16.17.49 JOB06408  $HASP395 KC03ABDA ENDED - RC=0000
+
+------ JES2 JOB STATISTICS ------
+
+
+  01 NOV 2022 JOB EXECUTION DATE
+
+
+          149 CARDS READ
+
+
+          238 SYSOUT PRINT RECORDS
+
+
+            0 SYSOUT PUNCH RECORDS
+
+
+           22 SYSOUT SPOOL KBYTES
+
+
+         0.00 MINUTES EXECUTION TIME
+!! END OF JES SPOOL FILE !!
+       1 //KC03ABDA JOB ,'DOMINIC BROOKS',MSGCLASS=H                             JOB06408
+       2 //JSTEP01  EXEC PGM=ASSIST                                                      
+       3 //STEPLIB  DD DSN=KC00NIU.ASSIST.LOADLIB,DISP=SHR                               
+       4 //SYSPRINT DD SYSOUT=*                                                          
+       5 //SYSIN    DD *                                                                 
+         //*                                                                             
+         //* IN-STREAM PROGRAM DATA                                                      
+       6 //FT05F001 DD *                                                                 
+       7 //                                                                              
+!! END OF JES SPOOL FILE !!
+ICH70001I KC03ABD  LAST ACCESS AT 16:03:19 ON TUESDAY, NOVEMBER 1, 2022
+IEFA111I KC03ABDA IS USING THE FOLLOWING JOB RELATED SETTINGS:
+         SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+IEF236I ALLOC. FOR KC03ABDA JSTEP01
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IEF237I JES2 ALLOCATED TO FT05F001
+IEF142I KC03ABDA JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC00NIU.ASSIST.LOADLIB                       RETAINED,  DDNAME=STEPLIB 
+IEF285I   KC03ABD.KC03ABDA.JOB06408.D0000103.?         SYSOUT        
+IEF285I   KC03ABD.KC03ABDA.JOB06408.D0000101.?         SYSIN         
+IEF285I   KC03ABD.KC03ABDA.JOB06408.D0000102.?         SYSIN         
+IEF373I STEP/JSTEP01 /START 2022305.1617
+IEF032I STEP/JSTEP01 /STOP  2022305.1617 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:   584K  SYS:   248K  EXT:        0K  SYS:    11348K
+        ATB- REAL:                  1056K  SLOTS:                     0K
+             VIRT- ALLOC:      13M SHRD:       0M
+IEF375I  JOB/KC03ABDA/START 2022305.1617
+IEF033I  JOB/KC03ABDA/STOP  2022305.1617 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+!! END OF JES SPOOL FILE !!
+
+*** ASSIST 4.0/A2-05/15/82  470/V7A/0:OS/VS2  INS=SDFP7/X=BGHO, CHECK/TRC/=1180, OPTS=CDKMPR FROM PENN ST*NIU COMPSCI*LT            
+
+                                                                                                                                    
+
+                                                                                                               PAGE    1            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                      1 ******************************************************************                          
+                                      2 *                                                                *                          
+                                      3 * CSCI 360-1            LAB EXERCISE 4               SPRING 2022 *                          
+                                      4 *                                                                *                          
+                                      5 * NAME:  DOMINIC BROOKS                                          *                          
+                                      6 * DATE:  10/31/22                                                *                          
+                                      7 *                                                                *                          
+                                      8 * PACKED DECIMALS                                                *                          
+                                      9 *                                                                *                          
+                                     10 * REGISTER USAGE:                                                *                          
+                                     11 * 2 - USAGE GIVEN IN EXERCISE HEADER 7 & 8                       *                          
+                                     12 *                                                                *                          
+                                     13 ******************************************************************                          
+                                     14 *                                                                                           
+000000                               15 $PARMS   DSECT               TABLE TO STORE THE SEQ OF VAL READ                             
+000000 0C                            16 $NUM1    DC    PL1'0'        FIRST NUM ROW                                                  
+000001 00000C                        17 $NUM2    DC    PL3'0'        SECOND NUM ROW                                                 
+000004 000C                          18 $NUM3    DC    PL2'0'        THIRD NUM ROW                                                  
+000006 00000C                        19 $NUM4    DC    PL3'0'        FOURTH NUM ROW                                                 
+000009 000C                          20 $NUM5    DC    PL2'0'        FIFTH NUM ROW                                                  
+00000B 000C                          21 $NUM6    DC    PL2'0'        SIXTH NUM ROW                                                  
+                                     22 ******************************************************************                          
+000000                               23 MAIN     CSECT                                                                              
+000000                               24          USING MAIN,15                                                                      
+                                     25 ******************************************************************                          
+                                     26 *| Exercise 1                                                    |                          
+                                     27 *| NO REGISTERS USED                                             |                          
+000000 E000 F150 0050 00150          28          XREAD BUFFER,80               READ NEXT LINE FROM BUFFER                           
+000006 F211 F1A0 F150 001A0 00150    29          PACK  PMULT(2),BUFFER(2)      PACK 2 BYTES INTO PMULT                              
+00000C E060 F1A0 0002 001A0          30          XDUMP PMULT,2                 DUMP RESULT                                          
+                                     31 *| Exercise 2                                                    |                          
+                                     32 *| NO REGISTERS USED                                             |                          
+000012 E000 F150 0050 00150          33          XREAD BUFFER,80               READ NEXT LINE FROM BUFFER                           
+                                     34 *                                                                                           
+000018 F222 F1A2 F150 001A2 00150    35          PACK  PADDTMP(3),BUFFER(3)    PACK FIRST VAL INTO PADDTMP                          
+00001E F822 F1A5 F1A2 001A5 001A2    36          ZAP   PTOTAL(3),PADDTMP(3)    LOAD INTO TOTAL                                      
+                                     37 *                                                                                           
+000024 F222 F1A2 F154 001A2 00154    38          PACK  PADDTMP(3),BUFFER+4(3)  PACK NEXT INTO TMP                                   
+00002A FA22 F1A5 F1A2 001A5 001A2    39          AP    PTOTAL(3),PADDTMP(3)    ADD TO TOTAL                                         
+                                     40 *                                                                                           
+000030 F211 F1A2 F158 001A2 00158    41          PACK  PADDTMP(2),BUFFER+8(2)  PACK NEXT INTO TMP                                   
+000036 FA21 F1A5 F1A2 001A5 001A2    42          AP    PTOTAL(3),PADDTMP(2)    ADD TO TOTAL                                         
+                                     43 *                                                                                           
+00003C F211 F1A2 F15B 001A2 0015B    44          PACK  PADDTMP(2),BUFFER+11(2) PACK NEXT INTO TMP                                   
+000042 FA21 F1A5 F1A2 001A5 001A2    45          AP    PTOTAL(3),PADDTMP(2)    ADD TO TOTAL                                         
+                                     46 *                                                                                           
+000048 E060 F1A5 0003 001A5          47          XDUMP PTOTAL,3                DUMP TOTAL RESULT                                    
+                                     48 *| Exercise 3                                                    |                          
+                                     49 *| NO REGISTERS USED                                             |                          
+00004E F841 F1A8 F1A0 001A8 001A0    50          ZAP   PCALCTMP(5),PMULT(2)    PUT MULT IN CALC                                     
+000054 FC42 F1A8 F1A5 001A8 001A5    51          MP    PCALCTMP(5),PTOTAL(3)   MULTIPLY BY TOTAL                                    
+00005A E060 F1A8 0005 001A8          52          XDUMP PCALCTMP,5              DUMP RESULT                                          
+
+                                                                                                               PAGE    2            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                     53 *| Exercise 4                                                    |                          
+                                     54 *| NO REGISTERS USED                                             |                          
+000060 F045 F1A8 003C 001A8 0003C    55          SRP   PCALCTMP(5),64-4,5      SHIFT 4 AND ROUND                                    
+000066 E060 F1A8 0005 001A8          56          XDUMP PCALCTMP,5              DUMP RESULT                                          
+                                     57 *| Exercise 5                                                    |                          
+                                     58 *| NO REGISTERS USED                                             |                          
+00006C F864 F1AD F1A8 001AD 001A8    59          ZAP   PDIVDTMP(7),PCALCTMP(5)     PREP EXERCISE 4 RESULT                           
+000072 F060 F1AD 0004 001AD 00004    60          SRP   PDIVDTMP(7),4,0             PREP FOR DIVISION                                
+000078 FD61 F1AD F140 001AD 00140    61          DP    PDIVDTMP(7),=PL2'2.25'      DIV BY 2.25                                      
+00007E F045 F1AD 003F 001AD 0003F    62          SRP   PDIVDTMP(5),64-1,5          SHIFT 1 AND ROUND                                
+000084 E060 F1AD 0005 001AD          63          XDUMP PDIVDTMP,5                  DUMP RESULT                                      
+                                     64 *| Exercise 6                                                    |                          
+                                     65 *| NO REGISTERS USED                                             |                          
+00008A E060 F1AD 0005 001AD          66          XDUMP PDIVDTMP,5                                                                   
+000090 F824 F1B4 F1AD 001B4 001AD    67          ZAP   POUTPTMP(3),PDIVDTMP(5)          PREP FOR OUTPUT                             
+                                     68 *                              0 0 0   1 3 C                                                
+                                     69 *                            _ 0 0 0 . 1 3                                                  
+000096 D206 F1B7 F142 001B7 00142    70          MVC   PRNCALC(7),=X'402020214B2020' EDIT PATTERN                                   
+00009C DE06 F1B7 F1B4 001B7 001B4    71          ED    PRNCALC(7),POUTPTMP           CONVERT, STORE IN PRNCALC                      
+0000A2 E020 F1B7 0007 001B7          72          XPRNT PRNCALC,7                     PRINT CALC                                     
+                                     73 *| Exercise 7                                                    |                          
+                                     74 *| REGISTER USAGE:                                               |                          
+                                     75 *| 2 - HOLD ADDRESS OF PRINT, USED TO POINT TO WHERE TO INSERT $ |                          
+0000A8 4120 F1BA            001BA    76          LA    2,PRNCALC+3                   ADDRESS @ SIGNIF DIGIT                         
+0000AC D206 F1B7 F149 001B7 00149    77          MVC   PRNCALC(7),=X'402021204B2020' MOVE SIGNIF DIGIT                              
+0000B2 DF06 F1B7 F1B4 001B7 001B4    78          EDMK  PRNCALC(7),POUTPTMP           CONVERT, STORE IN PRNCALC                      
+0000B8 0620                          79          BCTR  2,0                           DECREMENT ADDR                                 
+0000BA 925B 2000      00000          80          MVI   0(2),C'$'                     ADD $ SIGN                                     
+0000BE E020 F1B7 0007 001B7          81          XPRNT PRNCALC,7                     PRINT CALC                                     
+                                     82 *| Exercise 8                                                    |                          
+                                     83 *| REGISTER USAGE:                                               |                          
+                                     84 *| 2 - HOLD ADDRESS OF TABLE TO STORE BUFFER INFO INTO           |                          
+000000                               85           USING $PARMS,2                     LOAD DSECT INTO R2                             
+0000C4 4120 F1D6            001D6    86           LA    2,PNLPARMS                   LOAD TABLE INTO R2                             
+0000C8 E000 F150 0050 00150          87           XREAD BUFFER,80                    READ NEXT LINE                                 
+                                     88 *                                                                                           
+0000CE F231 F1BE F150 001BE 00150    89           PACK  PITENSOR(4),BUFFER(2)        READ FIRST INTO ARRAY                          
+0000D4 F233 F1C2 F153 001C2 00153    90           PACK  PITENSOR+4(4),BUFFER+3(4)    READ SECON INTO ARRAY                          
+0000DA F232 F1C6 F158 001C6 00158    91           PACK  PITENSOR+8(4),BUFFER+8(3)    READ THIRD INTO ARRAY                          
+0000E0 F231 F1CA F15C 001CA 0015C    92           PACK  PITENSOR+12(4),BUFFER+12(2)  READ FOURT INTO ARRAY                          
+0000E6 F231 F1CE F15F 001CE 0015F    93           PACK  PITENSOR+16(4),BUFFER+15(2)  READ FIFTH INTO ARRAY                          
+0000EC F230 F1D2 F162 001D2 00162    94           PACK  PITENSOR+20(4),BUFFER+18(1)  READ SIXTH INTO ARRAY                          
+                                     95 *                                                                                           
+0000F2 E000 F150 0050 00150          96           XREAD BUFFER,80                                                                   
+0000F8 4770 F12E            0012E    97 READ      BNZ   EOREAD         IF AT END, GO TO END OF READ (EOREAD)                        
+                                     98 *                                                                                           
+0000FC F200 2000 F150 00000 00150    99           PACK  $NUM1(1),BUFFER(1)     READ FIRST INTO NUM1                                 
+000102 F224 2001 F152 00001 00152   100           PACK  $NUM2(3),BUFFER+2(5)   READ SECON INTO NUM2                                 
+000108 F212 2004 F158 00004 00158   101           PACK  $NUM3(2),BUFFER+8(3)   READ THIRD INTO NUM3                                 
+00010E F223 2006 F15C 00006 0015C   102           PACK  $NUM4(3),BUFFER+12(4)  READ FOURT INTO NUM4                                 
+000114 F212 2009 F161 00009 00161   103           PACK  $NUM5(2),BUFFER+17(3)  READ FIFTH INTO NUM5                                 
+00011A F211 200B F165 0000B 00165   104           PACK  $NUM6(2),BUFFER+21(2)  READ SIXTH INTO NUM6                                 
+                                    105 *                                                                                           
+000120 4122 000D            0000D   106           LA    2,13(2)                LOAD NEXT LINE FROM TABLE                            
+000124 E000 F150 0050 00150         107           XREAD BUFFER,80              READ NEXT LINE                                       
+00012A 47F0 F0F8            000F8   108           B     READ                   LOOP BACK TO TOP OF READ LOOP                        
+00012E                              109 EOREAD    DS    0H                     END OF READ LOOP                                     
+
+                                                                                                               PAGE    3            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    110 * DUMP READ DATA                                                                            
+00012E E060 F1BE 0018 001BE         111           XDUMP PITENSOR,24            DUMP ARRAY                                           
+000134 E060 F1D6 0034 001D6         112           XDUMP PNLPARMS,52            DUMP TABLE                                           
+                                    113 *                                                                                           
+00013A                              114           DROP  2                      DROP DSECT                                           
+                                    115 ******************************************************************                          
+00013A 07FE                         116          BR    14                                                                           
+                                    117 *                                                                                           
+                                    118          LTORG                                                                              
+000140 225C                         119                =PL2'2.25'                                                                   
+000142 402020214B2020               120                =X'402020214B2020'                                                           
+000149 402021204B2020               121                =X'402021204B2020'                                                           
+                                    122 * Declared Storage ***********************************************                          
+000150                              123 BUFFER   DS    CL80                                                                         
+0001A0 000C                         124 PMULT    DC    PL2'0'                                                                       
+0001A2 00000C                       125 PADDTMP  DC    PL3'0'                                                                       
+0001A5 00000C                       126 PTOTAL   DC    PL3'0'                                                                       
+0001A8 000000000C                   127 PCALCTMP DC    PL5'0'                                                                       
+0001AD 0000000000000C               128 PDIVDTMP DC    PL7'0'                                                                       
+0001B4 00000C                       129 POUTPTMP DC    PL3'0'                                                                       
+0001B7                              130 PRNCALC  DS    CL7                                                                          
+0001BE 0000000C0000000C             131 PITENSOR DC    PL4'0,0,0,0,0,0'                                                             
+0001D6 0000000000000000             132 PNLPARMS DC    4PL13'0'                                                                     
+                                    133 *                                                                                           
+                                    134          END   MAIN                                                                         
+
+***  NO   STATEMENTS FLAGGED -  NO   WARNINGS,  NO   ERRORS                                                                         
+
+*** DYNAMIC CORE AREA USED:  LOW:    7284 HIGH:     808 LEAVING:  485476 FREE BYTES. AVERAGE:       59 BYTES/STMT ***               
+
+*** ASSEMBLY TIME =    0.000 SECS,   135000 STATEMENTS/SEC ***                                                                      
+
+*** PROGRAM EXECUTION BEGINNING - ANY OUTPUT BEFORE EXECUTION TIME MESSAGE IS PRODUCED BY USER PROGRAM ***                          
+
+BEGIN XSNAP - CALL     1 AT C0000012 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0001A0 TO 0001A2                                                         
+0001A0   025F0000 0C00000C 00000000 0C000000    0000000C 00000CF5 F5F5F5F5 F5F50000   *.......................5555555..*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     2 AT E000004E USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0001A5 TO 0001A8                                                         
+0001A0   025F046F 8F01280C 00000000 0C000000    0000000C 00000CF5 F5F5F5F5 F5F50000   *.......................5555555..*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     3 AT E0000060 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0001A8 TO 0001AD                                                         
+0001A0   025F046F 8F01280C 00003200 0C000000    0000000C 00000CF5 F5F5F5F5 F5F50000   *.......................5555555..*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     4 AT E000006C USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0001A8 TO 0001AD                                                         
+0001A0   025F046F 8F01280C 00000000 3C000000    0000000C 00000CF5 F5F5F5F5 F5F50000   *.......................5555555..*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     5 AT E000008A USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0001AD TO 0001B2                                                         
+0001A0   025F046F 8F01280C 00000000 3C000000    013C075C 00000CF5 F5F5F5F5 F5F50000   *.......................5555555..*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     6 AT E0000090 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0001AD TO 0001B2                                                         
+0001A0   025F046F 8F01280C 00000000 3C000000    013C075C 00000CF5 F5F5F5F5 F5F50000   *.......................5555555..*            
+
+                                                                                                                                    
+   .13                                                                                                                              
+ $0.13                                                                                                                              
+
+BEGIN XSNAP - CALL     7 AT D0000134 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0001BE TO 0001D6                                                         
+0001A0   025F046F 8F01280C 00000000 3C000000    013C075C 00013C40 405BF04B F1F30000   *.......................  .0.13..*            
+0001C0   019F0002 778F0000 191F0000 038F0000    072F0000 008F2F72 707F392F 01788F92   *................................*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     8 AT D000013A USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0001D6 TO 00020A                                                         
+0001C0   019F0002 778F0000 191F0000 038F0000    072F0000 008F2F72 707F392F 01788F92   *................................*            
+0001E0   8F027F8F 26398F29 3F05601F 965F018F    0F19826F 501F0298 5F601F00 8F9F8451   *................................*            
+000200   6F871F09 864F168F 050FF5F5 F5F5F5F5    F5F5F5F5 00000000 F5F5F5F5 F5F5F5F5   *..........5555555555....55555555*            
+
+                                                                                                                                    
+
+*** EXECUTION TIME =    0.000 SECS.        87 INSTRUCTIONS EXECUTED -    87000 INSTRUCTIONS/SEC ***                                 
+
+*** AM004 - NORMAL USER TERMINATION BY RETURN ***                                                                                   
+!! END OF JES SPOOL FILE !!

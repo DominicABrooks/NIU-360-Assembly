@@ -1,0 +1,249 @@
+
+                   J E S 2  J O B  L O G  --  S Y S T E M  2 9 6 4  --  N O D E  S V S C J E S 2        
+
+ 
+16.24.00 JOB04098 ---- SUNDAY,    02 OCT 2022 ----
+16.24.00 JOB04098  IRR010I  USERID KC03ABD  IS ASSIGNED TO THIS JOB.
+16.24.00 JOB04098  ICH70001I KC03ABD  LAST ACCESS AT 16:23:40 ON SUNDAY, OCTOBER 2, 2022
+16.24.00 JOB04098  $HASP373 KC03ABDA STARTED - INIT 1    - CLASS A        - SYS 2964
+16.24.00 JOB04098  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+16.24.00 JOB04098  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+16.24.00 JOB04098  -JSTEP01              00     27      3       .00       .00     .0             5  BATCH        0     0     0     0
+16.24.00 JOB04098  -KC03ABDA ENDED.  NAME-DOMINIC BROOKS       TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+16.24.00 JOB04098  $HASP395 KC03ABDA ENDED - RC=0000
+
+------ JES2 JOB STATISTICS ------
+
+
+  02 OCT 2022 JOB EXECUTION DATE
+
+
+          144 CARDS READ
+
+
+          209 SYSOUT PRINT RECORDS
+
+
+            0 SYSOUT PUNCH RECORDS
+
+
+           20 SYSOUT SPOOL KBYTES
+
+
+         0.00 MINUTES EXECUTION TIME
+!! END OF JES SPOOL FILE !!
+       1 //KC03ABDA JOB ,'DOMINIC BROOKS',MSGCLASS=H                             JOB04098
+       2 //JSTEP01  EXEC PGM=ASSIST                                                      
+       3 //STEPLIB  DD DSN=KC00NIU.ASSIST.LOADLIB,DISP=SHR                               
+       4 //SYSPRINT DD SYSOUT=*                                                          
+       5 //SYSIN    DD *                                                                 
+         //*                                                                             
+         //* IN-STREAM PROGRAM DATA                                                      
+       6 //FT05F001 DD *                                                                 
+       7 //                                                                              
+!! END OF JES SPOOL FILE !!
+ICH70001I KC03ABD  LAST ACCESS AT 16:23:40 ON SUNDAY, OCTOBER 2, 2022
+IEFA111I KC03ABDA IS USING THE FOLLOWING JOB RELATED SETTINGS:
+         SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+IEF236I ALLOC. FOR KC03ABDA JSTEP01
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IEF237I JES2 ALLOCATED TO FT05F001
+IEF142I KC03ABDA JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC00NIU.ASSIST.LOADLIB                       RETAINED,  DDNAME=STEPLIB 
+IEF285I   KC03ABD.KC03ABDA.JOB04098.D0000103.?         SYSOUT        
+IEF285I   KC03ABD.KC03ABDA.JOB04098.D0000101.?         SYSIN         
+IEF285I   KC03ABD.KC03ABDA.JOB04098.D0000102.?         SYSIN         
+IEF373I STEP/JSTEP01 /START 2022275.1624
+IEF032I STEP/JSTEP01 /STOP  2022275.1624 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:   584K  SYS:   248K  EXT:        0K  SYS:    11372K
+        ATB- REAL:                  1056K  SLOTS:                     0K
+             VIRT- ALLOC:      13M SHRD:       0M
+IEF375I  JOB/KC03ABDA/START 2022275.1624
+IEF033I  JOB/KC03ABDA/STOP  2022275.1624 
+        CPU:     0 HR  00 MIN  00.00 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+!! END OF JES SPOOL FILE !!
+
+*** ASSIST 4.0/A2-05/15/82  470/V7A/0:OS/VS2  INS=SDFP7/X=BGHO, CHECK/TRC/=1180, OPTS=CDKMPR FROM PENN ST*NIU COMPSCI*LT            
+
+                                                                                                                                    
+
+                                                                                                               PAGE    1            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                      1 ******************************************************************                          
+                                      2 *                                                                *                          
+                                      3 * CSCI 360-1            LAB EXERCISE 2               SPRING 2022 *                          
+                                      4 *                                                                *                          
+                                      5 * NAME:  DOMINIC BROOKS                                          *                          
+                                      6 * DATE:  10/2/22                                                 *                          
+                                      7 *                                                                *                          
+                                      8 * MULTIPLICATION, DIVISION, AND BRANCHING                        *                          
+                                      9 *                                                                *                          
+                                     10 * REGISTER USAGE:                                                *                          
+                                     11 * 2 - USAGE GIVEN IN EXERCISE HEADER                             *                          
+                                     12 * 3 - USAGE GIVEN IN EXERCISE HEADER                             *                          
+                                     13 * 4 - USAGE GIVEN IN EXERCISE HEADER                             *                          
+                                     14 *                                                                *                          
+                                     15 ******************************************************************                          
+                                     16 *                                                                                           
+000000                               17 MAIN     CSECT                                                                              
+000000                               18          USING MAIN,15                                                                      
+                                     19 *| Exercise 1                                                    |                          
+                                     20 *| REGISTER USAGE:                                               |                          
+                                     21 *| 2 - HOLDS MOST SIGNICAND 32 BITS OF PRODUCT                   |                          
+                                     22 *| 3 - HOLDS MULTIPLICAND AND LEAST SIGNFICAND 32 BITS OF PRODUCT|                          
+                                     23 *| 4 - HOLDS MULTIPLER                                           |                          
+000000 4130 000A            0000A    24          LA    3,10           LOAD 10  INTO REGISTER 3                                      
+000004 4140 0080            00080    25          LA    4,128          LOAD 128 INTO REGISTER 4                                      
+000008 1C24                          26          MR    2,4            MULTIPLY R3 AND R4                                            
+00000A 5030 F0D0            000D0    27          ST    3,PRODA        STORE PRODUCT INTO PRODA                                      
+00000E E060 F0D0 0004 000D0          28          XDUMP PRODA,4        DUMP CONTENTS OF PRODA                                        
+                                     29 *| Exercise 2                                                    |                          
+                                     30 *| REGISTER USAGE:                                               |                          
+                                     31 *| 2 - HOLDS MOST SIGNICAND 32 BITS OF PRODUCT AND MULTIPLIER    |                          
+                                     32 *| 3 - HOLDS MULTIPLICAND AND LEAST SIGNFICAND 32 BITS OF PRODUCT|                          
+000014 4130 001C            0001C    33          LA    3,28           LOAD 28 INTO REGISTER 3                                       
+000018 5C20 F0C0            000C0    34          M     2,=F'-1'       NEGATE CONTENTS OF R3                                         
+00001C 4120 012C            0012C    35          LA    2,300          LOAD 300 INTO REGISTER 2                                      
+000020 1C22                          36          MR    2,2            MULTIPLY R3 AND R2                                            
+000022 5030 F0D4            000D4    37          ST    3,PRODB        STORE PRODUCT INTO PRODB                                      
+000026 E060 F0D4 0004 000D4          38          XDUMP PRODB,4        DUMP CONTENTS OF PRODB                                        
+                                     39 *| Exercise 3                                                    |                          
+                                     40 *| REGISTER USAGE:                                               |                          
+                                     41 *| 2 - HOLDS REMAINDER                                           |                          
+                                     42 *| 3 - HOLDS QUOTIENT AND DIVIDEND                               |                          
+                                     43 *| 4 - HOLDS DIVISOR                                             |                          
+00002C 4130 00C8            000C8    44          LA    3,200          LOAD 200 INTO REGISTER 3                                      
+000030 4140 000F            0000F    45          LA    4,15           LOAD 15  INTO REGISTER 4                                      
+000034 5C20 F0C4            000C4    46          M     2,=F'1'        ENSURE PAIR IS EXTENDED                                       
+000038 1D24                          47          DR    2,4            DIVIDE R3 AND R4                                              
+00003A 5230 F26C            0026C    48          XDECO 3,OQUOT        CONVERT AND STORE R3 IN OQUOT                                 
+00003E 5220 F286            00286    49          XDECO 2,OREMAIN      CONVERT AND STORE R2 IN OREMAIN                               
+000042 E020 F25A 0085 0025A          50          XPRNT S3PRLINE,133   PRINT STARTING AT OQUOT                                       
+                                     51 *| Exercise 4                                                    |                          
+                                     52 *| REGISTER USAGE:                                               |                          
+
+                                                                                                               PAGE    2            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                     53 *| 2 - HOLD SEQ ADDR                                             |                          
+                                     54 *| 3 - HOLD PARSED BUFFER                                        |                          
+000048 4120 F12C            0012C    55          LA    2,SEQ               LOAD ARR INTO R2                                         
+00004C E000 F0DC 0050 000DC          56          XREAD BUFFER,80           INITIAL READ                                             
+000052 4770 F06C            0006C    57 READLOOP BNZ   ENDLOOP             LOOP UNTIL EOF                                           
+000056 5330 F0DC            000DC    58          XDECI 3,BUFFER            CONVERT AND STORE IN R3                                  
+00005A 5032 0000            00000    59          ST    3,0(2)              STORE INTO SEQ                                           
+00005E 4122 0004            00004    60          LA    2,4(2)              LOAD NEXT ADDR INTO R2                                   
+000062 E000 F0DC 0050 000DC          61          XREAD BUFFER,80           GET NEXT INPUT                                           
+000068 47F0 F052            00052    62          B     READLOOP            BACK TO READLOOP                                         
+00006C                               63 ENDLOOP  DS    0H                  GO TO AT END LOOP, DO NOTHING                            
+                                     64 *| Exercise 5                                                    |                          
+                                     65 *| REGISTER USAGE:                                               |                          
+                                     66 *| 2 - LOADS SEQ ADDR IN 2                                       |                          
+                                     67 *| 3 - LOAD END OF SEQUENCE INTO R3                              |                          
+                                     68 *| 5 - HOLDS SUM OF SEQ                                          |                          
+00006C 4120 F12C            0012C    69          LA    2,SEQ               RE-LOAD ARR INTO R2                                      
+000070 4130 F150            00150    70          LA    3,EOSEQ             LOAD END OF SEQ INTO R3                                  
+000074 4150 0000            00000    71          LA    5,0                 PUT 0 INTO R5 TO BEGIN ADDING TO IT                      
+000078                               72 SUMLOOP  DS    0H                  LOOP TO GET SUM OF DS                                    
+000078 5A52 0000            00000    73          A     5,0(2)              ADD SEQ ELEMENT TO R5                                    
+00007C 4122 0004            00004    74          LA    2,4(2)              LOAD NEXT FW INTO SEQ                                    
+000080 1923                          75          CR    2,3                 CHECK IF AT END OF SEQ                                   
+000082 4740 F078            00078    76          BL    SUMLOOP             IF NOT, GO BACK TO START OF LOOP                         
+000086 5050 F0D8            000D8    77          ST    5,SEQSUM            STORE SUM INTO SEQSUM                                    
+00008A E060 F0D8 0004 000D8          78          XDUMP SEQSUM,4            DUMP CONTENTS OF SEQSUM                                  
+                                     79 *| Exercise 6                                                    |                          
+                                     80 *| REGISTER USAGE:                                               |                          
+                                     81 *| 4 - HOLDS REMAINDER OF DIVISION                               |                          
+                                     82 *| 5 - HOLDS DIVIDEND                                            |                          
+000090 5C40 F0C4            000C4    83          M     4,=F'1'             SPLIT CONTENTS R5 TO EVEN-ODD PAIR                       
+000094 5D40 F0C8            000C8    84          D     4,=F'2'             DIVIDE R4 AND R5 BY 2                                    
+000098 5940 F0CC            000CC    85          C     4,=F'0'             CHECK IF REMAINDER IS 0                                  
+00009C 4780 F0A4            000A4    86          BE    EVEN                IF REMAINDER IS 0, BRANCH TO EVEN                        
+0000A0 4770 F0AE            000AE    87          BNE   ODD                 IF REMAINDER IS 1, BRANCH TO ODD                         
+                                     88 *                                                                                           
+0000A4                               89 EVEN     DS    0H                                                                           
+0000A4 E020 F150 0085 00150          90          XPRNT ISEVEN,133          PRINT THAT SUM IS EVEN                                   
+0000AA 47F0 F0B8            000B8    91          B     END                 BRANCH TO END                                            
+                                     92 *                                                                                           
+0000AE                               93 ODD      DS    0H                                                                           
+0000AE E020 F1D5 0085 001D5          94          XPRNT ISODD,133           PRINT THAT SUM IS ODD                                    
+0000B4 47F0 F0B8            000B8    95          B     END                 BRANCH TO END                                            
+                                     96 *                                                                                           
+0000B8 07FE                          97 END      BR    14                                                                           
+                                     98 *                                                                                           
+                                     99          LTORG                                                                              
+0000C0 FFFFFFFF                     100                =F'-1'                                                                       
+0000C4 00000001                     101                =F'1'                                                                        
+0000C8 00000002                     102                =F'2'                                                                        
+0000CC 00000000                     103                =F'0'                                                                        
+                                    104 *                                                                                           
+                                    105 *| Declared storage                                              |                          
+0000D0                              106 PRODA    DS    F                                                                            
+0000D4                              107 PRODB    DS    F                                                                            
+0000D8                              108 SEQSUM   DS    F                                                                            
+                                    109 *                                                                                           
+
+                                                                                                               PAGE    3            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+0000DC                              110 BUFFER   DS    CL80                                                                         
+00012C FFFFFFFFFFFFFFFF             111 SEQ      DC    F'-1,-1,-1,-1,-1,-1,-1,-1,-1'                                                
+000150                              112 EOSEQ    DS    0C                                                                           
+                                    113 *                                                                                           
+000150 F1                           114 ISEVEN   DC    C'1'                                                                         
+000151 E3C8C540C1C3C3E4             115          DC    C'THE ACCUMULATED RESULT IS EVEN!'                                           
+000170 4040404040404040             116          DC    101C' '                                                                      
+0001D5 F1                           117 ISODD    DC    C'1'                                                                         
+0001D6 E3C8C540C1C3C3E4             118          DC    C'THE ACCUMULATED RESULT IS ODD!'                                            
+0001F4 4040404040404040             119          DC    102C' '                                                                      
+                                    120 * STEP 3 OUTPUT BUFFER                                                                      
+00025A F1                           121 S3PRLINE DC    C'1'           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+00025B E2E3C5D740F34B40             122          DC    C'STEP 3. QUOTIENT:'                                                         
+00026C                              123 OQUOT    DS    CL12           S3 QUOTIENT OUTPUT FIELD                                      
+000278 40404040D9C5D4C1             124          DC    C'    REMAINDER:'                                                            
+000286                              125 OREMAIN  DS    CL12           S3 REMAINDER OUTPUT FIELD                                     
+000292 4040404040404040             126          DC    76C' '         FILL REMAINING BYTES WITH SPACES                              
+                                    127 *                                                                                           
+                                    128          END   MAIN                                                                         
+
+***  NO   STATEMENTS FLAGGED -  NO   WARNINGS,  NO   ERRORS                                                                         
+
+*** DYNAMIC CORE AREA USED:  LOW:    6672 HIGH:     748 LEAVING:  486148 FREE BYTES. AVERAGE:       57 BYTES/STMT ***               
+
+*** ASSEMBLY TIME =    0.000 SECS,   129000 STATEMENTS/SEC ***                                                                      
+
+*** PROGRAM EXECUTION BEGINNING - ANY OUTPUT BEFORE EXECUTION TIME MESSAGE IS PRODUCED BY USER PROGRAM ***                          
+
+BEGIN XSNAP - CALL     1 AT C0000014 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0000D0 TO 0000D4                                                         
+0000C0   FFFFFFFF 00000001 00000002 00000000    00000500 F5F5F5F5 F5F5F5F5 F5F5F5F5   *....................555555555555*            
+
+                                                                                                                                    
+
+BEGIN XSNAP - CALL     2 AT C000002C USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0000D4 TO 0000D8                                                         
+0000C0   FFFFFFFF 00000001 00000002 00000000    00000500 FFFFDF30 F5F5F5F5 F5F5F5F5   *........................55555555*            
+
+                                                                                                                                    
+
+STEP 3. QUOTIENT:          13    REMAINDER:           5                                                                            5
+
+BEGIN XSNAP - CALL     3 AT C0000090 USER STORAGE                                                                                   
+
+                             CORE ADDRESSES SPECIFIED-     0000D8 TO 0000DC                                                         
+0000C0   FFFFFFFF 00000001 00000002 00000000    00000500 FFFFDF30 00000682 F4F84040   *............................48  *            
+
+                                                                                                                                    
+
+THE ACCUMULATED RESULT IS EVEN!                                                                                                     
+
+*** EXECUTION TIME =    0.000 SECS.       123 INSTRUCTIONS EXECUTED -   123000 INSTRUCTIONS/SEC ***                                 
+
+*** AM004 - NORMAL USER TERMINATION BY RETURN ***                                                                                   
+!! END OF JES SPOOL FILE !!

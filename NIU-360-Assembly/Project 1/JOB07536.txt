@@ -1,0 +1,1578 @@
+
+                   J E S 2  J O B  L O G  --  S Y S T E M  2 9 6 4  --  N O D E  S V S C J E S 2        
+
+ 
+19.10.14 JOB07536 ---- WEDNESDAY, 26 OCT 2022 ----
+19.10.14 JOB07536  IRR010I  USERID KC03ABD  IS ASSIGNED TO THIS JOB.
+19.10.14 JOB07536  ICH70001I KC03ABD  LAST ACCESS AT 19:10:01 ON WEDNESDAY, OCTOBER 26, 2022
+19.10.14 JOB07536  $HASP373 KC03ABDA STARTED - INIT 1    - CLASS A        - SYS 2964
+19.10.15 JOB07536  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+19.10.15 JOB07536  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+19.10.15 JOB07536  -JSTEP01              00     58      7       .00       .00     .0            12  BATCH        0     0     0     0
+19.10.15 JOB07536  -KC03ABDA ENDED.  NAME-DOMINIC BROOKS       TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+19.10.15 JOB07536  $HASP395 KC03ABDA ENDED - RC=0000
+
+------ JES2 JOB STATISTICS ------
+
+
+  26 OCT 2022 JOB EXECUTION DATE
+
+
+        1,158 CARDS READ
+
+
+        1,516 SYSOUT PRINT RECORDS
+
+
+            0 SYSOUT PUNCH RECORDS
+
+
+          125 SYSOUT SPOOL KBYTES
+
+
+         0.00 MINUTES EXECUTION TIME
+!! END OF JES SPOOL FILE !!
+       1 //KC03ABDA JOB ,'DOMINIC BROOKS',MSGCLASS=H                             JOB07536
+       2 //JSTEP01  EXEC PGM=ASSIST                                                      
+       3 //STEPLIB  DD DSN=KC00NIU.ASSIST.LOADLIB,DISP=SHR                               
+       4 //SYSPRINT DD SYSOUT=*                                                          
+       5 //SYSIN    DD *                                                                 
+         //*                                                                             
+         //* IN-STREAM PROGRAM DATA                                                      
+       6 //FT05F001 DD *                                                                 
+       7 //                                                                              
+!! END OF JES SPOOL FILE !!
+ICH70001I KC03ABD  LAST ACCESS AT 19:10:01 ON WEDNESDAY, OCTOBER 26, 2022
+IEFA111I KC03ABDA IS USING THE FOLLOWING JOB RELATED SETTINGS:
+         SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+IEF236I ALLOC. FOR KC03ABDA JSTEP01
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IEF237I JES2 ALLOCATED TO FT05F001
+IEF142I KC03ABDA JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC00NIU.ASSIST.LOADLIB                       RETAINED,  DDNAME=STEPLIB 
+IEF285I   KC03ABD.KC03ABDA.JOB07536.D0000103.?         SYSOUT        
+IEF285I   KC03ABD.KC03ABDA.JOB07536.D0000101.?         SYSIN         
+IEF285I   KC03ABD.KC03ABDA.JOB07536.D0000102.?         SYSIN         
+IEF373I STEP/JSTEP01 /START 2022299.1910
+IEF032I STEP/JSTEP01 /STOP  2022299.1910 
+        CPU:     0 HR  00 MIN  00.04 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:   584K  SYS:   248K  EXT:        0K  SYS:    11340K
+        ATB- REAL:                  1056K  SLOTS:                     0K
+             VIRT- ALLOC:      13M SHRD:       0M
+IEF375I  JOB/KC03ABDA/START 2022299.1910
+IEF033I  JOB/KC03ABDA/STOP  2022299.1910 
+        CPU:     0 HR  00 MIN  00.04 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+!! END OF JES SPOOL FILE !!
+
+*** ASSIST 4.0/A2-05/15/82  470/V7A/0:OS/VS2  INS=SDFP7/X=BGHO, CHECK/TRC/=1180, OPTS=CDKMPR FROM PENN ST*NIU COMPSCI*LT            
+
+                                                                                                                                    
+
+                                                                                                               PAGE    1            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                      1 ******************************************************************                          
+                                      2 *                                                                *                          
+                                      3 * CSCI 360-2             PROJECT 1                     FALL 2022 *                          
+                                      4 *                                                                *                          
+                                      5 * PROGRAMMER NAME: JACOB DIEP & DOMINIC BROOKS                   *                          
+                                      6 *        DATE DUE: 10/26/2022                                    *                          
+                                      7 *     DESCRIPTION: PROJECT TO DEMONSTRATE USE OF DSECTS & TABLES *                          
+                                      8 *  REGISTER USAGE:                                               *                          
+                                      9 *    R2   - HOLDS ADDRESS OF BUFFER WHILE STORING VALUES FOR     *                          
+                                     10 *            CUSTOMER TABLE, ORDER TABLE AND FISCAL REPORT TABLE.*                          
+                                     11 *         - USED TO SET VARIABLES IN OUTPUT BUFFER TO 0.         *                          
+                                     12 *         - USED TO HOLD ADDRESS OF THE TABLES TO PARSE VALUES   *                          
+                                     13 *            INTO THE TABLE OR PULL VALUES FROM THE TABLE.       *                          
+                                     14 *    R3   - USED TO ADDRESS OF TABLE WHILE PARSING VALUES INTO   *                          
+                                     15 *            CUSTOMER TABLE, ORDER TABLE AND FISCAL REPORT TABLE.*                          
+                                     16 *         - USED TO HOLD ADDRESS OF ROWS OF ORDERS WHEN          *                          
+                                     17 *            GENERATING REPORT FOR EACH CUSTOMER.                *                          
+                                     18 *    R4   - USED TO HOLD ADDRESS OF VARIABLES: $CID, $CST, $OCID,*                          
+                                     19 *            AND $OST.                                           *                          
+                                     20 *         - USED TO HOLD VALUES TO CONVERT INTO OUTPUT.          *                          
+                                     21 *         - USED TO INCREMENT THE NUMBER OF A VARIABLE SIMILAR   *                          
+                                     22 *            TO A COUNTER.                                       *                          
+                                     23 *         - USED TO HOLD VALUES WHEN PERFORMING ARITHMETIC       *                          
+                                     24 *             WHEN CREATING THE MONTHLY REPORT.                  *                          
+                                     25 *    R5   - USED TO HOLD VARIABLES TO PERFORM ARITHMETIC WHEN    *                          
+                                     26 *            GENERATING ORDER OUTPUT.                            *                          
+                                     27 *         - USED TO HOLD VARIABLE TO PERFORM ARITHMETIC WHEN     *                          
+                                     28 *            GENERATING FISCAL REPORT OUTPUT.                    *                          
+                                     29 *         - USED TO HOLD VALUES TO STORE INTO VARIABLE WHEN      *                          
+                                     30 *            GENERATING FISCAL REPORT OUTPUT.                    *                          
+                                     31 *         - USED TO HOLD VALUES TO USE IN COMPARISON AND         *                          
+                                     32 *            BRANCHING WHEN GENERATING FISCAL REPORT OUTPUT      *                          
+                                     33 *    R6   - USED TO HOLD VALUES WHEN PARSING DATA INTO TABLES.   *                          
+                                     34 *         - USED TO HOLD VALUES TO PERFORM ARTIHMETIC WHEN       *                          
+                                     35 *            GENERATING ORDERS FOR EACH CUSTOMER.                *                          
+                                     36 *         - USED TO INCREMENT VARIABLES WHEN GENERATING ORDERS   *                          
+                                     37 *            FOR EACH CUSTOMER.                                  *                          
+                                     38 *         - USED TO PREPARE VALUES FOR DIVISION WHEN CREATING    *                          
+                                     39 *            FISCAL REPORT OUTPUT.                               *                          
+                                     40 *    R7   - USED TO HOLD ADDRESS OF VALUES TO PERFORM ARITHMETIC *                          
+                                     41 *            WHEN GENERATING ORDER REPORTS FOR EACH CUSTOMER.    *                          
+                                     42 *         - USED TO HOLD VALUES WHEN PERFORMING ARITHMETIC WHEN  *                          
+                                     43 *            GENERATING ORDER REPORTS FOR EACH CUSTOMER.         *                          
+                                     44 *         - USED TO HOLD VALUES TO PERFORM ARITHMETIC WHEN       *                          
+                                     45 *            GENERATING FISCAL REPORT OUTPUT                     *                          
+                                     46 *    R8   - USED TO HOLD ADDRESS OF END OF A TABLE TO COMPARE    *                          
+                                     47 *            WITH CURRENT POSITION IN TABLE WHEN GENERATING ALL  *                          
+                                     48 *            REPORTS.                                            *                          
+                                     49 *    R9   - USED TO HOLD ADDRESS OF END OF A TABLE TO COMPARE    *                          
+                                     50 *            WITH CURRENT POSITION IN TABLE WHEN GENERATING      *                          
+                                     51 *            REPORTS.                                            *                          
+                                     52 *    R10  - USED TO HOLD VALUES TO CONVERT TO OUTPUT WHEN        *                          
+
+                                                                                                               PAGE    2            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                     53 *            CREATING CUSTOMER REPORT.                           *                          
+                                     54 *         - USED TO HOLD VALUES TO COMPARE WHEN GENERATING       *                          
+                                     55 *            ORDER REPORTS FOR EACH CUSTOMER                     *                          
+                                     56 *    R11  - USED TO HOLD VALUES TO COMPARE WHEN GENERATING       *                          
+                                     57 *            ORDER REPORTS FOR EACH CUSTOMER.                    *                          
+                                     58 ******************************************************************                          
+                                     59 *CUST INFO INPUT**************************************************                          
+000000                               60 $CBUFFR  DSECT          INPUT BUFFER FORMAT                                                 
+000000                               61 $ICID    DS    CL8      CUSTOMER ID                                                         
+000008                               62          DS    C                                                                            
+000009                               63 $ICNM    DS    CL20     CUSTOMER NAME                                                       
+00001D                               64          DS    C                                                                            
+00001E                               65 $ICAD    DS    CL30     CUSTOMER ADDRESS                                                    
+00003C                               66          DS    C                                                                            
+00003D                               67 $ICST    DS    CL4      CUSTOMER REGIONAL SALES TAX                                         
+                                     68 ******************************************************************                          
+                                     69 *CUST INFO TABLE**************************************************                          
+000000                               70 $CINFO   DSECT          TABLE STORAGE FORMAT                                                
+000000                               71 $CID     DS    2F       CUSTOMER ID                                                         
+000008                               72 $CNM     DS    CL20     CUSTOMER NAME                                                       
+00001C                               73 $CAD     DS    CL30     CUSTOMER ADDRESS                                                    
+00003C                               74 $CST     DS    F        CUSTOMER REGIONAL SALES TAX                                         
+                                     75 ******************************************************************                          
+                                     76 *ORDER TABLE INPUT************************************************                          
+000000                               77 $ODBUFFR DSECT          INPUT BUFFER FORMAT                                                 
+000000                               78 $IOID    DS    CL8      ORDER ID                                                            
+000008                               79          DS    C                                                                            
+000009                               80 $IOCID   DS    CL8      CUSTOMER ORDER ID                                                   
+000011                               81          DS    C                                                                            
+000012                               82 $IOM     DS    CL2      INPUT ORDER MONTH                                                   
+000014                               83          DS    C                                                                            
+000015                               84 $IOD     DS    CL2      INPUT ORDER DAY                                                     
+000017                               85          DS    C                                                                            
+000018                               86 $IOST    DS    CL6      INPUT ORDER SUBTOTAL                                                
+00001E                               87          DS    C                                                                            
+00001F                               88 $IOSP    DS    CL4      INPUT ORDER SHIPPING                                                
+000023                               89          DS    C                                                                            
+000024                               90 $IOPM    DS    CL10     INPUT PAYMENT METHOD                                                
+00002E                               91          DS    C                                                                            
+00002F                               92 $IOS     DS    CL6      INPUT STATUS                                                        
+                                     93 ******************************************************************                          
+                                     94 *ORDER TABLE******************************************************                          
+000000                               95 $OINFO   DSECT                                                                              
+000000                               96 $OID     DS    2F       ORDER ID                                                            
+000008                               97 $OCID    DS    2F       ORDER CUSTOMER ID                                                   
+000010                               98 $OM      DS    FL2      ORDER MONTH                                                         
+000012                               99 $OD      DS    FL2      ORDER DAY                                                           
+000014                              100 $OST     DS    2FL3     ORDER SUBTOTAL                                                      
+00001C                              101 $OSP     DS    F        ORDER SHIPPING                                                      
+000020                              102 $OPM     DS    CL10     ORDER PAYMENT METHOD                                                
+00002A                              103 $OS      DS    CL6      ORDER STATUS                                                        
+                                    104 ******************************************************************                          
+                                    105 *FISCAL PREDICTION INPUT******************************************                          
+000000                              106 $IFPBF   DSECT          INPUT BUFFER FORMAT                                                 
+000000                              107 $IFPM    DS    CL2      INPUT MONTH                                                         
+000002                              108          DS    C                                                                            
+000003                              109 $IFPP    DS    CL10     INPUT PREDICTED PRICE                                               
+
+                                                                                                               PAGE    3            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+00000D                              110          DS    C                                                                            
+00000E                              111 $IFPLB   DS    CL10     INPUT LOWER BOUND                                                   
+000018                              112          DS    C                                                                            
+000019                              113 $IFPUB   DS    CL10     INPUT UPPER BOUND                                                   
+000023                              114          DS    C                                                                            
+                                    115 ******************************************************************                          
+                                    116 *FISCAL PREDICTION TABLE******************************************                          
+000000                              117 $FP      DSECT                                                                              
+000000                              118 $FPM     DS    FL2      FISCAL PREDICTION MONTH                                             
+000002                              119 $FPP     DS    5FL2     FISCAL PREDICTION PREDICTED PRICE                                   
+00000C                              120 $FPLB    DS    5FL2     FISCAL PREDICTION LOWER BOUND                                       
+000016                              121 $FPUB    DS    5FL2     FISCAL PREDICTION UPPER BOUND                                       
+                                    122 ******************************************************************                          
+000000                              123 MAIN     CSECT                                                                              
+000000                              124          USING MAIN,15                                                                      
+                                    125 ******************************************************************                          
+                                    126 * ADD CUSTOMER INFO TO TABLE *************************************                          
+000000                              127          USING $CBUFFR,2           ADDR OF DSECT IBFFR                                      
+000000                              128          USING $CINFO,3            ADDR OF DSECT TABLE                                      
+000000 4130 FED0            00ED0   129          LA    3,CTABL             LA ADDR OF DECLARED TABLE IN STORAGE                     
+000004 E000 F628 0050 00628         130          XREAD BUFFER,80           READ LINE OF INPUT                                       
+                                    131 * READ VAL INTO TABLE --------------------------------------------                          
+00000A 955C F628      00628         132 SCANLOP1 CLI   BUFFER,C'*'         COMPARE TO SEE IF AT END OF LINE                         
+00000E 4780 F054            00054   133          BE    ENDSCA1             BRANCH TO END OF LOOP IF AT *                            
+000012 4120 F628            00628   134          LA    2,BUFFER            LOAD BUFFER ADDRESS                                      
+000016 4140 3000            00000   135          LA    4,$CID              LOAD CUST ID ADDR INTO REG                               
+00001A 4120 2000            00000   136          LA    2,$ICID             LOAD INPUTER CUST ID ADDR INTO REG                       
+00001E 5362 0000            00000   137          XDECI 6,0(2)              CONVERT REG.TAX FOR ARTIH                                
+000022 5064 0000            00000   138          ST    6,0(4)              STORE REG.TAX INTO TABLE                                 
+000026 4120 F628            00628   139          LA    2,BUFFER            LOAD BUFFER ADDRESS                                      
+00002A D213 3008 2009 00008 00009   140          MVC   $CNM(20),$ICNM      MOVE CUST NAME INTO TABLE                                
+000030 D21D 301C 201E 0001C 0001E   141          MVC   $CAD(30),$ICAD      MOVE CUST ADDR INTO TABLE                                
+000036 4140 303C            0003C   142          LA    4,$CST              LOAD CUST ADDR OF REGIONAL TAX                           
+00003A 4120 203D            0003D   143          LA    2,$ICST             LOAD INPUT REGIONAL TAX ADDR                             
+00003E 5362 0000            00000   144          XDECI 6,0(2)              CONVERT REG.TAX FOR ARTIH                                
+000042 5064 0000            00000   145          ST    6,0(4)              STORE REG.TAX INTO TABLE                                 
+                                    146 *                                                                                           
+000046 4133 0040            00040   147          LA    3,64(3)             LOAD ADDR OF NEXT ROW                                    
+00004A E000 F628 0050 00628         148          XREAD BUFFER,80           READ NEXT LINE INTO BUFFER                               
+000050 47F0 F00A            0000A   149          B     SCANLOP1            BRANCH TO TOP OF LOOP                                    
+000054                              150 ENDSCA1  DS    0H                  END OF SCAN                                              
+000054                              151          DROP  2,3                 DROP USED DSECTS                                         
+                                    152 ******************************************************************                          
+                                    153 *ADD ORDERS INFO TO TABLE ****************************************                          
+000000                              154          USING $ODBUFFR,2    ADDR OF DSECT IBFFR                                            
+000000                              155          USING $OINFO,3      ADDR OF DSECT TABLE                                            
+000054 4130 FED0            00ED0   156          LA    3,CTABL       LA ADDR OF DECLARED TABLE IN STORAGE                           
+000058 5A30 F608            00608   157          A     3,=F'1920'    LOAD RELATIVE ADDRESS OF OTABLE                                
+00005C E000 F628 0050 00628         158          XREAD BUFFER,80     READ LINE OF INPUT                                             
+                                    159 *READ VAL INTO TABLE                                                                        
+000062 955C F628      00628         160 SCANLOP2 CLI   BUFFER,C'*'   COMPARE TO SEE IF AT END OF LINE                               
+000066 4780 F0C8            000C8   161          BE    ENDSCA2       BRANCH TO END OF LOOP IF AT *                                  
+00006A 4120 F628            00628   162          LA    2,BUFFER      LOAD BUFFER ADDR INTO REGISTER 2                               
+00006E D207 3000 2000 00000 00000   163          MVC   $OID(8),$IOID MOVE 8 BYTES FROM INPUT TO TABLE                               
+000074 4120 2009            00009   164          LA    2,$IOCID      LOAD ADDR OF INPUT ORDER CUST ID INTO R2                       
+000078 4140 3008            00008   165          LA    4,$OCID       LOAD ADDR OF ORDER CUST ID INTO R4                             
+00007C 5362 0000            00000   166          XDECI 6,0(2)        CONVERT R2 TO DECIMAL INTO R6                                  
+
+                                                                                                               PAGE    4            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000080 5064 0000            00000   167          ST    6,0(4)        STORE VALUE BACK INTO OCID                                     
+000084 4120 F628            00628   168          LA    2,BUFFER      LOAD ADDR OF BUFFER BACK INTO R2                               
+000088 D201 3010 2012 00010 00012   169          MVC   $OM(2),$IOM   MOVE FROM INPUT INTO TABLE                                     
+00008E D201 3012 2015 00012 00015   170          MVC   $OD(2),$IOD   MOVE FROM INPUT INTO TABLE                                     
+000094 4120 2018            00018   171          LA    2,$IOST       LOAD ADDR OF INPUT SUBTOT TO R2                                
+000098 4140 3014            00014   172          LA    4,$OST        LOAD ADDR OF SUBTOT TO R4                                      
+00009C 5362 0000            00000   173          XDECI 6,0(2)        CONVERT R2 INTO DECIMAL INTO R6                                
+0000A0 5064 0000            00000   174          ST    6,0(4)        STORE VALUE BACK INTO OST                                      
+0000A4 4120 F628            00628   175          LA    2,BUFFER      LOAD BUFFER'S ADDR BACK INTO R2                                
+0000A8 D203 301C 201F 0001C 0001F   176          MVC   $OSP(4),$IOSP LOAD FROM INPUT INTO TABLE                                     
+0000AE D209 3020 2024 00020 00024   177          MVC   $OPM(10),$IOPM LOAD FROM INPUT INTO TABLE                                    
+0000B4 D205 302A 202F 0002A 0002F   178          MVC   $OS(6),$IOS   LOAD FROM INPUT INTO TABLE                                     
+                                    179 *                                                                                           
+0000BA 4133 0030            00030   180          LA    3,48(3)      LOAD ADDR OF NEXT ROW                                           
+0000BE E000 F628 0050 00628         181          XREAD BUFFER,80    READ NEXT LINE                                                  
+0000C4 47F0 F062            00062   182          B     SCANLOP2     LOOP BACK TO TOP OF SCAN LOOP                                   
+0000C8                              183 ENDSCA2  DS    0H           END SCAN LOOP                                                   
+0000C8                              184          DROP  2,3          DROP USED DSECTS                                                
+                                    185 ******************************************************************                          
+                                    186 *ADD FISCAL PREDICTION TO TABLE **********************************                          
+000000                              187          USING $IFPBF,2            ADDR OF DSECT IBFFR                                      
+000000                              188          USING $FP,3               ADDR OF DSECT TABLE                                      
+0000C8 4130 FED0            00ED0   189          LA    3,CTABL             LA ADDR OF DECLARED TABLE IN STORAGE                     
+0000CC 5A30 F60C            0060C   190          A     3,=F'18720'                                                                  
+0000D0 E000 F628 0050 00628         191          XREAD BUFFER,80           READ LINE OF INPUT                                       
+                                    192 *                                                                                           
+                                    193 * READ FISCAL PREDICTION DATE INTO TABLE -------------------------                          
+0000D6 4770 F104            00104   194 SCANLOP3 BNZ   ENDSCA3             BRANCH TO END OF LOOP IF AT EOF                          
+0000DA 4120 F628            00628   195          LA    2,BUFFER            LOAD BUFFER ADDRESS                                      
+0000DE D201 3000 2000 00000 00000   196          MVC   $FPM(2),$IFPM       MOVE FROM INPUT INTO TABLE                               
+0000E4 D209 3002 2003 00002 00003   197          MVC   $FPP(10),$IFPP      MOVE FROM INPUT INTO TABLE                               
+0000EA D209 300C 200E 0000C 0000E   198          MVC   $FPLB(10),$IFPLB    MOVE FROM INPUT INTO TABLE                               
+0000F0 D209 3016 2019 00016 00019   199          MVC   $FPUB(10),$IFPUB    MOVE FROM INPUT INTO TABLE                               
+                                    200 *                                                                                           
+0000F6 4133 0020            00020   201          LA    3,32(3)             LOAD ADDR OF NEXT ROW                                    
+0000FA E000 F628 0050 00628         202          XREAD BUFFER,80           READ NEXT LINE                                           
+000100 47F0 F0D6            000D6   203          B     SCANLOP3            LOOP BACK TO TOP OF SCAN LOOP                            
+000104                              204 ENDSCA3  DS    0H                  END SCAN LOOP                                            
+000104                              205          DROP  2,3                 DROP USED DSECTS                                         
+                                    206 ******************************************************************                          
+                                    207 * LOAD 0 INTO ACTUAL SALE TOTALS FOR EACH MONTH ------------------                          
+000104 4120 0000            00000   208          LA    2,0                                                                          
+000108 5220 F68D            0068D   209          XDECO 2,JANTT                                                                      
+00010C 5220 F699            00699   210          XDECO 2,FEBTT                                                                      
+000110 5220 F6A5            006A5   211          XDECO 2,MARTT                                                                      
+000114 5220 F6B1            006B1   212          XDECO 2,APRTT                                                                      
+000118 5220 F6BD            006BD   213          XDECO 2,MAYTT                                                                      
+00011C 5220 F6C9            006C9   214          XDECO 2,JUNTT                                                                      
+000120 5220 F6D5            006D5   215          XDECO 2,JULTT                                                                      
+000124 5220 F6E1            006E1   216          XDECO 2,AUGTT                                                                      
+000128 5220 F6ED            006ED   217          XDECO 2,SEPTT                                                                      
+00012C 5220 F6F9            006F9   218          XDECO 2,OCTTT                                                                      
+000130 5220 F705            00705   219          XDECO 2,NOVTT                                                                      
+000134 5220 F711            00711   220          XDECO 2,DECTT                                                                      
+                                    221 * ----------------------------------------------------------------                          
+                                    222 * GENERATE CUSTOMER ORDER REPORT ---------------------------------                          
+000000                              223          USING $CINFO,2      ADDR OF DSECT CUST INFO                                        
+
+                                                                                                               PAGE    5            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000138 4120 FED0            00ED0   224          LA    2,CTABL       LOAD IN CTABL INTO R2                                          
+                                    225 * LOAD END OF CTABLE INTO R8                                                                
+00013C 4180 FED0            00ED0   226          LA    8,CTABL       LOAD CTABL INTO R8                                             
+000140 5A80 F608            00608   227          A     8,=F'1920'    MOVE PAST CTABL TO OTABL                                       
+                                    228 * LOAD END OF OTABLE INTO R9                                                                
+000144 4190 FED0            00ED0   229          LA    9,CTABL       LOAD CTABL INTO R9                                             
+000148 5A90 F60C            0060C   230          A     9,=F'18720'   MOVE PAST CTABL TO FTABL                                       
+00014C                              231 CLOOP    DS    0H            CUSTOMER READ LOOP                                             
+                                    232 *                                                                                           
+00014C 58A0 2000            00000   233          L     10,$CID         STORE CONTENTS OF REG 7 INTO PID                             
+000150 52A0 F678            00678   234          XDECO 10,TEMP                                                                      
+000154 D207 F7C2 F67C 007C2 0067C   235          MVC   PID(8),TEMP+4                                                                
+00015A D213 F794 2008 00794 00008   236          MVC   PNM(20),$CNM                                                                 
+000160 D21D F818 201C 00818 0001C   237          MVC   PAD(30),$CAD                                                                 
+000166 58A0 203C            0003C   238          L     10,$CST         STORE CONTENTS OF REG 7 INTO PST                             
+00016A 52A0 F678            00678   239          XDECO 10,TEMP                                                                      
+00016E D203 F7EB F680 007EB 00680   240          MVC   PST(4),TEMP+8                                                                
+                                    241 *                                                                                           
+000174 E020 F789 0085 00789         242          XPRNT PRNTCUST,133                                                                 
+00017A E020 F80E 0085 0080E         243          XPRNT PRNTADRS,133                                                                 
+                                    244 *                                                                                           
+000180 E020 FAA7 0085 00AA7         245          XPRNT PRNTORHD,133                                                                 
+000186 E020 F99D 0085 0099D         246          XPRNT PRNTRPHD,133                                                                 
+00018C E020 F918 0085 00918         247          XPRNT PRNTSPRT,133                                                                 
+                                    248 *                                                                                           
+                                    249 * GENERATING ORDER CONTENTS OF TABLE *****************************                          
+000000                              250          USING $OINFO,3                LOAD OINFO DSECT                                     
+000192 4130 FED0            00ED0   251          LA    3,CTABL                 LOAD IN CTABL ADDRESS                                
+000196 5A30 F608            00608   252          A     3,=F'1920'              MOVE PAST CTABL TO OTABL                             
+00019A 4160 0000            00000   253          LA    6,0                     LOAD 0 INTO R6                                       
+00019E 5260 FB4A            00B4A   254          XDECO 6,PCORD                 CLOSED ORDER COUNT                                   
+0001A2 5260 FBCF            00BCF   255          XDECO 6,PCOPO                 OPEN ORDER COUNT                                     
+0001A6 5260 FC54            00C54   256          XDECO 6,PRTTO                 TOTAL ORDER COUNT                                    
+0001AA 5260 FB65            00B65   257          XDECO 6,PRETT                 RECEIVING TOTAL                                      
+0001AE 5260 FBEA            00BEA   258          XDECO 6,PRPTT                 PENDING TOTAL                                        
+0001B2 5260 FC6F            00C6F   259          XDECO 6,PROAT                 OVERALL AMOUNT                                       
+0001B6 5260 FCF4            00CF4   260          XDECO 6,PRAOA                 AVERAGE ORDER AMOUNT                                 
+0001BA                              261 OLOOP    DS    0H                      ORDER CONTENTS READ LOOP                             
+0001BA 4133 0030            00030   262          LA    3,48(3)                 LOADS NEXT ORDER                                     
+0001BE 1939                         263          CR    3,9                     COMPARE TO END OF TABLE                              
+0001C0 4780 F3AA            003AA   264          BE    EOLOOP                  IF AT END GO TO END                                  
+0001C4 58A0 3008            00008   265          L     10,$OCID                LOAD ORDER CID INTO R10                              
+0001C8 58B0 2000            00000   266          L     11,$CID                 LOAD CID       INTO R11                              
+0001CC 19AB                         267          CR    10,11                   COMPARE THE TWO CID'S                                
+0001CE 4770 F1BA            001BA   268          BNE   OLOOP                   BRANCH TO TOP  IF NOT EQUAL                          
+0001D2 D207 FA23 3000 00A23 00000   269          MVC   PCRID(8),$OID           MOVE IN ORDER ID                                     
+0001D8 D201 FA2D 3010 00A2D 00010   270          MVC   PCRM(2),$OM             MOVE IN MONTH FOR DATE                               
+0001DE D201 FA30 3012 00A30 00012   271          MVC   PCRD(2),$OD             MOVE IN DAY FOR DATE                                 
+0001E4 D209 FA3C 3020 00A3C 00020   272          MVC   PCRPM(10),$OPM          LOAD IN PAYMENT METHOD OF ORDER                      
+0001EA 5840 3014            00014   273          L     4,$OST                  LOAD ORDER SUBTOTAL INTO R4                          
+0001EE 5240 F678            00678   274          XDECO 4,TEMP                  MAKE PRINTABLE INTO TEMP                             
+0001F2 D205 FA4C F67E 00A4C 0067E   275          MVC   PCRST(6),TEMP+6         SHIPPING TAX                                         
+0001F8 D203 FA56 301C 00A56 0001C   276          MVC   PCRSP(4),$OSP           LOAD IN SHIPPING VALUE                               
+                                    277 *CALCULATE TOTAL                                                                            
+0001FE 5870 203C            0003C   278          L     7,$CST          LOAD CUSTOMER SALES TAX INTO R7                              
+000202 5C60 3014            00014   279          M     6,$OST          MULTIPLE BY ORDER SUBTOTAL                                   
+000206 5C60 F610            00610   280          M     6,=F'1'         ROUND UP TO GET RID OF DECIMAL                               
+
+                                                                                                               PAGE    6            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+00020A 5D60 F614            00614   281          D     6,=F'10000'     DIVIDE PRODUCT BY 10000                                      
+                                    282 *                                                                                           
+00020E 5A70 3014            00014   283          A     7,$OST          ADD PRODUCT VALUE TO SUBTOTAL                                
+000212 5360 301C            0001C   284          XDECI 6,$OSP          CONVERT SHIPPING VALUE                                       
+000216 1A76                         285          AR    7,6             ADD SHIPPING TO TOTAL                                        
+                                    286 *                                                                                           
+                                    287 ******************************************************************                          
+000218 5360 FB4A            00B4A   288          XDECI 6,PCORD                 LOAD DECIMAL CLOS ORDER INTO R6                      
+00021C 5340 FBCF            00BCF   289          XDECI 4,PCOPO                 LOAD DECIMAL OPEN ORDER INTO R4                      
+000220 95C3 302A      0002A         290          CLI   $OS,C'C'                CHECK IF STATUS IS CLOSED                            
+000224 4780 F23E            0023E   291          BE    CLO                     BRANCH TO CLO IF ORDER IS CLOSED                     
+000228 4140 4001            00001   292          LA    4,1(,4)                 ELSE INCREMENT OPEN ORDER                            
+00022C 5240 FBCF            00BCF   293          XDECO 4,PCOPO                 CONVERT OPEN ORDER                                   
+000230 5350 FBEA            00BEA   294          XDECI 5,PRPTT                 CONVERT PENDING TOTAL                                
+000234 1A57                         295          AR    5,7                     ADD SUBTOTAL TO PENDING TOTAL                        
+000236 5250 FBEA            00BEA   296          XDECO 5,PRPTT                 CONVERT TO OUTPUT PENDING TOTAL                      
+00023A 47F0 F250            00250   297          B     CON                     CONTINUE PASSED CLOSED PORTION                       
+00023E 4160 6001            00001   298 CLO      LA    6,1(,6)                 INCREMENT CLOSED ORDER #                             
+000242 5260 FB4A            00B4A   299          XDECO 6,PCORD                 CONVERT PEND TOTAL                                   
+000246 5350 FB65            00B65   300          XDECI 5,PRETT                 CONVERT RECEIVED TOTAL                               
+00024A 1A57                         301          AR    5,7                     ADD TO RECEIVED TOTAL                                
+00024C 5250 FB65            00B65   302          XDECO 5,PRETT                 CONVERT TO OUTPUT RECEIVED TOTAL                     
+000250 5360 FC54            00C54   303 CON      XDECI 6,PRTTO                 CONVERT TOTAL ORDERS                                 
+000254 4160 6001            00001   304          LA    6,1(,6)                 INCREMENT TOTAL ORDERS                               
+000258 5260 FC54            00C54   305          XDECO 6,PRTTO                 CONVERT TO OUPUT TOTAL ORDERS                        
+00025C D205 FA34 302A 00A34 0002A   306          MVC   PCRSS(6),$OS            MOVE IN ORDER STATUS                                 
+000262 5350 FC6F            00C6F   307          XDECI 5,PROAT                 CONVERT TOTAL AMOUNT                                 
+000266 1A57                         308          AR    5,7                     ADD TOTAL OF ORDER TO TOTAL                          
+000268 5250 FC6F            00C6F   309          XDECO 5,PROAT                 CONVERT TO OUTPUT TOTAL AMOUNT                       
+                                    310 ******************************************************************                          
+00026C 5270 F678            00678   311          XDECO 7,TEMP       CONVERT TOTAL TO PRINTABLE CHARACTERS                           
+000270 D209 FA5D F67A 00A5D 0067A   312          MVC   PCRTT,TEMP+2 COPY INTO OUTPUT FIELD                                          
+000276 E020 FA22 0085 00A22         313          XPRNT PRNTCRTB,133 PRINT FIELDS                                                    
+                                    314 * ADD SUBTOTAL TO MONTH'S TOTAL ----------------------------------                          
+00027C 5350 FA4C            00A4C   315          XDECI 5,PCRST               CONVERT SUBTOTAL TO BE ADDED                           
+000280 95F0 3010      00010         316          CLI   $OM,C'0'              CHECK IF MONTH LEADS WITH 0                            
+000284 4780 F2A0            002A0   317          BE    SDMO                  BRANCH TO SINGLE DIGIT MONTHS                          
+                                    318 *                                                                                           
+000288 95F0 3011      00011         319          CLI   $OM+1,C'0'            BRANCH TO OCT IF MONTH 10                              
+00028C 4780 F366            00366   320          BE    OCTO                                                                         
+000290 95F1 3011      00011         321          CLI   $OM+1,C'1'            BRANCH TO NOV IF MONTH 11                              
+000294 4780 F374            00374   322          BE    NOVO                                                                         
+000298 95F2 3011      00011         323          CLI   $OM+1,C'2'            BRANCH TO DEC IF MONTH 12                              
+00029C 4780 F382            00382   324          BE    DECO                                                                         
+0002A0 95F1 3011      00011         325 SDMO     CLI   $OM+1,C'1'            BRANCH TO JAN IF MONTH 01                              
+0002A4 4780 F2E8            002E8   326          BE    JANO                                                                         
+0002A8 95F2 3011      00011         327          CLI   $OM+1,C'2'            BRANCH TO FEB IF MONTH 02                              
+0002AC 4780 F2F6            002F6   328          BE    FEBO                                                                         
+0002B0 95F3 3011      00011         329          CLI   $OM+1,C'3'            BRANCH TO MAR IF MONTH 03                              
+0002B4 4780 F304            00304   330          BE    MARO                                                                         
+0002B8 95F4 3011      00011         331          CLI   $OM+1,C'4'            BRANCH TO APR IF MONTH 04                              
+0002BC 4780 F312            00312   332          BE    APRO                                                                         
+0002C0 95F5 3011      00011         333          CLI   $OM+1,C'5'            BRANCH TO MAY IF MONTH 05                              
+0002C4 4780 F320            00320   334          BE    MAYO                                                                         
+0002C8 95F6 3011      00011         335          CLI   $OM+1,C'6'            BRANCH TO JUN IF MONTH 06                              
+0002CC 4780 F32E            0032E   336          BE    JUNO                                                                         
+0002D0 95F7 3011      00011         337          CLI   $OM+1,C'7'            BRANCH TO JUL IF MONTH 07                              
+
+                                                                                                               PAGE    7            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+0002D4 4780 F33C            0033C   338          BE    JULO                                                                         
+0002D8 95F8 3011      00011         339          CLI   $OM+1,C'8'            BRANCH TO AUG IF MONTH 08                              
+0002DC 4780 F34A            0034A   340          BE    AUGO                                                                         
+0002E0 95F9 3011      00011         341          CLI   $OM+1,C'9'            BRANCH TO SEP IF MONTH 09                              
+0002E4 4780 F358            00358   342          BE    SEPO                                                                         
+                                    343 *                                                                                           
+0002E8 5370 F68D            0068D   344 JANO     XDECI 7,JANTT                                                                      
+0002EC 1A75                         345          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+0002EE 5270 F68D            0068D   346          XDECO 7,JANTT                                                                      
+0002F2 47F0 F390            00390   347          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+0002F6 5370 F699            00699   348 FEBO     XDECI 7,FEBTT                                                                      
+0002FA 1A75                         349          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+0002FC 5270 F699            00699   350          XDECO 7,FEBTT                                                                      
+000300 47F0 F390            00390   351          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+000304 5370 F6A5            006A5   352 MARO     XDECI 7,MARTT                                                                      
+000308 1A75                         353          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+00030A 5270 F6A5            006A5   354          XDECO 7,MARTT                                                                      
+00030E 47F0 F390            00390   355          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+000312 5370 F6B1            006B1   356 APRO     XDECI 7,APRTT                                                                      
+000316 1A75                         357          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+000318 5270 F6B1            006B1   358          XDECO 7,APRTT                                                                      
+00031C 47F0 F390            00390   359          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+000320 5370 F6BD            006BD   360 MAYO     XDECI 7,MAYTT                                                                      
+000324 1A75                         361          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+000326 5270 F6BD            006BD   362          XDECO 7,MAYTT                                                                      
+00032A 47F0 F390            00390   363          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+00032E 5370 F6C9            006C9   364 JUNO     XDECI 7,JUNTT                                                                      
+000332 1A75                         365          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+000334 5270 F6C9            006C9   366          XDECO 7,JUNTT                                                                      
+000338 47F0 F390            00390   367          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+00033C 5370 F6D5            006D5   368 JULO     XDECI 7,JULTT                                                                      
+000340 1A75                         369          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+000342 5270 F6D5            006D5   370          XDECO 7,JULTT                                                                      
+000346 47F0 F390            00390   371          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+00034A 5370 F6E1            006E1   372 AUGO     XDECI 7,AUGTT                                                                      
+00034E 1A75                         373          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+000350 5270 F6E1            006E1   374          XDECO 7,AUGTT                                                                      
+000354 47F0 F390            00390   375          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+000358 5370 F6ED            006ED   376 SEPO     XDECI 7,SEPTT                                                                      
+00035C 1A75                         377          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+00035E 5270 F6ED            006ED   378          XDECO 7,SEPTT                                                                      
+000362 47F0 F390            00390   379          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+000366 5370 F6F9            006F9   380 OCTO     XDECI 7,OCTTT                                                                      
+00036A 1A75                         381          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+00036C 5270 F6F9            006F9   382          XDECO 7,OCTTT                                                                      
+000370 47F0 F390            00390   383          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+000374 5370 F705            00705   384 NOVO     XDECI 7,NOVTT                                                                      
+000378 1A75                         385          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+00037A 5270 F705            00705   386          XDECO 7,NOVTT                                                                      
+00037E 47F0 F390            00390   387          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+000382 5370 F711            00711   388 DECO     XDECI 7,DECTT                                                                      
+000386 1A75                         389          AR    7,5                    ADD SUBTOTAL TO MONTHS TOTAL                          
+000388 5270 F711            00711   390          XDECO 7,DECTT                                                                      
+00038C 47F0 F390            00390   391          B     EOMONO                 BRANCH TO END OF MONTH LOGIC                          
+000390                              392 EOMONO   DS    0H                                                                           
+                                    393 *                                                                                           
+000390 5370 FC6F            00C6F   394          XDECI 7,PROAT                CONVERT OVERALL TT AND PUT IN R7                      
+
+                                                                                                               PAGE    8            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000394 5350 FC54            00C54   395          XDECI 5,PRTTO                CONVERT TOTAL ORDS AND PUT IN R5                      
+000398 5C60 F610            00610   396          M     6,=F'1'                SPREAD 6 EVEN-ODD PAIR                                
+00039C 1D65                         397          DR    6,5                    DIVIDE OVERALL TT BY TT ORDS                          
+00039E 5A70 F610            00610   398          A     7,=F'1'                ADD 1 TO RESULT                                       
+0003A2 5270 FCF4            00CF4   399          XDECO 7,PRAOA                LOAD INTO AVR ORDER AMT                               
+0003A6 47F0 F1BA            001BA   400          B     OLOOP                  BRANCH TO TOP OF ORDER LOOP                           
+0003AA 4122 0040            00040   401 EOLOOP   LA    2,64(2)                LOADS NEXT CUSTOMER                                   
+                                    402 ******************************************************************                          
+0003AE E020 F918 0085 00918         403          XPRNT PRNTSPRT,133                                                                 
+                                    404 * FOOTER                                                                                    
+0003B4 D20B F678 FB4A 00678 00B4A   405          MVC   TEMP(12),PCORD      STORE VALUE OF PCORD INTO TEMP                           
+0003BA D201 FB4A F682 00B4A 00682   406          MVC   PCORD(2),TEMP+10    LAST 2 FROM TEMP TO PCORD                                
+0003C0 D209 FB4C F678 00B4C 00678   407          MVC   PCORD+2(10),TEMP    FILL SPACE TO TAILING 10 BYTES                           
+0003C6 E020 FB2C 0085 00B2C         408          XPRNT PRNTRPF1,133        PRNT FIRST FOOTER LINE                                   
+0003CC D20B F678 FBCF 00678 00BCF   409          MVC   TEMP(12),PCOPO      STORE VALUE OF PCORD INTO TEMP                           
+0003D2 D201 FBCF F682 00BCF 00682   410          MVC   PCOPO(2),TEMP+10    LAST 2 FROM TEMP TO PCORD                                
+0003D8 D209 FBD1 F678 00BD1 00678   411          MVC   PCOPO+2(10),TEMP    FILL SPACE TO TAILING 10 BYTES                           
+0003DE E020 FBB1 0085 00BB1         412          XPRNT PRNTRPF2,133        PRINT SECOND FOOTER LINE                                 
+0003E4 D20B F678 FC54 00678 00C54   413          MVC   TEMP(12),PRTTO      STORE VALUE OF PCORD INTO TEMP                           
+0003EA D201 FC54 F682 00C54 00682   414          MVC   PRTTO(2),TEMP+10    LAST 2 FROM TEMP TO PCORD                                
+0003F0 D209 FC56 F678 00C56 00678   415          MVC   PRTTO+2(10),TEMP    FILL SPACE TO TAILING 10 BYTES                           
+0003F6 E020 FC36 0085 00C36         416          XPRNT PRNTRPF3,133        PRINTER THIRD FOOTER LINE                                
+0003FC E020 FCBB 0085 00CBB         417          XPRNT PRNTRPF4,133        PRINT FOURTH FOOTER LINE                                 
+                                    418 *                                                                                           
+000402 1928                         419          CR    2,8           IF PAST END OF TABLE                                           
+000404 4780 F40C            0040C   420          BE    ECLOOP        GO TO ENDLOOP                                                  
+000408 47F0 F14C            0014C   421          B     CLOOP         OTHERWISE LOAD NEXT CUSTOMER                                   
+                                    422 *                                                                                           
+00040C                              423 ECLOOP  DS    0H                                                                            
+                                    424 ************************ PART II *********************************                          
+                                    425 * GENERATING FISCAL REPORT SUMMARY *******************************                          
+00040C E020 F893 0085 00893         426          XPRNT PRNTNWLN,133  PRINT NEW LINE                                                 
+000412 E020 FD40 0085 00D40         427          XPRNT PRNTFRHD,133  PRINT FISCAL REPORT HEADER                                     
+000418 E020 F918 0085 00918         428          XPRNT PRNTSPRT,133  PRINT SEPERATOR                                                
+                                    429 * GENERATING FISCAL REPORT TABLE ROWS ****************************                          
+000000                              430          USING $FP,2                   USE FISCAL REPORT DSECT                              
+00041E 4120 FED0            00ED0   431          LA    2,CTABL                 LOAD IN CTABL ADDRESS                                
+000422 5A20 F60C            0060C   432          A     2,=F'18720'             MOVE PAST CTABL TO FTABL                             
+000426 1892                         433          LR    9,2                     LOAD FTABL ADDR INTO R9                              
+000428 5A90 F618            00618   434          A     9,=F'384'               MOVE PAST FTABL TO END                               
+00042C                              435 FRLOOP   DS    0H                      PRINT CONTENTS OF ROWS                               
+                                    436 * MONTH ----------------------------------------------------------                          
+00042C 95F0 2000      00000         437          CLI   $FPM,C'0'              CHECK IF MONTH LEADS WITH 0                           
+000430 4780 F44C            0044C   438          BE    SDM                    BRANCH TO SINGLE DIGIT MONTHS                         
+                                    439 *                                                                                           
+000434 95F0 2001      00001         440          CLI   $FPM+1,C'0'            BRANCH TO OCT IF MONTH 10                             
+000438 4780 F524            00524   441          BE    OCT                                                                          
+00043C 95F1 2001      00001         442          CLI   $FPM+1,C'1'            BRANCH TO NOV IF MONTH 11                             
+000440 4780 F534            00534   443          BE    NOV                                                                          
+000444 95F2 2001      00001         444          CLI   $FPM+1,C'2'            BRANCH TO DEC IF MONTH 12                             
+000448 4780 F544            00544   445          BE    DEC                                                                          
+00044C 95F1 2001      00001         446 SDM      CLI   $FPM+1,C'1'            BRANCH TO JAN IF MONTH 01                             
+000450 4780 F494            00494   447          BE    JAN                                                                          
+000454 95F2 2001      00001         448          CLI   $FPM+1,C'2'            BRANCH TO FEB IF MONTH 02                             
+000458 4780 F4A4            004A4   449          BE    FEB                                                                          
+00045C 95F3 2001      00001         450          CLI   $FPM+1,C'3'            BRANCH TO MAR IF MONTH 03                             
+000460 4780 F4B4            004B4   451          BE    MAR                                                                          
+
+                                                                                                               PAGE    9            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000464 95F4 2001      00001         452          CLI   $FPM+1,C'4'            BRANCH TO APR IF MONTH 04                             
+000468 4780 F4C4            004C4   453          BE    APR                                                                          
+00046C 95F5 2001      00001         454          CLI   $FPM+1,C'5'            BRANCH TO MAY IF MONTH 05                             
+000470 4780 F4D4            004D4   455          BE    MAY                                                                          
+000474 95F6 2001      00001         456          CLI   $FPM+1,C'6'            BRANCH TO JUN IF MONTH 06                             
+000478 4780 F4E4            004E4   457          BE    JUN                                                                          
+00047C 95F7 2001      00001         458          CLI   $FPM+1,C'7'            BRANCH TO JUL IF MONTH 07                             
+000480 4780 F4F4            004F4   459          BE    JUL                                                                          
+000484 95F8 2001      00001         460          CLI   $FPM+1,C'8'            BRANCH TO AUG IF MONTH 08                             
+000488 4780 F504            00504   461          BE    AUG                                                                          
+00048C 95F9 2001      00001         462          CLI   $FPM+1,C'9'            BRANCH TO SEP IF MONTH 09                             
+000490 4780 F514            00514   463          BE    SEP                                                                          
+                                    464 *                                                                                           
+000494 D208 FE4B F71D 00E4B 0071D   465 JAN      MVC   PFRMO(9),CJAN          LOAD WITH JAN'S NAME                                  
+00049A D20B FE63 F68D 00E63 0068D   466          MVC   PFRAS(12),JANTT                                                              
+0004A0 47F0 F554            00554   467          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+0004A4 D208 FE4B F726 00E4B 00726   468 FEB      MVC   PFRMO(9),CFEB          LOAD WITH FEB'S NAME                                  
+0004AA D20B FE63 F699 00E63 00699   469          MVC   PFRAS(12),FEBTT                                                              
+0004B0 47F0 F554            00554   470          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+0004B4 D208 FE4B F72F 00E4B 0072F   471 MAR      MVC   PFRMO(9),CMAR          LOAD WITH MAR'S NAME                                  
+0004BA D20B FE63 F6A5 00E63 006A5   472          MVC   PFRAS(12),MARTT                                                              
+0004C0 47F0 F554            00554   473          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+0004C4 D208 FE4B F738 00E4B 00738   474 APR      MVC   PFRMO(9),CAPR          LOAD WITH APR'S NAME                                  
+0004CA D20B FE63 F6B1 00E63 006B1   475          MVC   PFRAS(12),APRTT                                                              
+0004D0 47F0 F554            00554   476          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+0004D4 D208 FE4B F741 00E4B 00741   477 MAY      MVC   PFRMO(9),CMAY          LOAD WITH MAY'S NAME                                  
+0004DA D20B FE63 F6BD 00E63 006BD   478          MVC   PFRAS(12),MAYTT                                                              
+0004E0 47F0 F554            00554   479          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+0004E4 D208 FE4B F74A 00E4B 0074A   480 JUN      MVC   PFRMO(9),CJUN          LOAD WITH JUN'S NAME                                  
+0004EA D20B FE63 F6C9 00E63 006C9   481          MVC   PFRAS(12),JUNTT                                                              
+0004F0 47F0 F554            00554   482          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+0004F4 D208 FE4B F753 00E4B 00753   483 JUL      MVC   PFRMO(9),CJUL          LOAD WITH JUL'S NAME                                  
+0004FA D20B FE63 F6D5 00E63 006D5   484          MVC   PFRAS(12),JULTT                                                              
+000500 47F0 F554            00554   485          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+000504 D208 FE4B F75C 00E4B 0075C   486 AUG      MVC   PFRMO(9),CAUG          LOAD WITH AUG'S NAME                                  
+00050A D20B FE63 F6E1 00E63 006E1   487          MVC   PFRAS(12),AUGTT                                                              
+000510 47F0 F554            00554   488          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+000514 D208 FE4B F765 00E4B 00765   489 SEP      MVC   PFRMO(9),CSEP          LOAD WITH SEP'S NAME                                  
+00051A D20B FE63 F6ED 00E63 006ED   490          MVC   PFRAS(12),SEPTT                                                              
+000520 47F0 F554            00554   491          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+000524 D208 FE4B F76E 00E4B 0076E   492 OCT      MVC   PFRMO(9),COCT          LOAD WITH OCT'S NAME                                  
+00052A D20B FE63 F6F9 00E63 006F9   493          MVC   PFRAS(12),OCTTT                                                              
+000530 47F0 F554            00554   494          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+000534 D208 FE4B F777 00E4B 00777   495 NOV      MVC   PFRMO(9),CNOV          LOAD WITH NOV'S NAME                                  
+00053A D20B FE63 F705 00E63 00705   496          MVC   PFRAS(12),NOVTT                                                              
+000540 47F0 F554            00554   497          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+000544 D208 FE4B F780 00E4B 00780   498 DEC      MVC   PFRMO(9),CDEC          LOAD WITH DEC'S NAME                                  
+00054A D20B FE63 F711 00E63 00711   499          MVC   PFRAS(12),DECTT                                                              
+000550 47F0 F554            00554   500          B     EOMON                  BRANCH TO END OF MONTH LOGIC                          
+000554                              501 EOMON    DS    0H                                                                           
+                                    502 * PREDICTED SALES -------------------------------------------------                         
+                                    503 *                                                                                           
+000554 D209 FE56 2002 00E56 00002   504          MVC   PFRPS(10),$FPP         LOAD ROW WITH PREDICTED SALES                         
+                                    505 * DIFF SQRD -------------------------------------------------------                         
+00055A 5350 FE58            00E58   506          XDECI 5,PFRPS+2              LOAD PREDICTED SALES INTO R5                          
+00055E 5340 FE63            00E63   507          XDECI 4,PFRAS                LOAD ACTUAL    SALES INTO R4                          
+000562 1B54                         508          SR    5,4                    SUBTRACT PREDICTED FROM ACTUAL                        
+
+                                                                                                               PAGE   10            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000564 5250 F678            00678   509          XDECO 5,TEMP                 STORE R5 INTO TEMP FOR DIVERGEN                       
+000568 1C45                         510          MR    4,5                    SQUARE RESULT                                         
+00056A 5250 FE71            00E71   511          XDECO 5,PFRDS                CONVERT AND PUT IN PRINT VAR                          
+00056E 5370 FDF7            00DF7   512          XDECI 7,PRRSSS               PUT RSS INTO R7                                       
+000572 5C40 F610            00610   513          M     4,=F'1'                SPREAD 4 OVER EVEN-ODD                                
+000576 5D40 F61C            0061C   514          D     4,=F'100'              DIVIDE 5 BY 100                                       
+00057A 5A50 F610            00610   515          A     5,=F'1'                ADD 1 TO RESULT                                       
+00057E 1A75                         516          AR    7,5                    ADD RSS TO RESULT                                     
+000580 5270 FDF7            00DF7   517          XDECO 7,PRRSSS               CONVERT AND STORE IN RSS                              
+                                    518 * DIVERGENCE ------------------------------------------------------                         
+000584 5350 FE63            00E63   519          XDECI 5,PFRAS                STORE ACTUAL SALE INTO R5                             
+000588 5340 FE58            00E58   520          XDECI 4,PFRPS+2              STORE PREDIC SALE INTO R4                             
+00058C 1945                         521          CR    4,5                    CHECK IF NEGATIVE DIFF                                
+00058E 4740 F596            00596   522          BL    UPPERB                 IF NEGATIVE, BRANCH UPPER                             
+000592 47F0 F5BA            005BA   523          B     LOWERB                 IF POSSITIVE,BRANCH LOWER                             
+000596                              524 UPPERB   DS    0H                     IF UPPER BOUND CONDITION                              
+000596 5340 FE63            00E63   525          XDECI 4,PFRAS                STORE ACTUAL IN R4                                    
+00059A D208 F684 2017 00684 00017   526          MVC   TEMP9(9),$FPUB+1       STORE UPPER BOUND IN TEMP                             
+0005A0 5350 F684            00684   527          XDECI 5,TEMP9                CONVERT TEMP INTO R5                                  
+0005A4 1B54                         528          SR    5,4                    SUBTRACT ACTUAL FROM UPPER                            
+0005A6 5950 F620            00620   529          C     5,=F'0'                IF HIGHER THAN 0,                                     
+0005AA 4720 F5DA            005DA   530          BH    INBOUNDS               BRANCH INBOUND                                        
+0005AE 5C40 F624            00624   531          M     4,=F'-1'               MAKE POSITIVE                                         
+0005B2 5250 FE83            00E83   532          XDECO 5,PFRDI                STORE CONTENTS INTO PRINT VAR                         
+0005B6 47F0 F5E2            005E2   533          B     EODIV                  BRANCH TO END OF DIV LOGIC                            
+0005BA                              534 LOWERB   DS    0H                     IF LOWER BOUND CONDITION                              
+0005BA 5340 FE63            00E63   535          XDECI 4,PFRAS                STORE ACTUAL INTO R4                                  
+0005BE D208 F684 200D 00684 0000D   536          MVC   TEMP9(9),$FPLB+1       STORE LOWER BOUND INTO TEMP                           
+0005C4 5350 F684            00684   537          XDECI 5,TEMP9                CONVERT TEMP INTO R5                                  
+0005C8 1B54                         538          SR    5,4                    SUBTRACT ACTUAL FROM LOWER                            
+0005CA 5950 F620            00620   539          C     5,=F'0'                IF LOWER THAN 0,                                      
+0005CE 4740 F5DA            005DA   540          BL    INBOUNDS               BRANCH INBOUNDS                                       
+0005D2 5250 FE83            00E83   541          XDECO 5,PFRDI                CONVERT AND STORE INTO PRINT VAR                      
+0005D6 47F0 F5E2            005E2   542          B     EODIV                  BRANCH TO END OF DIV LOGIC                            
+0005DA 4150 0000            00000   543 INBOUNDS LA    5,0                    STORE 0 IN REG 5                                      
+0005DE 5250 FE83            00E83   544          XDECO 5,PFRDI                LOAD R5 INTO PRINT VAR                                
+0005E2                              545 EODIV    DS    0H                     END OF DIVERGENCE LOGIC                               
+                                    546 * END OF ROW CONTENTS ---------------------------------------------                         
+0005E2 E020 FE4A 0085 00E4A         547          XPRNT PRNTFRTB,133           PRINT ROW                                             
+                                    548 *                                                                                           
+0005E8 4122 0020            00020   549          LA    2,32(2)                LOADS NEXT ORDER                                      
+0005EC 1929                         550          CR    2,9                    IF ABS ADDRESS = END                                  
+0005EE 4780 F5F6            005F6   551          BE    EOFRLOOP               BRANCH TO END OF FISCAL REPORT                        
+0005F2 47F0 F42C            0042C   552          B     FRLOOP                 OTHERWISE BACK TO TOP                                 
+0005F6                              553 EOFRLOOP DS    0H                     END OF FISCAL REPORT CONTENTS                         
+                                    554 * ----------------------------------------------------------------                          
+                                    555 *                                                                                           
+                                    556 * GENERATING FISCAL REPORT FOOTER ********************************                          
+0005F6 E020 F918 0085 00918         557          XPRNT PRNTSPRT,133           PRINT SEPERATOR                                       
+0005FC E020 FDC5 0085 00DC5         558          XPRNT PRNTFRFT,133           PRINT FOOTER, INCLUDING RSS                           
+                                    559 *-----------------------------------------------------------------                          
+                                    560 ******************************************************************                          
+                                    561 *                                                                                           
+000602 07FE                         562          BR    14                                                                           
+                                    563 *                                                                                           
+                                    564          LTORG                                                                              
+000608 00000780                     565                =F'1920'                                                                     
+
+                                                                                                               PAGE   11            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+00060C 00004920                     566                =F'18720'                                                                    
+000610 00000001                     567                =F'1'                                                                        
+000614 00002710                     568                =F'10000'                                                                    
+000618 00000180                     569                =F'384'                                                                      
+00061C 00000064                     570                =F'100'                                                                      
+000620 00000000                     571                =F'0'                                                                        
+000624 FFFFFFFF                     572                =F'-1'                                                                       
+                                    573 *| Declared storage **********************************************                          
+000628                              574 BUFFER   DS    CL80                                                                         
+000678                              575 TEMP     DS    CL12                                                                         
+000684                              576 TEMP9    DS    CL9                                                                          
+                                    577 * MONTHS ACTUAL SALES --------------------------------------------                          
+00068D                              578 JANTT    DS    CL12                                                                         
+000699                              579 FEBTT    DS    CL12                                                                         
+0006A5                              580 MARTT    DS    CL12                                                                         
+0006B1                              581 APRTT    DS    CL12                                                                         
+0006BD                              582 MAYTT    DS    CL12                                                                         
+0006C9                              583 JUNTT    DS    CL12                                                                         
+0006D5                              584 JULTT    DS    CL12                                                                         
+0006E1                              585 AUGTT    DS    CL12                                                                         
+0006ED                              586 SEPTT    DS    CL12                                                                         
+0006F9                              587 OCTTT    DS    CL12                                                                         
+000705                              588 NOVTT    DS    CL12                                                                         
+000711                              589 DECTT    DS    CL12                                                                         
+                                    590 * MONTHS CONSTANT NAMES ------------------------------------------                          
+00071D D18195A48199A840             591 CJAN     DC    C'January  '                                                                 
+000726 C6858299A48199A8             592 CFEB     DC    C'February '                                                                 
+00072F D481998388404040             593 CMAR     DC    C'March    '                                                                 
+000738 C197998993404040             594 CAPR     DC    C'April    '                                                                 
+000741 D481A84040404040             595 CMAY     DC    C'May      '                                                                 
+00074A D1A4958540404040             596 CJUN     DC    C'June     '                                                                 
+000753 D1A493A840404040             597 CJUL     DC    C'July     '                                                                 
+00075C C1A487A4A2A34040             598 CAUG     DC    C'August   '                                                                 
+000765 E28597A385948285             599 CSEP     DC    C'September'                                                                 
+00076E D683A39682859940             600 COCT     DC    C'October  '                                                                 
+000777 D596A58594828599             601 CNOV     DC    C'November '                                                                 
+000780 C485838594828599             602 CDEC     DC    C'December '                                                                 
+                                    603 *****************************************************************                           
+                                    604 * PRINT LINES ***************************************************                           
+                                    605 * Print CUSTOMER begin ------------------------------------------                           
+000789 40                           606 PRNTCUST DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+00078A 4040404040404040             607          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+00078A                              608          ORG   PRNTCUST+1     GO BACK TO PRINTLN1 START LOC + 1                             
+00078A C3A4A2A396948599             609          DC    C'Customer: '                                                                
+000794                              610 PNM      DS    CL20                                                                         
+0007A8 40                           611          DC    C' '                                                                         
+0007A9 4040404040404040             612          DC    C'            Customer ID: '                                                 
+0007C2                              613 PID      DS    CL8                                                                          
+0007CA 40                           614          DC    C' '                                                                         
+0007CB 4040404040404040             615          DC    C'            Regional Sales Tax: '                                          
+0007EB                              616 PST      DS    CL4                                                                          
+00080E                              617          ORG   PRNTCUST+133   JUMP PAST END OF PRINTLN1                                     
+                                    618 *****************************************************************                           
+                                    619 * Print ADDRESS begin -------------------------------------------                           
+00080E 40                           620 PRNTADRS DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+00080F 4040404040404040             621          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+00080F                              622          ORG   PRNTADRS+1     GO BACK TO PRINTLN1 START LOC + 1                             
+
+                                                                                                               PAGE   12            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+00080F C184849985A2A27A             623          DC    C'Address: '                                                                 
+000818                              624 PAD      DS    CL30                                                                         
+000893                              625          ORG   PRNTADRS+133   JUMP PAST END OF PRINTLN1                                     
+                                    626 *****************************************************************                           
+                                    627 * Print NEWLINE begin -------------------------------------------                           
+000893 40                           628 PRNTNWLN DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000894 4040404040404040             629          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+                                    630 *****************************************************************                           
+                                    631 * Print SEPERATOR begin -----------------------------------------                           
+000918 40                           632 PRNTSPRT DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000919 7E7E7E7E7E7E7E7E             633          DC    68C'='         FILL LINE WITH = SEPERATOR                                    
+00095D 4040404040404040             634          DC    64C' '                                                                       
+                                    635 *****************************************************************                           
+                                    636 * Print REPORT HEADER begin -------------------------------------                           
+00099D 40                           637 PRNTRPHD DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+00099E 4040404040404040             638          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+00099E                              639          ORG   PRNTRPHD+1     GO BACK TO PRINTLN1 START LOC + 1                             
+00099E C9C4404040404040             640          DC    C'ID        '                                                                
+0009A8 C481A385404040               641          DC    C'Date   '                                                                   
+0009AF E2A381A3A4A24040             642          DC    C'Status  '                                                                  
+0009B7 D781A8948595A340             643          DC    C'Payment Method  '                                                          
+0009C7 E2A482A396A38193             644          DC    C'Subtotal  '                                                                
+0009D1 E288899797899587             645          DC    C'Shipping  '                                                                
+0009DB E396A38193404040             646          DC    C'Total       '                                                              
+000A22                              647          ORG   PRNTRPHD+133   JUMP PAST END                                                 
+                                    648 *****************************************************************                           
+                                    649 * Print CUSTOMER REPORT TABLE ROW begin -------------------------                           
+000A22 40                           650 PRNTCRTB DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000A23 4040404040404040             651          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+000A23                              652          ORG   PRNTCRTB+1     GO BACK TO PRINTLN1 START LOC + 1                             
+000A23                              653 PCRID    DS    CL8                                                                          
+000A2B 4040                         654          DC    C'  '                                                                        
+000A2D                              655 PCRM     DS    CL2                                                                          
+000A2F 61                           656          DC    C'/'                                                                         
+000A30                              657 PCRD     DS    CL2                                                                          
+000A32 4040                         658          DC    C'  '                                                                        
+000A34                              659 PCRSS    DS    CL6                                                                          
+000A3A 4040                         660          DC    C'  '                                                                        
+000A3C                              661 PCRPM    DS    CL10                                                                         
+000A46 404040404040                 662          DC    C'      '                                                                    
+000A4C                              663 PCRST    DS    CL6                                                                          
+000A52 40404040                     664          DC    C'    '                                                                      
+000A56                              665 PCRSP    DS    CL4                                                                          
+000A5A 404040                       666          DC    C'   '                                                                       
+000A5D                              667 PCRTT    DS    CL10                                                                         
+000AA7                              668          ORG   PRNTCRTB+133   JUMP PAST END                                                 
+                                    669 *****************************************************************                           
+                                    670 * Print ORDER HEADER begin --------------------------------------                           
+000AA7 40                           671 PRNTORHD DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000AA8 4040404040404040             672          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+000AA8                              673          ORG   PRNTORHD+1     GO BACK TO PRINTLN1 START LOC + 1                             
+000AA8 D699848599A27A40             674          DC    C'Orders: '                                                                  
+000B2C                              675          ORG   PRNTORHD+133   JUMP PAST END                                                 
+                                    676 *****************************************************************                           
+                                    677 * Print REPORT FOOTER 1 begin -----------------------------------                           
+000B2C 40                           678 PRNTRPF1 DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000B2D 4040404040404040             679          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+
+                                                                                                               PAGE   13            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000B2D                              680          ORG   PRNTRPF1+1     GO BACK TO PRINTLN1 START LOC + 1                             
+000B2D 4040404040404040             681          DC    14C' '                                                                       
+000B3B C39396A2858440D6             682          DC    C'Closed Orders: '                                                           
+000B4A                              683 PCORD    DS    CL12                                                                         
+000B56 D985838589A58584             684          DC    C'Received Total:'                                                           
+000B65                              685 PRETT    DS    CL8                                                                          
+000BB1                              686          ORG   PRNTRPF1+133   JUMP PAST END                                                 
+                                    687 *****************************************************************                           
+                                    688 * Print REPORT FOOTER 2 begin -----------------------------------                           
+000BB1 40                           689 PRNTRPF2 DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000BB2 4040404040404040             690          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+000BB2                              691          ORG   PRNTRPF2+1     GO BACK TO PRINTLN1 START LOC + 1                             
+000BB2 4040404040404040             692          DC    16C' '                                                                       
+000BC2 D697859540D69984             693          DC    C'Open Orders: '                                                             
+000BCF                              694 PCOPO    DS    CL12                                                                         
+000BDB 40D7859584899587             695          DC    C' Pending Total:'                                                           
+000BEA                              696 PRPTT    DS    CL8                                                                          
+000C36                              697          ORG   PRNTRPF2+133   JUMP PAST END                                                 
+                                    698 *****************************************************************                           
+                                    699 * Print REPORT FOOTER 3 begin -----------------------------------                           
+000C36 40                           700 PRNTRPF3 DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000C37 4040404040404040             701          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+000C37                              702          ORG   PRNTRPF3+1     GO BACK TO PRINTLN1 START LOC + 1                             
+000C37 4040404040404040             703          DC    15C' '                                                                       
+000C46 E396A3819340D699             704          DC    C'Total Orders: '                                                            
+000C54                              705 PRTTO    DS    CL12                                                                         
+000C60 40D6A58599819393             706          DC    C' Overall Total:'                                                           
+000C6F                              707 PROAT    DS    CL8                                                                          
+000CBB                              708          ORG   PRNTRPF3+133   JUMP PAST END                                                 
+                                    709 *****************************************************************                           
+                                    710 * Print REPORT FOOTER 4 begin -----------------------------------                           
+000CBB 40                           711 PRNTRPF4 DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000CBC 4040404040404040             712          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+000CBC                              713          ORG   PRNTRPF4+1     GO BACK TO PRINTLN1 START LOC + 1                             
+000CBC 4040404040404040             714          DC    42C' '                                                                       
+000CE6 C1A58740D6998485             715          DC    C'Avg Order Amt:'                                                            
+000CF4                              716 PRAOA    DS    CL8                                                                          
+000D40                              717          ORG   PRNTRPF4+133   JUMP PAST END                                                 
+                                    718 *****************************************************************                           
+                                    719 * Print FISCAL REPORT HEADER begin ------------------------------                           
+000D40 40                           720 PRNTFRHD DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000D41 4040404040404040             721          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+000D41                              722          ORG   PRNTFRHD+1     GO BACK TO PRINTLN1 START LOC + 1                             
+000D41 D49695A388404040             723          DC    C'Month      '                                                               
+000D4C D79985848983A385             724          DC    C'Predicted Sales  '                                                         
+000D5D C183A3A4819340E2             725          DC    C'Actual Sales  '                                                            
+000D6B C4898686E2989984             726          DC    C'DiffSqrd      '                                                            
+000D79 C489A58599878595             727          DC    C'Divergence  '                                                              
+000DC5                              728          ORG   PRNTFRHD+133   JUMP PAST END                                                 
+                                    729 *****************************************************************                           
+                                    730 * Print FISCAL REPORT FOOTER begin ----------------------------                             
+000DC5 40                           731 PRNTFRFT DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000DC6 4040404040404040             732          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+000DC6                              733          ORG   PRNTFRFT+1     GO BACK TO PRINTLN1 START LOC + 1                             
+000DC6 4040404040404040             734          DC    44C' '                                                                       
+000DF2 D9E2E27A40                   735          DC    C'RSS: '                                                                     
+000DF7                              736 PRRSSS   DS    CL8                                                                          
+
+                                                                                                               PAGE   14            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000E4A                              737          ORG   PRNTFRFT+133   JUMP PAST END                                                 
+                                    738 *****************************************************************                           
+                                    739 * Print  FISCAL REPORT TABLE ROW begin -------------------------                            
+000E4A 40                           740 PRNTFRTB DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000E4B 4040404040404040             741          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+000E4B                              742          ORG   PRNTFRTB+1     GO BACK TO PRINTLN1 START LOC + 1                             
+000E4B                              743 PFRMO    DS    CL9                                                                          
+000E54 4040                         744          DC    C'  '                                                                        
+000E56                              745 PFRPS    DS    CL10                                                                         
+000E60 404040                       746          DC    C'   '                                                                       
+000E63                              747 PFRAS    DS    CL12                                                                         
+000E6F 4040                         748          DC    C'  '                                                                        
+000E71                              749 PFRDS    DS    CL12                                                                         
+000E7D 404040404040                 750          DC    C'      '                                                                    
+000E83                              751 PFRDI    DS    CL12                                                                         
+000ECF                              752          ORG   PRNTFRTB+133   JUMP PAST END                                                 
+                                    753 *****************************************************************                           
+000ED0                              754          DS    0F            ENFORCE FULLWORD BOUNDARY                                      
+000ED0                              755 CTABL    DS    30CL64                                                                       
+001650                              756 OTABL    DS    350CL48                                                                      
+0057F0                              757          DS    0H                                                                           
+0057F0                              758 FTABL    DS    12CL32                                                                       
+005970                              759          DS    0F                                                                           
+                                    760 *                                                                                           
+                                    761          END   MAIN                                                                         
+
+***  NO   STATEMENTS FLAGGED -  NO   WARNINGS,  NO   ERRORS                                                                         
+
+*** DYNAMIC CORE AREA USED:  LOW:   42484 HIGH:    3328 LEAVING:  447756 FREE BYTES. AVERAGE:       60 BYTES/STMT ***               
+
+*** ASSEMBLY TIME =    0.001 SECS,   762000 STATEMENTS/SEC ***                                                                      
+
+*** PROGRAM EXECUTION BEGINNING - ANY OUTPUT BEFORE EXECUTION TIME MESSAGE IS PRODUCED BY USER PROGRAM ***                          
+Customer: Vanesa Alonso                    Customer ID: 25103262             Regional Sales Tax: 1000                               
+Address: 4154 W. Madison Dr. Buffalo 14                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+88308206  11/19  CLOSED  MONEY ORD       291642    2858       323664                                                                
+25782080  03/07  CLOSED  MASTERCARD      577358    2521       637614                                                                
+67264567  08/12  CLOSED  MASTERCARD      153253    2026       170604                                                                
+66405712  05/01  CLOSED  VISA            658977    4997       729871                                                                
+49624650  11/01  CLOSED  MONEY ORD       824398    1202       908039                                                                
+74938345  08/03  CLOSED  CHECK            35915    7856        47362                                                                
+20091469  12/01  CLOSED  CHECK           456401    4720       506761                                                                
+28296706  02/22  CLOSED  VISA            203537    0327       224217                                                                
+16922415  07/07  OPEN    MONEY ORD        59754    2207        67936                                                                
+18879656  11/26  CLOSED  MASTERCARD      115196    7361       134076                                                                
+79657431  10/08  CLOSED  MONEY ORD       851211    3223       939555                                                                
+40588531  04/09  CLOSED  MASTERCARD      635596    5157       704312                                                                
+====================================================================                                                                
+              Closed Orders: 11          Received Total:     5326075                                                                
+                Open Orders:  1           Pending Total:       67936                                                                
+               Total Orders: 12           Overall Total:     5394011                                                                
+                                          Avg Order Amt:      449501                                                                
+Customer: Jayda Graham                     Customer ID: 47947039             Regional Sales Tax:  800                               
+Address: 8012 S. Thompson St. West Farg                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+
+72943928  09/23  CLOSED  MASTERCARD      960611    1225      1038684                                                                
+17201194  03/23  CLOSED  CHECK           526119    2125       570333                                                                
+92783470  09/08  CLOSED  VISA             48867    4635        57411                                                                
+56426714  03/11  CLOSED  MONEY ORD       542271    5410       591062                                                                
+20636842  02/19  CLOSED  MONEY ORD       909500    3891       986151                                                                
+21626699  02/10  CLOSED  VISA            258483    9232       288393                                                                
+23809722  07/01  CLOSED  VISA            991365    4095      1074769                                                                
+72484917  04/23  CLOSED  CHECK           223864    0704       242477                                                                
+19713468  03/20  CLOSED  MASTERCARD      948200    2560      1026616                                                                
+54593386  09/11  CLOSED  MASTERCARD      485948    4714       529537                                                                
+====================================================================                                                                
+              Closed Orders: 10          Received Total:     6405433                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders: 10           Overall Total:     6405433                                                                
+                                          Avg Order Amt:      640544                                                                
+Customer: Paddy Loates                     Customer ID: 14939103             Regional Sales Tax: 1100                               
+Address: 9963 Newbridge Road Ridgewood                                                                                              
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+96364478  11/06  CLOSED  MONEY ORD       580252    0347       644426                                                                
+40861222  01/24  CLOSED  MONEY ORD       137229    0504       152828                                                                
+02454766  12/08  CLOSED  CHECK           113030    0101       125564                                                                
+58971039  07/18  OPEN    MASTERCARD      394238    0323       437927                                                                
+22662323  08/14  CLOSED  MONEY ORD       133322    0232       148219                                                                
+35734296  10/16  CLOSED  CHECK           596286    5339       667216                                                                
+00547667  09/18  CLOSED  CHECK           931187    2944      1036561                                                                
+54990197  10/15  CLOSED  MONEY ORD       812796    3807       906010                                                                
+81699374  01/29  CLOSED  MASTERCARD      599639    4150       669749                                                                
+00363298  03/25  CLOSED  MONEY ORD       223984    0327       248949                                                                
+00393290  04/21  CLOSED  CHECK           970608    6447      1083821                                                                
+====================================================================                                                                
+              Closed Orders: 10          Received Total:     5683343                                                                
+                Open Orders:  1           Pending Total:      437927                                                                
+               Total Orders: 11           Overall Total:     6121270                                                                
+                                          Avg Order Amt:      556480                                                                
+Customer: Clay Tyson                       Customer ID: 99706089             Regional Sales Tax: 1700                               
+Address: 334 Clinton Ave. Land O Lakes                                                                                              
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+34090777  05/15  CLOSED  MONEY ORD       843182    0679       987201                                                                
+14256936  06/30  CLOSED  MASTERCARD      167337    0050       195834                                                                
+27983613  07/17  OPEN    MASTERCARD      437359    1397       513107                                                                
+65328555  01/19  CLOSED  MONEY ORD       587146    1859       688819                                                                
+11899663  05/13  CLOSED  MASTERCARD      686973    2426       806184                                                                
+61123090  06/19  CLOSED  VISA            207680    4855       247840                                                                
+10137538  08/08  CLOSED  MONEY ORD       383483    1393       450068                                                                
+80394410  04/26  CLOSED  MONEY ORD       669881    0489       784249                                                                
+34959403  02/05  CLOSED  VISA            766102    1297       897636                                                                
+57967786  05/14  CLOSED  CHECK           671894    0375       786490                                                                
+56652860  04/28  CLOSED  MONEY ORD       989441    7209      1164854                                                                
+27862384  01/23  CLOSED  MONEY ORD       375742    3151       442769                                                                
+72604465  11/12  CLOSED  MASTERCARD      482781    3665       568518                                                                
+36463298  06/12  CLOSED  CHECK           320313    0782       375548                                                                
+27228603  01/20  CLOSED  VISA            863520    3868      1014186                                                                
+78736651  09/12  CLOSED  CHECK           329303    4503       389787                                                                
+====================================================================                                                                
+              Closed Orders: 15          Received Total:     9799983                                                                
+                Open Orders:  1           Pending Total:      513107                                                                
+               Total Orders: 16           Overall Total:    10313090                                                                
+                                          Avg Order Amt:      644569                                                                
+Customer: Cari Culver                      Customer ID: 83817646             Regional Sales Tax:  950                               
+
+Address: 9159 Lafayette St. Dawsonville                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+82932238  01/28  CLOSED  MASTERCARD      182891    1986       202251                                                                
+39490450  06/06  CLOSED  MASTERCARD      799839    0772       876595                                                                
+06674512  10/27  CLOSED  VISA            847913    4495       932959                                                                
+01067102  12/20  CLOSED  VISA            313424    1056       344255                                                                
+35442566  08/08  CLOSED  VISA            604047    3161       664592                                                                
+66666030  09/24  CLOSED  MASTERCARD      969459    4092      1065649                                                                
+92605962  12/30  CLOSED  VISA            931515    0416      1020424                                                                
+80246922  06/16  CLOSED  MASTERCARD      673325    1117       738407                                                                
+36425837  03/02  CLOSED  VISA            764652    5462       842755                                                                
+99316973  06/01  CLOSED  CHECK            13000    0751        14986                                                                
+92623943  02/09  CLOSED  MASTERCARD      833096    2980       915220                                                                
+55199959  01/07  CLOSED  MONEY ORD       511781    1648       562048                                                                
+40640249  05/04  CLOSED  CHECK           498706    2370       548453                                                                
+81072490  05/15  CLOSED  VISA            431103    6315       478372                                                                
+06858101  11/27  CLOSED  CHECK           565245    3253       622196                                                                
+====================================================================                                                                
+              Closed Orders: 15          Received Total:     9829162                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders: 15           Overall Total:     9829162                                                                
+                                          Avg Order Amt:      655278                                                                
+Customer: Geo Blanco                       Customer ID: 71142682             Regional Sales Tax: 1850                               
+Address: 833 Wintergreen Ave. East Hart                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+33625743  12/13  CLOSED  CHECK           759397    0172       900057                                                                
+67786355  11/24  CLOSED  CHECK           738500    8448       883570                                                                
+03948574  08/11  CLOSED  MONEY ORD       818083    1408       970836                                                                
+73546089  07/19  CLOSED  CHECK            71254    1127        85562                                                                
+73420565  11/18  CLOSED  CHECK           824553    0590       977685                                                                
+89364721  07/04  OPEN    MASTERCARD      606398    0445       719026                                                                
+====================================================================                                                                
+              Closed Orders:  5          Received Total:     3817710                                                                
+                Open Orders:  1           Pending Total:      719026                                                                
+               Total Orders:  6           Overall Total:     4536736                                                                
+                                          Avg Order Amt:      756123                                                                
+Customer: Dani Dyal                        Customer ID: 72363068             Regional Sales Tax: 2000                               
+Address: 773 Saxon St. Union City 7087                                                                                              
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+41898542  07/02  CLOSED  MONEY ORD       862030    3649      1038085                                                                
+06857893  10/25  CLOSED  MONEY ORD       762575    5874       920964                                                                
+94950551  03/27  CLOSED  CHECK           863063    1793      1037468                                                                
+65104255  09/13  CLOSED  MONEY ORD       785892    0777       943847                                                                
+19567743  02/05  CLOSED  CHECK           793133    2408       954167                                                                
+75612395  02/17  CLOSED  MONEY ORD       497186    2018       598641                                                                
+14744798  12/14  CLOSED  MASTERCARD      336138    7014       410379                                                                
+10997309  01/20  CLOSED  CHECK           956326    5374      1152965                                                                
+74396138  02/14  CLOSED  MASTERCARD      461049    0069       553327                                                                
+01515953  08/08  CLOSED  VISA            635418    0962       763463                                                                
+====================================================================                                                                
+              Closed Orders: 10          Received Total:     8373306                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders: 10           Overall Total:     8373306                                                                
+                                          Avg Order Amt:      837331                                                                
+Customer: Amy Ponting                      Customer ID: 27945702             Regional Sales Tax:  800                               
+Address: 961 Meadowbrook St. Grand Have                                                                                             
+Orders:                                                                                                                             
+
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+11097075  02/19  CLOSED  MASTERCARD      337437    0073       364504                                                                
+57909439  06/11  CLOSED  MONEY ORD        92237    4620       104235                                                                
+72249621  01/01  CLOSED  VISA            494330    1150       535026                                                                
+99018487  07/01  OPEN    VISA            817149    2464       884984                                                                
+56832898  01/12  CLOSED  MONEY ORD       968639    2632      1048762                                                                
+25199224  02/03  CLOSED  MONEY ORD       644658    1991       698221                                                                
+09141843  12/24  CLOSED  CHECK            60610    3641        69099                                                                
+64466890  07/11  CLOSED  MASTERCARD      515801    4127       561192                                                                
+30550182  07/12  CLOSED  VISA            304947    4990       334332                                                                
+48571321  10/06  CLOSED  MONEY ORD       367116    2272       398757                                                                
+06752671  04/14  CLOSED  MASTERCARD      715840    0060       773167                                                                
+31447220  06/19  CLOSED  CHECK           334480    0384       361622                                                                
+60469941  04/10  CLOSED  CHECK           432037    2410       469009                                                                
+80614589  07/13  CLOSED  MONEY ORD       500098    3846       543951                                                                
+67741757  02/15  CLOSED  VISA            531388    1878       575777                                                                
+01727815  04/13  CLOSED  MONEY ORD       601459    4348       653923                                                                
+====================================================================                                                                
+              Closed Orders: 15          Received Total:     7491577                                                                
+                Open Orders:  1           Pending Total:      884984                                                                
+               Total Orders: 16           Overall Total:     8376561                                                                
+                                          Avg Order Amt:      523536                                                                
+Customer: Angel Hernandez                  Customer ID: 24887287             Regional Sales Tax:  950                               
+Address: 5426 E. Buckingham Ave. Pleasa                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+41957773  06/24  CLOSED  CHECK            35608    3982        42972                                                                
+29001792  06/06  CLOSED  MASTERCARD      602807    1401       661474                                                                
+48887558  08/04  CLOSED  MASTERCARD      533468    0792       584939                                                                
+58099938  02/06  CLOSED  MASTERCARD       60848    3286        69914                                                                
+36630247  07/11  OPEN    MASTERCARD      728674    5379       803277                                                                
+37252367  02/24  CLOSED  MONEY ORD       965709    0752      1058203                                                                
+90539988  10/08  CLOSED  CHECK            24295    3529        30132                                                                
+95649692  11/24  CLOSED  MASTERCARD      518914    2402       570612                                                                
+66184775  12/15  CLOSED  MASTERCARD      179887    2130       199106                                                                
+89818414  06/05  OPEN    MASTERCARD      423283    4487       467981                                                                
+81143904  09/18  CLOSED  CHECK           266048    0765       292087                                                                
+06175828  09/15  CLOSED  CHECK           243624    5656       272424                                                                
+====================================================================                                                                
+              Closed Orders: 10          Received Total:     3781863                                                                
+                Open Orders:  2           Pending Total:     1271258                                                                
+               Total Orders: 12           Overall Total:     5053121                                                                
+                                          Avg Order Amt:      421094                                                                
+Customer: Nicolasa Cruz                    Customer ID: 62378290             Regional Sales Tax: 1850                               
+Address: 3769 Corona Dr. Mountain View                                                                                              
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+73339488  10/10  CLOSED  CHECK            17370    8345        28928                                                                
+68763759  11/05  CLOSED  CHECK           824320    3924       980743                                                                
+86736604  01/06  CLOSED  VISA            196614    0505       233492                                                                
+72527813  07/24  OPEN    CHECK            36721    1598        45112                                                                
+61136812  02/12  CLOSED  MASTERCARD      340967    4828       408873                                                                
+92646523  04/02  CLOSED  CHECK           287799    0250       341291                                                                
+36259462  03/21  CLOSED  VISA            977236    1941      1159965                                                                
+74396219  10/25  CLOSED  CHECK           811046    3925       965014                                                                
+88322931  07/02  CLOSED  MONEY ORD       506857    4655       605280                                                                
+81642161  10/21  CLOSED  MONEY ORD       220856    2015       263729                                                                
+40495677  02/18  CLOSED  MONEY ORD        14448    0825        17945                                                                
+46333791  06/21  CLOSED  MONEY ORD       148184    2237       177835                                                                
+33756671  07/13  CLOSED  VISA            744533    2160       884431                                                                
+
+88867446  04/19  CLOSED  MASTERCARD      711757    3358       846790                                                                
+====================================================================                                                                
+              Closed Orders: 13          Received Total:     6914316                                                                
+                Open Orders:  1           Pending Total:       45112                                                                
+               Total Orders: 14           Overall Total:     6959428                                                                
+                                          Avg Order Amt:      497103                                                                
+Customer: Irene Byram                      Customer ID: 99143393             Regional Sales Tax: 1000                               
+Address: 881 Rockwell St. Rockville 208                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+13315533  03/16  CLOSED  VISA            713033    4262       788598                                                                
+33334966  12/23  CLOSED  VISA            546236    2670       603529                                                                
+68150603  05/19  CLOSED  MASTERCARD      340123    4688       378823                                                                
+38948276  12/22  CLOSED  MASTERCARD      235383    4105       263026                                                                
+38098686  06/17  CLOSED  MONEY ORD       535418    1895       590854                                                                
+77723292  08/01  CLOSED  MONEY ORD       624905    2126       689521                                                                
+03443334  04/17  CLOSED  MONEY ORD       954573    0042      1050072                                                                
+86988355  03/12  CLOSED  VISA            312093    0872       344174                                                                
+28384004  10/18  CLOSED  MASTERCARD      313684    6005       351057                                                                
+68870570  05/30  CLOSED  MONEY ORD       973332    1442      1072107                                                                
+88029978  02/03  CLOSED  MONEY ORD        96626    0027       106315                                                                
+42615547  07/04  OPEN    MONEY ORD       954201    1300      1050921                                                                
+28106006  08/05  CLOSED  CHECK           560706    3079       619855                                                                
+10182892  11/07  CLOSED  CHECK           290328    6171       325531                                                                
+====================================================================                                                                
+              Closed Orders: 13          Received Total:     7183462                                                                
+                Open Orders:  1           Pending Total:     1050921                                                                
+               Total Orders: 14           Overall Total:     8234383                                                                
+                                          Avg Order Amt:      588171                                                                
+Customer: Joseph Mileham                   Customer ID: 47068534             Regional Sales Tax: 1850                               
+Address: 4189 Prairie St. Pleasanton 94                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+94441773  12/07  CLOSED  MONEY ORD       317915    1603       378332                                                                
+06921921  03/08  CLOSED  VISA            200310    1053       238420                                                                
+79577401  11/15  CLOSED  CHECK           205246    5790       249006                                                                
+18520480  07/04  OPEN    CHECK           199434    4159       240488                                                                
+97972181  09/11  CLOSED  CHECK           926353    1390      1099118                                                                
+15722041  04/01  CLOSED  VISA            122371    2362       147371                                                                
+02221971  11/07  CLOSED  MONEY ORD       441174    1801       524592                                                                
+69213871  10/21  CLOSED  CHECK            34337    9023        49712                                                                
+50854422  02/23  CLOSED  VISA            619437    0654       734686                                                                
+92910983  02/15  CLOSED  CHECK           175264    0233       207920                                                                
+66831465  03/13  CLOSED  CHECK           899679    0975      1067094                                                                
+71676830  08/17  CLOSED  MONEY ORD        77522    1138        93001                                                                
+86295196  06/19  CLOSED  MONEY ORD       753525    3090       896017                                                                
+23217947  05/29  CLOSED  VISA            913824    7198      1090079                                                                
+15121077  12/03  CLOSED  MASTERCARD      933211    1746      1107601                                                                
+====================================================================                                                                
+              Closed Orders: 14          Received Total:     7882949                                                                
+                Open Orders:  1           Pending Total:      240488                                                                
+               Total Orders: 15           Overall Total:     8123437                                                                
+                                          Avg Order Amt:      541563                                                                
+Customer: Caroline Hill                    Customer ID: 43425673             Regional Sales Tax: 1500                               
+Address: 3817 Mayfair Avenue West Haven                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+23499474  05/18  CLOSED  MONEY ORD       940024    3490      1084517                                                                
+16477278  10/08  CLOSED  VISA            323757    8780       381100                                                                
+39635893  04/06  CLOSED  CHECK           156320    1650       181418                                                                
+
+91366923  05/17  CLOSED  MASTERCARD      710277    4515       821333                                                                
+30261657  01/27  CLOSED  MONEY ORD       710067    3340       819917                                                                
+57041858  05/14  CLOSED  VISA            227399    1098       262606                                                                
+46741877  08/10  CLOSED  MASTERCARD      473166    2139       546279                                                                
+47144984  09/09  CLOSED  CHECK           582453    4198       674018                                                                
+92864804  12/19  CLOSED  MASTERCARD      392312    4902       456060                                                                
+53900721  10/11  CLOSED  VISA            861556    3177       993966                                                                
+92741547  08/30  CLOSED  CHECK           153727    0871       177657                                                                
+00506179  02/08  CLOSED  VISA            537436    0902       618953                                                                
+45843907  03/28  CLOSED  MONEY ORD        60039    1724        70768                                                                
+84854464  06/21  CLOSED  VISA            785150    1115       904037                                                                
+====================================================================                                                                
+              Closed Orders: 14          Received Total:     7992629                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders: 14           Overall Total:     7992629                                                                
+                                          Avg Order Amt:      570903                                                                
+Customer: Kirk Rundle                      Customer ID: 29636844             Regional Sales Tax: 1700                               
+Address: 6422 West Prairie Ave. Clearwa                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+38492198  06/28  CLOSED  MASTERCARD      145899    3408       174109                                                                
+81874183  12/23  CLOSED  MASTERCARD      105313    5928       129144                                                                
+93345468  01/30  CLOSED  MASTERCARD      911528    0993      1067480                                                                
+65014727  11/10  CLOSED  MONEY ORD       883213    1732      1035091                                                                
+09641731  12/02  CLOSED  MONEY ORD       388656    0774       455501                                                                
+82497400  08/25  CLOSED  MONEY ORD        22869    0448        27204                                                                
+17947093  11/28  CLOSED  MONEY ORD        67784    4277        83584                                                                
+08879047  06/24  OPEN    MONEY ORD       502837    4379       592698                                                                
+83231803  08/01  CLOSED  VISA            751469    2210       881428                                                                
+17937690  07/19  OPEN    VISA            247404    3537       292999                                                                
+59686941  01/15  CLOSED  MASTERCARD      883309    7080      1040551                                                                
+58841704  11/16  CLOSED  MONEY ORD       214276    2933       253635                                                                
+07537237  03/26  CLOSED  MASTERCARD      375930    3365       443203                                                                
+56371269  04/02  CLOSED  MASTERCARD      268823    2719       317241                                                                
+37155603  01/02  CLOSED  MONEY ORD       423015    0983       495910                                                                
+49031233  01/28  CLOSED  VISA            704461    1483       825702                                                                
+35573368  03/22  CLOSED  VISA             99654    2289       118884                                                                
+95804354  11/08  CLOSED  CHECK           457578    0911       536277                                                                
+====================================================================                                                                
+              Closed Orders: 16          Received Total:     7884944                                                                
+                Open Orders:  2           Pending Total:      885697                                                                
+               Total Orders: 18           Overall Total:     8770641                                                                
+                                          Avg Order Amt:      487258                                                                
+Customer: Montie Kettle                    Customer ID: 71762930             Regional Sales Tax: 1500                               
+Address: 9682 West Belmont Drive Lawren                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+04325687  03/22  CLOSED  CHECK           357950    0341       411983                                                                
+22665226  03/02  CLOSED  VISA            725729    4644       839232                                                                
+50506140  03/13  CLOSED  CHECK           896325    6030      1036803                                                                
+94555674  07/02  CLOSED  MASTERCARD      958419    3414      1105595                                                                
+56602582  09/29  CLOSED  MONEY ORD       344360    2800       398814                                                                
+80807508  01/07  CLOSED  MONEY ORD       532408    4576       616845                                                                
+67416468  07/20  CLOSED  MONEY ORD       232881    0911       268724                                                                
+99171541  12/26  CLOSED  CHECK           109121    0725       126214                                                                
+64348640  10/30  CLOSED  CHECK           715749    0656       823767                                                                
+00541070  10/17  CLOSED  VISA            397743    0512       457916                                                                
+25449141  04/16  CLOSED  VISA            631550    0282       726564                                                                
+64553401  09/16  CLOSED  VISA             66836    0556        77417                                                                
+71765483  04/28  CLOSED  MASTERCARD      678964    0542       781350                                                                
+78049609  05/11  CLOSED  VISA            378566    3579       438929                                                                
+
+17867215  08/10  CLOSED  MASTERCARD      388477    0640       447388                                                                
+55462437  09/05  CLOSED  CHECK           577111    3171       666848                                                                
+====================================================================                                                                
+              Closed Orders: 16          Received Total:     9224389                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders: 16           Overall Total:     9224389                                                                
+                                          Avg Order Amt:      576525                                                                
+Customer: Dulcie Lane                      Customer ID: 54793504             Regional Sales Tax:  800                               
+Address: 3946 Queen Ave. Westland 48185                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+31044048  10/03  CLOSED  VISA            167460    6025       186881                                                                
+05803760  12/04  CLOSED  MONEY ORD       726806    1476       786426                                                                
+86684409  12/30  CLOSED  MONEY ORD       599568    3088       650621                                                                
+87015406  03/16  CLOSED  MONEY ORD       897115    5860       974744                                                                
+04637871  10/30  CLOSED  VISA            189101    0431       204660                                                                
+03680549  03/11  CLOSED  VISA            713050    0258       770352                                                                
+55886100  08/20  CLOSED  CHECK           656334    0641       709481                                                                
+49793699  03/05  CLOSED  VISA            271958    5200       298914                                                                
+56892718  08/27  CLOSED  MONEY ORD       782714    3331       848662                                                                
+68013697  11/24  CLOSED  VISA            969864    1416      1048869                                                                
+66244660  02/10  CLOSED  CHECK           193999    0136       209654                                                                
+54240413  07/14  OPEN    MONEY ORD       446126    3562       485378                                                                
+====================================================================                                                                
+              Closed Orders: 11          Received Total:     6689264                                                                
+                Open Orders:  1           Pending Total:      485378                                                                
+               Total Orders: 12           Overall Total:     7174642                                                                
+                                          Avg Order Amt:      597887                                                                
+Customer: Garth Voyle                      Customer ID: 99184972             Regional Sales Tax: 1500                               
+Address: 123 Walnut Ave. Hastings 55033                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+59702529  04/19  CLOSED  VISA            583993    0669       672260                                                                
+08321338  10/20  CLOSED  MASTERCARD       56960    1455        66959                                                                
+65149320  05/20  CLOSED  VISA            618505    0793       712073                                                                
+44602454  03/06  CLOSED  CHECK           905585    0497      1041919                                                                
+68965957  04/27  CLOSED  MASTERCARD      523576    4696       606808                                                                
+59415734  12/26  CLOSED  VISA            213699    0468       246221                                                                
+09568477  01/03  CLOSED  VISA            977497    1679      1125800                                                                
+11120210  11/18  CLOSED  VISA            646410    4116       747487                                                                
+23563604  02/19  CLOSED  MASTERCARD      116050    0262       133719                                                                
+====================================================================                                                                
+              Closed Orders:  9          Received Total:     5353246                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders:  9           Overall Total:     5353246                                                                
+                                          Avg Order Amt:      594806                                                                
+Customer: Leonora Keenum                   Customer ID: 19509311             Regional Sales Tax: 1500                               
+Address: 8010 Atlantic Dr. Northbrook 6                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+27819182  04/04  CLOSED  MASTERCARD      765386    4622       884815                                                                
+95621833  04/22  CLOSED  VISA             72507    5054        88437                                                                
+03621570  01/16  CLOSED  CHECK           547660    5049       634858                                                                
+24872635  10/22  CLOSED  CHECK           936165    1701      1078290                                                                
+83775811  05/06  CLOSED  MASTERCARD      106069    1378       123357                                                                
+70368413  02/09  CLOSED  MONEY ORD       990168    3457      1142150                                                                
+32990296  09/13  CLOSED  MONEY ORD       677057    4070       782685                                                                
+57980020  07/07  OPEN    MONEY ORD        99816    0016       114804                                                                
+76984710  02/08  CLOSED  MASTERCARD      928688    0124      1068115                                                                
+84021420  09/18  CLOSED  VISA            669788    0257       770513                                                                
+
+87978121  10/04  CLOSED  MONEY ORD       893305    5338      1032638                                                                
+12410930  11/12  CLOSED  MONEY ORD       735286    0202       845780                                                                
+08642177  03/08  CLOSED  MASTERCARD      866852    1886       998765                                                                
+====================================================================                                                                
+              Closed Orders: 12          Received Total:     9450403                                                                
+                Open Orders:  1           Pending Total:      114804                                                                
+               Total Orders: 13           Overall Total:     9565207                                                                
+                                          Avg Order Amt:      735786                                                                
+Customer: Patsy Balfour                    Customer ID: 99951450             Regional Sales Tax: 2000                               
+Address: 6258 Shirley Ave. Douglasville                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+14093445  10/28  CLOSED  CHECK           901806    1685      1083852                                                                
+85630853  09/20  CLOSED  MONEY ORD       920342    1071      1105481                                                                
+96501142  10/22  CLOSED  MASTERCARD      989553    4708      1192171                                                                
+74556268  03/30  CLOSED  MONEY ORD       761187    2327       915751                                                                
+93416785  10/10  CLOSED  CHECK           207173    1062       249669                                                                
+10761804  12/14  CLOSED  VISA             45980    7439        62615                                                                
+21042890  10/16  CLOSED  VISA            963359    0083      1156113                                                                
+11243536  01/19  CLOSED  MASTERCARD      860228    0167      1032440                                                                
+66014574  01/05  CLOSED  CHECK           846231    2406      1017883                                                                
+94440113  12/30  CLOSED  CHECK           477435    3897       576819                                                                
+77540077  05/14  CLOSED  CHECK           231213    7383       284838                                                                
+====================================================================                                                                
+              Closed Orders: 11          Received Total:     8677632                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders: 11           Overall Total:     8677632                                                                
+                                          Avg Order Amt:      788876                                                                
+Customer: William Guest                    Customer ID: 58436555             Regional Sales Tax:  950                               
+Address: 2810 S. Chestnut Lane West Blo                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+32311752  08/12  CLOSED  CHECK            45121    1302        50709                                                                
+27584890  01/15  CLOSED  CHECK           631888    0071       691988                                                                
+47864394  03/29  CLOSED  MASTERCARD      185522    5899       209045                                                                
+28859946  10/02  CLOSED  VISA            335338    6022       373217                                                                
+54288644  09/23  CLOSED  MASTERCARD      906113    2244       994437                                                                
+43399670  08/13  CLOSED  MONEY ORD       108085    5063       123416                                                                
+20380948  09/14  CLOSED  MONEY ORD       784497    6402       865426                                                                
+66027612  08/01  CLOSED  MASTERCARD      102094    4777       116569                                                                
+81359343  10/27  CLOSED  MASTERCARD       75156    7129        89424                                                                
+29610048  07/13  OPEN    CHECK           328302    7684       367174                                                                
+====================================================================                                                                
+              Closed Orders:  9          Received Total:     3514231                                                                
+                Open Orders:  1           Pending Total:      367174                                                                
+               Total Orders: 10           Overall Total:     3881405                                                                
+                                          Avg Order Amt:      388141                                                                
+Customer: Juanma Moreno                    Customer ID: 38675976             Regional Sales Tax: 1700                               
+Address: 2707 North Rockland Street Min                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+26287968  11/27  CLOSED  VISA            859227    2287      1007582                                                                
+42561027  02/19  CLOSED  MASTERCARD      420562    0788       492845                                                                
+10676283  11/26  CLOSED  CHECK           791486    6094       932132                                                                
+82950997  08/25  CLOSED  VISA            528325    0421       618561                                                                
+40631591  02/09  CLOSED  MONEY ORD       168463    2790       199891                                                                
+35406073  05/16  CLOSED  CHECK           209679    0132       245456                                                                
+32903625  07/17  CLOSED  CHECK           637452    1309       747127                                                                
+25745738  06/06  CLOSED  MONEY ORD        68312    4440        84365                                                                
+87135534  02/16  CLOSED  VISA            232474    1251       273245                                                                
+
+66631664  02/15  CLOSED  CHECK           972852    0659      1138895                                                                
+93242702  02/07  CLOSED  CHECK           583067    3819       686007                                                                
+====================================================================                                                                
+              Closed Orders: 11          Received Total:     6426106                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders: 11           Overall Total:     6426106                                                                
+                                          Avg Order Amt:      584192                                                                
+Customer: Alice Abarough                   Customer ID: 90249485             Regional Sales Tax: 2000                               
+Address: 5425 Atlantic Dr. Suitland 207                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+11801350  08/08  CLOSED  CHECK           104527    6858       132290                                                                
+19361203  11/13  CLOSED  CHECK           278471    6348       340513                                                                
+53962705  02/17  CLOSED  MONEY ORD       397010    6369       482781                                                                
+21505972  03/22  CLOSED  MONEY ORD       661697    8137       802173                                                                
+17440882  04/19  CLOSED  CHECK           643547    0773       773029                                                                
+30152742  04/07  CLOSED  CHECK           937721    2012      1127277                                                                
+51101319  02/12  CLOSED  MASTERCARD      391177    0218       469630                                                                
+50448670  03/21  CLOSED  MASTERCARD      366858    0866       441095                                                                
+22813532  04/24  CLOSED  MONEY ORD       423003    4456       512059                                                                
+====================================================================                                                                
+              Closed Orders:  9          Received Total:     5080847                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders:  9           Overall Total:     5080847                                                                
+                                          Avg Order Amt:      564539                                                                
+Customer: Aidin Leavitt                    Customer ID: 20366910             Regional Sales Tax:  800                               
+Address: 2233 W. Garfield Street Readin                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+54993518  08/26  CLOSED  MASTERCARD      489503    7903       536566                                                                
+12484124  06/05  OPEN    CHECK           347512    3267       378579                                                                
+68062304  01/04  CLOSED  MONEY ORD       974606    0351      1052925                                                                
+45546796  09/05  CLOSED  CHECK           497664    6255       543732                                                                
+91455666  07/10  CLOSED  CHECK           863322    1299       933686                                                                
+55246494  06/25  CLOSED  MONEY ORD       570763    0579       617003                                                                
+====================================================================                                                                
+              Closed Orders:  5          Received Total:     3683912                                                                
+                Open Orders:  1           Pending Total:      378579                                                                
+               Total Orders:  6           Overall Total:     4062491                                                                
+                                          Avg Order Amt:      677082                                                                
+Customer: Elektra Kovacevic                Customer ID: 80626987             Regional Sales Tax: 1700                               
+Address: 5635 Purple Finch Lane Union C                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+73847233  09/19  CLOSED  CHECK           910345    3686      1068789                                                                
+49562752  04/07  CLOSED  CHECK           728641    0535       853044                                                                
+92351893  08/06  CLOSED  MASTERCARD      291043    2106       342626                                                                
+19710598  02/06  CLOSED  MASTERCARD      742446    0916       869577                                                                
+02003157  11/11  CLOSED  VISA            172491    1088       202902                                                                
+06576323  02/08  CLOSED  MASTERCARD      948964    3214      1113501                                                                
+47117589  03/15  CLOSED  VISA            529409    2554       621962                                                                
+72530825  01/03  CLOSED  CHECK           425909    7333       505646                                                                
+91424346  06/20  OPEN    MONEY ORD       831693    3242       976322                                                                
+95559243  03/07  CLOSED  CHECK           484996    4259       571704                                                                
+====================================================================                                                                
+              Closed Orders:  9          Received Total:     6149751                                                                
+                Open Orders:  1           Pending Total:      976322                                                                
+               Total Orders: 10           Overall Total:     7126073                                                                
+                                          Avg Order Amt:      712608                                                                
+Customer: Sylvie Wolfenden                 Customer ID: 43465338             Regional Sales Tax: 1100                               
+
+Address: 8899 Newcastle Avenue Green Co                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+68748522  07/16  CLOSED  MONEY ORD       903170    0563      1003081                                                                
+47440292  05/25  CLOSED  VISA            772782    0778       858566                                                                
+27981071  12/03  CLOSED  VISA            214556    1302       239459                                                                
+85559730  12/06  CLOSED  MASTERCARD      718428    1549       799004                                                                
+82419390  03/01  CLOSED  CHECK           273011    1494       304536                                                                
+====================================================================                                                                
+              Closed Orders:  5          Received Total:     3204646                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders:  5           Overall Total:     3204646                                                                
+                                          Avg Order Amt:      640930                                                                
+Customer: Finn MacCawley                   Customer ID: 81535346             Regional Sales Tax: 2000                               
+Address: 1272 Kirkland St. Rock Hill 29                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+66106118  08/22  CLOSED  CHECK           223138    0114       267879                                                                
+34606985  10/28  CLOSED  VISA            300094    3187       363299                                                                
+64681845  03/26  CLOSED  MONEY ORD       733307    6297       886265                                                                
+20444642  03/02  CLOSED  MONEY ORD       814585    5172       982674                                                                
+43645014  01/16  CLOSED  CHECK           695074    1808       835896                                                                
+70837104  01/23  CLOSED  VISA            729219    9223       884285                                                                
+32437397  08/23  CLOSED  CHECK           410519    1220       493842                                                                
+89426016  01/15  CLOSED  MASTERCARD      237611    3188       288321                                                                
+87844676  12/05  CLOSED  MONEY ORD       751243    5033       906524                                                                
+====================================================================                                                                
+              Closed Orders:  9          Received Total:     5908985                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders:  9           Overall Total:     5908985                                                                
+                                          Avg Order Amt:      656554                                                                
+Customer: Elisha Bugden                    Customer ID: 82561732             Regional Sales Tax: 1850                               
+Address: 6552 Roehampton Ave. Frederick                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+56037663  02/17  CLOSED  CHECK           849272    0423      1006810                                                                
+34939668  04/12  CLOSED  VISA            235033    4455       282969                                                                
+63182723  06/06  OPEN    MONEY ORD       623600    1169       740135                                                                
+81657307  05/30  CLOSED  MONEY ORD       441621    0983       524303                                                                
+65144297  09/04  CLOSED  VISA            895135    2950      1063684                                                                
+56355493  05/26  CLOSED  MASTERCARD      305082    1643       363165                                                                
+14978119  10/27  CLOSED  CHECK           157193    3735       190008                                                                
+56009287  05/03  CLOSED  CHECK           151878    3183       183158                                                                
+78758267  01/13  CLOSED  VISA            866274    3701      1030235                                                                
+57158190  08/18  CLOSED  CHECK           928371    4745      1104864                                                                
+====================================================================                                                                
+              Closed Orders:  9          Received Total:     5749196                                                                
+                Open Orders:  1           Pending Total:      740135                                                                
+               Total Orders: 10           Overall Total:     6489331                                                                
+                                          Avg Order Amt:      648934                                                                
+Customer: Stacy Bean                       Customer ID: 61051086             Regional Sales Tax: 1500                               
+Address: 4828 Ridgeview Court Englewood                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+05144694  05/03  CLOSED  MONEY ORD       197852    1111       228640                                                                
+25873624  09/11  CLOSED  MONEY ORD       856805    4905       990230                                                                
+29830097  06/30  CLOSED  VISA            748660    0843       861802                                                                
+69074831  03/10  CLOSED  CHECK           730256    4094       843888                                                                
+22479402  09/08  CLOSED  VISA            832084    0273       957169                                                                
+
+58097745  09/05  CLOSED  MONEY ORD       318244    1692       367672                                                                
+07076759  09/28  CLOSED  CHECK           472415    1470       544747                                                                
+73280347  12/13  CLOSED  CHECK           516604    2473       596567                                                                
+76861349  12/24  CLOSED  MONEY ORD       862597    2916       994902                                                                
+94381348  09/14  CLOSED  CHECK           283966    3518       330078                                                                
+09988260  08/20  CLOSED  VISA            315013    0688       362952                                                                
+17502313  10/22  CLOSED  MASTERCARD      745447    0205       857469                                                                
+50241087  10/16  CLOSED  MASTERCARD      838922    7615       972375                                                                
+19591129  10/24  CLOSED  MASTERCARD      661908    5522       766716                                                                
+47778937  05/12  CLOSED  CHECK           895251    0316      1029854                                                                
+51968233  03/20  CLOSED  MONEY ORD       193672    0835       223557                                                                
+====================================================================                                                                
+              Closed Orders: 16          Received Total:    10928618                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders: 16           Overall Total:    10928618                                                                
+                                          Avg Order Amt:      683039                                                                
+Customer: Melissa Anstey                   Customer ID: 46547823             Regional Sales Tax:  800                               
+Address: 9070 Edgemont Avenue Mentor 44                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+00779227  07/08  CLOSED  MONEY ORD       356850    4294       389692                                                                
+69983752  05/26  CLOSED  MONEY ORD       506484    3227       550229                                                                
+03140780  09/29  CLOSED  MASTERCARD      705058    6296       767758                                                                
+21149602  06/11  CLOSED  MASTERCARD      872119    1826       943714                                                                
+89984191  07/09  CLOSED  CHECK            80282    2409        89113                                                                
+12275371  08/30  CLOSED  CHECK           662795    5564       721382                                                                
+29908632  07/16  OPEN    MONEY ORD       487058    0075       526097                                                                
+88202242  04/22  CLOSED  CHECK            12277    0481        13740                                                                
+21412814  04/12  CLOSED  CHECK           419881    8959       462430                                                                
+88245327  12/22  CLOSED  MONEY ORD       808380    4061       877111                                                                
+====================================================================                                                                
+              Closed Orders:  9          Received Total:     4815169                                                                
+                Open Orders:  1           Pending Total:      526097                                                                
+               Total Orders: 10           Overall Total:     5341266                                                                
+                                          Avg Order Amt:      534127                                                                
+Customer: Raphael Poe                      Customer ID:  5398625             Regional Sales Tax: 1100                               
+Address: 387 Kent Road Boca Raton 33428                                                                                             
+Orders:                                                                                                                             
+ID        Date   Status  Payment Method  Subtotal  Shipping  Total                                                                  
+====================================================================                                                                
+70179007  12/26  CLOSED  MASTERCARD      764547    0780       849427                                                                
+49475060  10/30  CLOSED  MASTERCARD      509354    1848       567230                                                                
+12382525  10/19  CLOSED  MONEY ORD       458758    9122       518343                                                                
+76836982  11/26  CLOSED  MASTERCARD      319438    7215       361791                                                                
+75238594  10/05  CLOSED  VISA            272610    3743       306340                                                                
+56408158  12/26  CLOSED  VISA            732330    0811       813697                                                                
+83735884  03/11  CLOSED  MASTERCARD      537588    0462       597184                                                                
+98759207  04/19  CLOSED  VISA            892894    1093       992205                                                                
+68850115  02/16  CLOSED  MONEY ORD       679006    0503       754199                                                                
+====================================================================                                                                
+              Closed Orders:  9          Received Total:     5760416                                                                
+                Open Orders:  0           Pending Total:           0                                                                
+               Total Orders:  9           Overall Total:     5760416                                                                
+                                          Avg Order Amt:      640047                                                                
+                                                                                                                                    
+Month      Predicted Sales  Actual Sales  DiffSqrd      Divergence                                                                  
+====================================================================                                                                
+January    0017755379       17830842    1399697073             25654                                                                
+February   0017642145       17660502     336979449              5447                                                                
+March      0019861223       19990273    -525966684              7431                                                                
+April      0015350665       15289342    -534456967                 0                                                                
+May        0012660722       12710796   -1787561820             20237                                                                
+
+June       0010590482       10603581     171583801                 0                                                                
+July       0014358739       14371895     173080336                 0                                                                
+August     0012162453       11997412    1468727905            148057                                                                
+September  0017274423       17247565     721352164             13347                                                                
+October    0017580581       17617952    1396591641                 0                                                                
+November   0013130073       13098073    1024000000                 0                                                                
+December   0013581599       13610722     848149129              9638                                                                
+====================================================================                                                                
+                                            RSS:     47561818                                                                       
+
+*** EXECUTION TIME =    0.033 SECS.    103157 INSTRUCTIONS EXECUTED -  3125969 INSTRUCTIONS/SEC ***                                 
+
+*** AM004 - NORMAL USER TERMINATION BY RETURN ***                                                                                   
+!! END OF JES SPOOL FILE !!

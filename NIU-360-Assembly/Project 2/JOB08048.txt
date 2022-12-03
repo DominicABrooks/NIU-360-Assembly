@@ -1,0 +1,1199 @@
+
+                   J E S 2  J O B  L O G  --  S Y S T E M  2 9 6 4  --  N O D E  S V S C J E S 2        
+
+ 
+14.19.10 JOB08048 ---- TUESDAY,   29 NOV 2022 ----
+14.19.10 JOB08048  IRR010I  USERID KC03ABD  IS ASSIGNED TO THIS JOB.
+14.19.10 JOB08048  ICH70001I KC03ABD  LAST ACCESS AT 14:14:54 ON TUESDAY, NOVEMBER 29, 2022
+14.19.10 JOB08048  $HASP373 KC03ABDA STARTED - INIT 1    - CLASS A        - SYS 2964
+14.19.11 JOB08048  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+14.19.11 JOB08048  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+14.19.11 JOB08048  -JSTEP01              00     42      5       .00       .00     .0             9  BATCH        0     0     0     0
+14.19.11 JOB08048  -KC03ABDA ENDED.  NAME-DOMINIC BROOKS       TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+14.19.11 JOB08048  $HASP395 KC03ABDA ENDED - RC=0000
+
+------ JES2 JOB STATISTICS ------
+
+
+  29 NOV 2022 JOB EXECUTION DATE
+
+
+        1,848 CARDS READ
+
+
+        1,140 SYSOUT PRINT RECORDS
+
+
+            0 SYSOUT PUNCH RECORDS
+
+
+           98 SYSOUT SPOOL KBYTES
+
+
+         0.01 MINUTES EXECUTION TIME
+!! END OF JES SPOOL FILE !!
+       1 //KC03ABDA JOB ,'DOMINIC BROOKS',MSGCLASS=H                             JOB08048
+       2 //JSTEP01  EXEC PGM=ASSIST                                                      
+       3 //STEPLIB  DD DSN=KC00NIU.ASSIST.LOADLIB,DISP=SHR                               
+       4 //SYSPRINT DD SYSOUT=*                                                          
+       5 //SYSIN    DD *                                                                 
+         //*                                                                             
+         //* IN-STREAM PROGRAM DATA                                                      
+       6 //FT05F001 DD *                                                                 
+       7 //                                                                              
+!! END OF JES SPOOL FILE !!
+ICH70001I KC03ABD  LAST ACCESS AT 14:14:54 ON TUESDAY, NOVEMBER 29, 2022
+IEFA111I KC03ABDA IS USING THE FOLLOWING JOB RELATED SETTINGS:
+         SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+IEF236I ALLOC. FOR KC03ABDA JSTEP01
+IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+IEF237I JES2 ALLOCATED TO SYSPRINT
+IEF237I JES2 ALLOCATED TO SYSIN
+IEF237I JES2 ALLOCATED TO FT05F001
+IEF142I KC03ABDA JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+IGD104I KC00NIU.ASSIST.LOADLIB                       RETAINED,  DDNAME=STEPLIB 
+IEF285I   KC03ABD.KC03ABDA.JOB08048.D0000103.?         SYSOUT        
+IEF285I   KC03ABD.KC03ABDA.JOB08048.D0000101.?         SYSIN         
+IEF285I   KC03ABD.KC03ABDA.JOB08048.D0000102.?         SYSIN         
+IEF373I STEP/JSTEP01 /START 2022333.1419
+IEF032I STEP/JSTEP01 /STOP  2022333.1419 
+        CPU:     0 HR  00 MIN  00.50 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+        VIRT:   584K  SYS:   244K  EXT:        0K  SYS:    11396K
+        ATB- REAL:                  1056K  SLOTS:                     0K
+             VIRT- ALLOC:      13M SHRD:       0M
+IEF375I  JOB/KC03ABDA/START 2022333.1419
+IEF033I  JOB/KC03ABDA/STOP  2022333.1419 
+        CPU:     0 HR  00 MIN  00.50 SEC    SRB:     0 HR  00 MIN  00.00 SEC    
+!! END OF JES SPOOL FILE !!
+
+*** ASSIST 4.0/A2-05/15/82  470/V7A/0:OS/VS2  INS=SDFP7/X=BGHO, CHECK/TRC/=1180, OPTS=CDKMPR FROM PENN ST*NIU COMPSCI*LT            
+
+                                                                                                                                    
+
+                                                                                                               PAGE    1            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                      1 ******************************************************************                          
+                                      2 *                                                                *                          
+                                      3 * CSCI 360-2               PROJECT 2                   FALL 2022 *                          
+                                      4 *                                                                *                          
+                                      5 * NAMES: JACOB DIEP     Z1925811                                 *                          
+                                      6 *        DOMINIC BROOKS Z1925811                                 *                          
+                                      7 *        KATE GRAMSE    Z1880627                                 *                          
+                                      8 *                                                                *                          
+                                      9 * DATE:  12/2/2022                                               *                          
+                                     10 *                                                                *                          
+                                     11 * PROGRAM NAME: BOSTON HOUSING MODEL EVALUATION PROGRAM          *                          
+                                     12 *                                                                *                          
+                                     13 * FUNCTION: DEVELOP A BUSINESS INTELLIGENCE MODULE FOR           *                          
+                                     14 *    BOSTON'S CIVIL PLANNING AND DEVELOPMENT OFFICE,             *                          
+                                     15 *    THAT EVALUATES A SET OF MODELS GENERATED BY THE CORE        *                          
+                                     16 *    COMPONENTS OF THE INTELLIGENCE SOFTWARE                     *                          
+                                     17 *                                                                *                          
+                                     18 * NOTE: HEADER FOLLOWS DOCUMENTATION GUIDELINES DETAILED ON BB   *                          
+                                     19 *                                                                *                          
+                                     20 ******************************************************************                          
+000000                               21 MAIN     CSECT                                                                              
+                                     22 * ==== ENTRY LINKAGE ===========                                                            
+                                     23 *      Back up caller's register state                                                      
+000000 90EC D00C            0000C    24          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+                                     25 *      Establish local addressability                                                       
+000004 18CF                          26          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+000000                               27          USING MAIN,12        ESTABLISH R12 AS THE BASE REG                                 
+                                     28 *      Store backwards, forwards pointers                                                   
+000006 41E0 C534            00534    29          LA    14,MAINSAVE    R14 POINTS TO THIS CSECT'S SAVE AREA                          
+00000A 50D0 E004            00004    30          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+00000E 50E0 D008            00008    31          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+                                     32 *      Preemptively point r13 at local save area                                            
+000012 18DE                          33          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                     34 *                                                                                           
+000014 4110 C5E0            005E0    35          LA    1,MODPARAM        LOAD ADDRESS OF BUFFER AND TABLE                           
+000018 58F0 C1D0            001D0    36          L     15,=V(BUILDMDL)   LOAD ADDRESS OF SUBPROGRAM INTO R15                        
+00001C 05EF                          37          BALR  14,15             BRANCH AND LINK TO SUBPROGRAM                              
+                                     38 *                                                                                           
+00001E 4110 C5EC            005EC    39          LA    1,BHDPARM         LOAD ADDRESS OF BUFFER AND TABLE                           
+000022 58F0 C1D4            001D4    40          L     15,=V(BUILDDAT)   LOAD ADDRESS OF SUBPROGRAM INTO R15                        
+000026 05EF                          41          BALR  14,15             BRANCH AND LINK TO SUBPROGRAM                              
+                                     42 *                                                                                           
+000028 4150 0000            00000    43          LA    5,0                                                                          
+00002C                               44 RDLOOP   DS    0H                                                                           
+                                     45 *                                                                                           
+00002C 4120 C610            00610    46          LA    2,MODTABL               LOAD START TABLE INTO R2                             
+000030 4140 C8B0            008B0    47          LA    4,MODTABL+672           BEGIN OF BHD OR END OF MOD                           
+000034 4134 0FA0            00FA0    48          LA    3,4000(4)               LOADING IN START OF EVAL TABLE                       
+000038 4133 0FA0            00FA0    49          LA    3,4000(3)         |     LOAD 12000 OFF BHD                                   
+00003C 4133 0FA0            00FA0    50          LA    3,4000(3)         v                                                          
+                                     51 *                                                                                           
+000040 41A0 0000            00000    52          LA    10,0                    LOAD 0 TO R10                                        
+
+                                                                                                               PAGE    2            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+000044 4170 0000            00000    53          LA    7,0                     LOAD 0 TO R7                                         
+000048 4180 0001            00001    54          LA    8,1                     LOAD 1 TO R8                                         
+00004C 41B0 C610            00610    55          LA    11,MODTABL              LOAD MODTABL ADDR TO R11                             
+000050 4163 0000            00000    56          LA    6,0(3)                  COPY R3 INTO R6                                      
+                                     57 *                                                                                           
+000054                               58 PROCLP   DS    0H                LOOP THROUGH MODEL TABLE                                   
+000054 1924                          59          CR    2,4               IF AT END OF MODEL TABLE                                   
+000056 4780 C08E            0008E    60          BE    EPROCLP           GO TO END OF LOOP                                          
+00005A 5070 C5CC            005CC    61          ST    7,ROWADDR         STORE ROW ADDRESS                                          
+00005E 4110 C5F8            005F8    62          LA    1,PRTPARM         LOAD ADDRESS OF BUFFER AND TABLE                           
+000062 58F0 C1D8            001D8    63          L     15,=V(PROCTABL)   LOAD ADDRESS OF SUBPROGRAM INTO R15                        
+000066 05EF                          64          BALR  14,15             BRANCH AND LINK TO SUBPROGRAM                              
+                                     65 *                                                                                           
+000068 50A0 C5D0            005D0    66          ST    10,ADDPOS         LOAD OFFSET INTO TABLE                                     
+                                     67 *                                                                                           
+00006C 5060 C5D4            005D4    68          ST    6,EVLADDR         PUT EVAL ADDR INTO R3                                      
+000070 4136 0000            00000    69          LA    3,0(6)            LOAD INITIAL ADDR BACK INTO R3                             
+000074 4110 C604            00604    70          LA    1,EVLPARM         LOAD ADDRESS OF BUFFER AND TABLE                           
+000078 58F0 C1DC            001DC    71          L     15,=V(EVALMODL)   LOAD ADDRESS OF SUBPROGRAM INTO R15                        
+00007C 05EF                          72          BALR  14,15             BRANCH AND LINK TO SUBPROGRAM                              
+                                     73 *                                                                                           
+00007E 4122 0070            00070    74          LA    2,112(2)          LOAD NEXT MODEL                                            
+000082 5A70 C1E0            001E0    75          A     7,=F'112'         ADD NEXT MODEL INTO ROW ADDR                               
+000086 5AA0 C1E4            001E4    76          A     10,=F'20'         LOAD OFFSET                                                
+00008A 47F0 C054            00054    77          B     PROCLP            LOOP TO TOP                                                
+00008E                               78 EPROCLP  DS    0H                END OF MODEL LOOP                                          
+00008E 5950 C1E8            001E8    79          C     5,=F'2'           IF COUNTER AT END                                          
+000092 4780 C0A8            000A8    80          BE    EORDLP            GO TO END                                                  
+                                     81 *                                                                                           
+000096 4110 C5EC            005EC    82          LA    1,BHDPARM         LOAD ADDRESS OF BUFFER AND TABLE                           
+00009A 58F0 C1D4            001D4    83          L     15,=V(BUILDDAT)   LOAD ADDRESS OF SUBPROGRAM INTO R15                        
+00009E 05EF                          84          BALR  14,15             BRANCH AND LINK TO SUBPROGRAM                              
+                                     85 *                                                                                           
+0000A0 4155 0001            00001    86          LA    5,1(5)            INCREMENT COUNTER                                          
+0000A4 47F0 C02C            0002C    87          B     RDLOOP            GO TO TOP OF LOOP                                          
+0000A8                               88 EORDLP   DS    0H                END OF LOOP                                                
+0000A8 4120 C610            00610    89          LA    2,MODTABL         LOAD MODEL TABLE INTO R2                                   
+0000AC 4140 C8B0            008B0    90          LA    4,MODTABL+672     AND BHD TABLE INTO R4                                      
+0000B0 4134 0FA0            00FA0    91          LA    3,4000(4)         |   LOADING IN START OF EVAL TABLE                         
+0000B4 4133 0FA0            00FA0    92          LA    3,4000(3)         |   INTO R3                                                
+0000B8 4133 0FA0            00FA0    93          LA    3,4000(3)         v                                                          
+0000BC 4133 0FA0            00FA0    94          LA    3,4000(3)         |                                                          
+0000C0 4133 0FA0            00FA0    95          LA    3,4000(3)         v                                                          
+0000C4 4133 0FA0            00FA0    96          LA    3,4000(3)         |                                                          
+0000C8 4133 0FA0            00FA0    97          LA    3,4000(3)         |                                                          
+0000CC 4133 0FA0            00FA0    98          LA    3,4000(3)         v                                                          
+0000D0 4163 0000            00000    99          LA    6,0(3)            COPY EVAL TABLE INTO R3                                    
+0000D4                              100 PRNTLP   DS    0H                PRINT LOOP                                                 
+0000D4 1924                         101          CR    2,4               IF AT END OF MODEL TABLE                                   
+0000D6 4780 C1BC            001BC   102          BE    EOPRNTLP          LOOP TO END                                                
+                                    103 *                                                                                           
+0000DA E020 C216 0085 00216         104          XPRNT PRNTMEHD,133      PRINT HEADER                                               
+0000E0 E020 C29B 0085 0029B         105          XPRNT PRNTMEAR,133      PRINT ARCHITECTURE                                         
+0000E6 4180 0001            00001   106          LA    8,1               INCREMENTER                                                
+0000EA 4190 000E            0000E   107          LA    9,14              END                                                        
+0000EE                              108 WTLOOP   DS    0H                WEIGHT PRINT LOOP                                          
+0000EE 1989                         109          CR    8,9               IF AT END OF WEIGHTS                                       
+
+                                                                                                               PAGE    3            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+0000F0 4780 C11C            0011C   110          BE    EOWTLP            GO TO END OF WEIGHT PRINT LOOP                             
+                                    111 *                                                                                           
+0000F4 5280 C20A            0020A   112          XDECO 8,TEMPPRNT        LOAD COUNTER INTO TEMP PRINT                               
+0000F8 D201 C32E C214 0032E 00214   113          MVC   WTNUM(2),TEMPPRNT+10 MOVE TEMP INTO PRINT VAR                                
+0000FE D210 C331 C1EC 00331 001EC   114          MVC   PRNTWT(17),=X'40202020202021204B2020202020202020'                            
+000104 DF10 C331 B000 00331 00000   115          EDMK  PRNTWT(17),0(11) PUT WEIGHT INTO VAR                                         
+00010A E020 C320 0085 00320         116          XPRNT PRNTMW,133       PRINT WEIGHT                                                
+000110 41BB 0008            00008   117          LA    11,8(11)         GO TO NEXT WEIGHT                                           
+                                    118 *                                                                                           
+000114 4188 0001            00001   119          LA    8,1(8)           INCREASE COUNTER                                            
+000118 47F0 C0EE            000EE   120          B     WTLOOP           GO TO TOP OF LOOP                                           
+00011C                              121 EOWTLP   DS    0H               END OF WEIGHT LOOP                                          
+00011C 41BB 0008            00008   122          LA    11,8(11)         SKIP THE BIAS                                               
+000120 E020 C3A5 0085 003A5         123          XPRNT PRNTEVHD,133     EVALUATION HEADER FOR MODEL                                 
+000126 E020 C42A 0085 0042A         124          XPRNT PRNTEVTH,133     V                                                           
+                                    125 *                                                                                           
+00012C 4180 0001            00001   126          LA    8,1              LOAD 1 INTO DATASET                                         
+000130 5280 C20A            0020A   127          XDECO 8,TEMPPRNT       LOAD DATASET NUMBER INTO TEMP                               
+000134 D201 C4B5 C214 004B5 00214   128          MVC   PRNTDST(2),TEMPPRNT+10  PUT TEMP INTO PRINT                                  
+00013A D20C C4BD C1FD 004BD 001FD   129          MVC   PRNTMSE(13),=X'402020204B2020202020202020' FORMAT                            
+000140 DF0C C4BD 6000 004BD 00000   130          EDMK  PRNTMSE(13),0(6) PUT MSE INTO PRINT                                          
+000146 D20B C4CB C1FD 004CB 001FD   131          MVC   PRNTRSQ(12),=X'402020204B2020202020202020' FORMAT                            
+00014C DF0B C4CB 600A 004CB 0000A   132          EDMK  PRNTRSQ(12),10(6) PUT R2 INTO PRINT                                          
+                                    133 *                                                                                           
+000152 E020 C4AF 0085 004AF         134          XPRNT PRNTEDMR,133       PRINT THE EVAL                                            
+                                    135 *                                                                                           
+000158 4180 0002            00002   136          LA    8,2                     LOAD 1 INTO DATASET                                  
+00015C 5280 C20A            0020A   137          XDECO 8,TEMPPRNT              LOAD DATASET NUMBER INTO TEMP                        
+000160 D201 C4B5 C214 004B5 00214   138          MVC   PRNTDST(2),TEMPPRNT+10  PUT TEMP INTO PRINT                                  
+000166 D20C C4BD C1FD 004BD 001FD   139          MVC   PRNTMSE(13),=X'402020204B2020202020202020' FORMAT                            
+00016C DF0C C4BD 6078 004BD 00078   140          EDMK  PRNTMSE(13),120(6) PUT MSE INTO PRINT                                        
+000172 D20B C4CB C1FD 004CB 001FD   141          MVC   PRNTRSQ(12),=X'402020204B2020202020202020' FORMAT                            
+000178 DF0B C4CB 6082 004CB 00082   142          EDMK  PRNTRSQ(12),130(6) PUT R2 INTO PRINT                                         
+                                    143 *                                                                                           
+00017E E020 C4AF 0085 004AF         144          XPRNT PRNTEDMR,133       PRINT THE EVAL                                            
+                                    145 *                                                                                           
+000184 4180 0003            00003   146          LA    8,3                     LOAD 1 INTO DATASET                                  
+000188 5280 C20A            0020A   147          XDECO 8,TEMPPRNT              LOAD DATASET NUMBER INTO TEMP                        
+00018C D201 C4B5 C214 004B5 00214   148          MVC   PRNTDST(2),TEMPPRNT+10  PUT TEMP INTO PRINT                                  
+000192 D20C C4BD C1FD 004BD 001FD   149          MVC   PRNTMSE(13),=X'402020204B2020202020202020' FORMAT                            
+000198 DF0C C4BD 60F0 004BD 000F0   150          EDMK  PRNTMSE(13),240(6) PUT MSE INTO PRINT                                        
+00019E D20B C4CB C1FD 004CB 001FD   151          MVC   PRNTRSQ(12),=X'402020204B2020202020202020' FORMAT                            
+0001A4 DF0B C4CB 60FA 004CB 000FA   152          EDMK  PRNTRSQ(12),250(6) PUT R2 INTO PRINT                                         
+                                    153 *                                                                                           
+0001AA E020 C4AF 0085 004AF         154          XPRNT PRNTEDMR,133       PRINT THE EVAL                                            
+                                    155 *                                                                                           
+0001B0 4122 0070            00070   156          LA    2,112(2)           GO TO NEXT MODEL                                          
+0001B4 4166 0014            00014   157          LA    6,20(6)            LOAD 20 OFF FINAL TABLE                                   
+0001B8 47F0 C0D4            000D4   158          B     PRNTLP             LOOP TO TOP OF LOOP                                       
+0001BC                              159 EOPRNTLP DS    0H                 END OF PRINT LOOP                                         
+                                    160 * ==== EXIT LINKAGE ============                                                            
+0001BC 41F0 0000            00000   161 PRGEXIT  LA    15,0           R15 = RETURN CODE OF 0                                        
+0001C0 58D0 D004            00004   162          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+0001C4 58E0 D00C            0000C   163          L     14,12(,13)     RESTORE REGISTER 14                                           
+0001C8 980C D014            00014   164          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+0001CC 07FE                         165          BR    14             RETURN TO CALLER                                              
+                                    166 * (vv Program storage vv)                                                                   
+
+                                                                                                               PAGE    4            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    167 *                                                                                           
+                                    168          LTORG                LITERAL ORGANIZATION                                          
+0001D0 00009A88                     169                =V(BUILDMDL)                                                                 
+0001D4 00009978                     170                =V(BUILDDAT)                                                                 
+0001D8 00009B88                     171                =V(PROCTABL)                                                                 
+0001DC 00009CD0                     172                =V(EVALMODL)                                                                 
+0001E0 00000070                     173                =F'112'                                                                      
+0001E4 00000014                     174                =F'20'                                                                       
+0001E8 00000002                     175                =F'2'                                                                        
+0001EC 4020202020202120             176                =X'40202020202021204B2020202020202020'                                       
+0001FD 402020204B202020             177                =X'402020204B2020202020202020'                                               
+                                    178 *                                                                                           
+00020A                              179 TEMPPRNT DS    CL12           TEMP VAR FOR FORMATTING REASONS                               
+                                    180 *****************************************************************                           
+                                    181 * Print MODEL EVALUATION HEADER begin ---------------------------                           
+000216 40                           182 PRNTMEHD DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000217 4040404040404040             183          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+000217                              184          ORG   PRNTMEHD+1     GO BACK TO PRINTLN1 START LOC + 1                             
+000217 D4968485937A                 185          DC    C'Model:'                                                                    
+00029B                              186          ORG   PRNTMEHD+133   JUMP PAST END                                                 
+                                    187 *****************************************************************                           
+                                    188 *****************************************************************                           
+                                    189 * Print MODEL ARCHITECTURE HEADER begin -------------------------                           
+00029B 40                           190 PRNTMEAR DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+00029C 4040404040404040             191          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+00029C                              192          ORG   PRNTMEAR+1     GO BACK TO PRINTLN1 START LOC + 1                             
+00029C 404040C199838889             193          DC    C'   Architecture:'                                                          
+000320                              194          ORG   PRNTMEAR+133   JUMP PAST END                                                 
+                                    195 *****************************************************************                           
+                                    196 *****************************************************************                           
+                                    197 * Print MODEL WEIGHT begin --------------------------------------                           
+000320 40                           198 PRNTMW   DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+000321 4040404040404040             199          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+000321                              200          ORG   PRNTMW+1     GO BACK TO PRINTLN1 START LOC + 1                               
+000321 404040404040A685             201          DC    C'      weight '                                                             
+00032E                              202 WTNUM    DS    CL2                                                                          
+000330 7A                           203          DC    C':'                                                                         
+000331                              204 PRNTWT   DS    CL17                                                                         
+0003A5                              205          ORG   PRNTMW+133   JUMP PAST END                                                   
+                                    206 *****************************************************************                           
+                                    207 *****************************************************************                           
+                                    208 * Print MODEL EVAL HEAD begin -----------------------------------                           
+0003A5 40                           209 PRNTEVHD DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+0003A6 4040404040404040             210          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+0003A6                              211          ORG   PRNTEVHD+1     GO BACK TO PRINTLN1 START LOC + 1                             
+0003A6 404040C5A58193A4             212          DC    C'   Evaluation:'                                                            
+00042A                              213          ORG   PRNTEVHD+133   JUMP PAST END                                                 
+                                    214 *****************************************************************                           
+                                    215 *****************************************************************                           
+                                    216 * Print EVAL HEADER begin ---------------------------------------                           
+00042A 40                           217 PRNTEVTH DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+00042B 4040404040404040             218          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+00042B                              219          ORG   PRNTEVTH+1     GO BACK TO PRINTLN1 START LOC + 1                             
+00042B 404040404040C481             220          DC    C'      Dataset MSE           Rµ2'                                           
+0004AF                              221          ORG   PRNTEVTH+133   JUMP PAST END                                                 
+                                    222 *****************************************************************                           
+                                    223 *****************************************************************                           
+
+                                                                                                               PAGE    5            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    224 * Print DATASET MSE AND R2 begin --------------------------------                           
+0004AF 40                           225 PRNTEDMR DC    C' '           CARRIAGE CONTROL CHAR (NEW PAGE)                              
+0004B0 4040404040404040             226          DC    132C' '        WIPE PRINT LINE (SPACES)                                      
+0004B0                              227          ORG   PRNTEDMR+1     GO BACK TO PRINTLN1 START LOC + 1                             
+0004B0 4040404040                   228          DC    C'     '                                                                     
+0004B5                              229 PRNTDST  DS    CL2                                                                          
+0004B7 404040404040                 230          DC    C'      '                                                                    
+0004BD                              231 PRNTMSE  DS    CL13                                                                         
+0004CA 40                           232          DC    C' '                                                                         
+0004CB                              233 PRNTRSQ  DS    CL13                                                                         
+000534                              234          ORG   PRNTEDMR+133   JUMP PAST END                                                 
+                                    235 *****************************************************************                           
+                                    236 *                                                                                           
+000534 FFFFFFFFFFFFFFFF             237 MAINSAVE DC    18F'-1'       MAIN SAVE AREA                                                 
+00057C                              238 BUFFER   DS    CL80          BUFFER FOR READ                                                
+0005CC                              239 ROWADDR  DS    F             CURRENT ROW ADDRESS OF PRINT                                   
+0005D0 00000000                     240 ADDPOS   DC    F'0'          OFFSET OF EVAL TABLE                                           
+0005D4                              241 EVLADDR  DS    F             EVAL TABLE ADDRESS                                             
+0005D8                              242 LPCNTR   DS    F             LOOP COUNTER                                                   
+0005DC                              243 BHADFD   DS    F             DATA TABLE FD                                                  
+0005E0                              244 MODPARAM DS    0H            MODEL TABLE PARAMATERS                                         
+0005E0 00000610                     245          DC    A(MODTABL)    ADDRESS OF TABLE                                               
+0005E4 00001B10                     246          DC    A(MODEADD)    END OF ADDRESS OF TABLE                                        
+0005E8 0000057C                     247          DC    A(BUFFER)     READ BUFFER                                                    
+0005EC 000008B0                     248 BHDPARM  DC    A(MODTABL+672) ADDRESS OF BHDTABLE                                           
+0005F0 00009810                     249          DC    A(BHDEADD)    END OF BHDTABLE                                                
+0005F4 0000057C                     250          DC    A(BUFFER)     END OF READ BUFFER                                             
+0005F8 000008B0                     251 PRTPARM  DC    A(MODTABL+672) ADDRESS OF BHDTABLE                                           
+0005FC 00000610                     252          DC    A(MODTABL)    MODEL TABLE ADDRESS                                            
+000600 000005CC                     253          DC    A(ROWADDR)    ROW ADDRESS                                                    
+000604 000008B0                     254 EVLPARM  DC    A(MODTABL+672) BHD TABLE ADDRESS                                             
+000608 000005D4                     255          DC    A(EVLADDR)    EVAL ADDRESS                                                   
+00060C 000005D0                     256          DC    A(ADDPOS)     EVAL OFFSET                                                    
+000610 000000000000000C             257 MODTABL  DC    672PL8'0'     MODEL TABLE STORAGE DECLARATION                                
+001B10                              258 MODEADD  DS    0H            END OF MODEL TABLE                                             
+001B10 000000000000000C             259 BHDTABL  DC    4000PL8'0'    BHD   TABLE STORAGE DECLARATION                                
+009810                              260 BHDEADD  DS    0H            END OF BHD TABLE                                               
+009810 0000000000000000             261 EVALTABL DC    12PL10'0'     EVAL TABLE                                                     
+009888 0000000000000000             262          DC    12PL10'0'     |                                                              
+009900 0000000000000000             263          DC    12PL10'0'     V                                                              
+009978                              264 EVALEADD DS    0H            END OF EVAL TABLE                                              
+                                    265 *                                                                                           
+                                    266 ******************************************************************                          
+                                    267 *                                                                *                          
+                                    268 * EXTERNAL SUBPROGRAM: BUILDDAT                                  *                          
+                                    269 *                                                                *                          
+                                    270 * PARAMLIST:                                                     *                          
+                                    271 *   R2: (15PL8) BHDTABL                                          *                          
+                                    272 *   R3: (0H)    BHDEADD                                          *                          
+                                    273 *   R4: (80F)   BUFFER                                           *                          
+                                    274 *                                                                *                          
+                                    275 * REGISTER USAGE:                                                *                          
+                                    276 *   R2 - HOLDS ADDRESS OF BHDTABLE                               *                          
+                                    277 *   R3 - HOLDS END ADDRESS OF BHDTABLE                           *                          
+                                    278 *   R4 - READ BUFFER                                             *                          
+                                    279 *   R5 - COUNTER                                                 *                          
+                                    280 *   R6 - IN-BETWEEN REGISTER TO HOLD VALUES AND DO MATH          *                          
+
+                                                                                                               PAGE    6            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    281 *                                                                *                          
+                                    282 ******************************************************************                          
+009978                              283 BUILDDAT CSECT                                                                              
+009978 90EC D00C            0000C   284          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+00997C 18CF                         285          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+009978                              286          USING BUILDDAT,12    ESTABLISH R12 AS THE BASE REG                                 
+00997E 41E0 C0A0            09A18   287          LA    14,BHDSAVE      R14 POINTS TO THIS CSECT'S SAVE AREA                         
+009982 50E0 D008            00008   288          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+009986 50D0 E004            00004   289          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+00998A 18DE                         290          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    291 *                                                                                           
+                                    292 *  DEREFERENCE PARAMETER LIST                                                               
+                                    293 *                                                                                           
+00998C 9824 1000            00000   294          LM    2,4,0(1)        LOAD PARAMETER ADDRESES INTO R2,3                            
+009990 4164 0000            00000   295          LA    6,0(4)          COPY READ BUFFER INTO R6                                     
+009994 5060 C0F8            09A70   296          ST    6,DATBADD       STORE IT INTO DATADD                                         
+009998 4164 0050            00050   297          LA    6,80(4)         LOAD 80 OFF BUFF                                             
+00999C 5060 C0FC            09A74   298          ST    6,DATTADD       STORE                                                        
+0099A0 E004 0000 0050 00000         299          XREAD 0(4),80         READ NEW 80                                                  
+0099A6 4150 0003            00003   300          LA    5,3             STORE 3 INTO R5                                              
+0099AA 4770 C082            099FA   301 RECRDLP  BNZ   DATEXI          IF AT END OR                                                 
+0099AE 955C 4000      00000         302          CLI   0(4),C'*'       AT *                                                         
+0099B2 4780 C082            099FA   303          BE    DATEXI          EXIT                                                         
+0099B6 4110 C0F8            09A70   304 GETPKDLP LA    1,DATPARM       LOAD R1 WITH PARMS                                           
+0099BA 58F0 C098            09A10   305          L     15,=V(PARSEDEC) LOAD EXTERNAL ADDRESS                                        
+0099BE 05EF                         306          BALR  14,15           INVOKE PARSEDEC                                              
+                                    307 *                                                                                           
+0099C0 59F0 C09C            09A14   308          C     15,=F'0'       TEST RETURN CODE                                              
+0099C4 4770 C064            099DC   309          BNE   NEXTREC        IF RC NOT 0 THEN DONE PARSING RECORD                          
+                                    310 *                                                                                           
+0099C8 F877 2000 C0E8 00000 09A60   311          ZAP   0(8,2),TEMPDAT(8) PUT TEMP INTO R2                                           
+0099CE 4122 0008            00008   312          LA    2,8(2)            LOAD 8 OFF 2                                               
+0099D2 D203 C0F8 C0F0 09A70 09A68   313          MVC   DATBADD(4),NEXTADD MOVE NEXT ADD INTO DATADD                                 
+                                    314 *                             SET RETURNED ADDRESS AS BEGIN                                 
+0099D8 47F0 C03E            099B6   315          B     GETPKDLP       GET NEXT VALUE                                                
+                                    316 *                                                                                           
+0099DC 4650 C070            099E8   317 NEXTREC  BCT   5,RESETREC     REDUCE 5 BY 1, IF NOT 0 GO RESETREC                           
+0099E0 4150 0003            00003   318          LA    5,3            OTHERWISE LOAD 3 BACK INTO 5                                  
+0099E4 4122 0008            00008   319          LA    2,8(2)        SKIP 8 BYTE                                                    
+0099E8 4164 0000            00000   320 RESETREC LA    6,0(4)       RESET PARSE START ADDR FOR NEXT LINE                            
+0099EC 5060 C0F8            09A70   321          ST    6,DATBADD    STORE AS PARSE BEGIN ADDRESS PARAM                              
+                                    322 *                                                                                           
+0099F0 E004 0000 0050 00000         323          XREAD 0(4),80       READ NEW 0                                                     
+0099F6 47F0 C032            099AA   324          B     RECRDLP       BRANCH TO RECRDLP                                              
+                                    325 *                                                                                           
+                                    326 *  RESTORE ALL OF THE CALLER'S REGISTERS AND RETURN                                         
+                                    327 *                                                                                           
+0099FA 1BFF                         328 DATEXI   SR    15,15          R15 = RETURN CODE OF 0                                        
+0099FC 58D0 D004            00004   329          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+009A00 58E0 D00C            0000C   330          L     14,12(,13)     RESTORE REGISTER 14                                           
+009A04 980C D014            00014   331          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+009A08 07FE                         332          BR    14             RETURN TO CALLER                                              
+                                    333 *                                                                                           
+                                    334          LTORG                LITERAL ORGANIZATION                                          
+009A10 00009FD0                     335                =V(PARSEDEC)                                                                 
+009A14 00000000                     336                =F'0'                                                                        
+                                    337 *                                                                                           
+
+                                                                                                               PAGE    7            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+009A18 FFFFFFFFFFFFFFFF             338 BHDSAVE   DC   18F'-1'     SAVE AREA                                                        
+009A60 000000000000000C             339 TEMPDAT   DC   PL8'0'      TEMP DATA FOR FORMAT                                             
+009A68                              340 NEXTADD   DS   F           NEXT ADDRESS TO GO TO                                            
+009A6C                              341 IMPDEC    DS   F           IMPLIED DECIMALS                                                 
+009A70                              342 DATPARM   DS   0H          DATA PARAMETER                                                   
+009A70                              343 DATBADD   DS   F           DAT BEGIN ADDRESS                                                
+009A74                              344 DATTADD   DS   F           DAT TAILING ADDRESS                                              
+009A78 00009A6000009A68             345           DC   A(TEMPDAT,NEXTADD,IMPDEC) SETUP PARMS                                        
+                                    346 *                                                                                           
+                                    347 ******************************************************************                          
+                                    348 *                                                                *                          
+                                    349 * EXTERNAL SUBPROGRAM: BUILDMOD                                  *                          
+                                    350 *                                                                *                          
+                                    351 * PARAMLIST:                                                     *                          
+                                    352 *   R2: (15PL8) MODTABL                                          *                          
+                                    353 *   R3: (0H)    MODEADD                                          *                          
+                                    354 *   R4: (80F)   BUFFER                                           *                          
+                                    355 *                                                                *                          
+                                    356 * REGISTER USAGE:                                                *                          
+                                    357 *   R2 - HOLDS ADDRESS OF MODEL TABLE                            *                          
+                                    358 *   R3 - HOLDS END ADDRESS OF MODEL TABLE                        *                          
+                                    359 *   R4 - READ BUFFER                                             *                          
+                                    360 *   R5 - COUNTER                                                 *                          
+                                    361 *   R6 - IN-BETWEEN REGISTER TO HOLD VALUES AND DO MATH          *                          
+                                    362 *                                                                *                          
+                                    363 ******************************************************************                          
+009A88                              364 BUILDMDL CSECT                                                                              
+009A88 90EC D00C            0000C   365          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+009A8C 18CF                         366          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+009A88                              367          USING BUILDMDL,12    ESTABLISH R12 AS THE BASE REG                                 
+009A8E 41E0 C090            09B18   368          LA    14,MODSAVE      R14 POINTS TO THIS CSECT'S SAVE AREA                         
+009A92 50E0 D008            00008   369          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+009A96 50D0 E004            00004   370          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+009A9A 18DE                         371          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    372 *                                                                                           
+                                    373 *  DEREFERENCE PARAMETER LIST                                                               
+                                    374 *                                                                                           
+009A9C 9824 1000            00000   375          LM    2,4,0(1)        LOAD PARAMETER ADDRESES INTO R2,3                            
+009AA0 4164 0000            00000   376          LA    6,0(4)                                                                       
+009AA4 5060 C0E8            09B70   377          ST    6,MODBADD                                                                    
+009AA8 4164 0050            00050   378          LA    6,80(4)                                                                      
+009AAC 5060 C0EC            09B74   379          ST    6,MODTADD                                                                    
+009AB0 E004 0000 0050 00000         380          XREAD 0(4),80                                                                      
+009AB6 4150 0003            00003   381          LA    5,3                                                                          
+009ABA 955C 4000      00000         382 MODRDLP  CLI   0(4),C'*'                                                                    
+009ABE 4780 C072            09AFA   383          BE    MODEXI                                                                       
+009AC2 4110 C0E8            09B70   384 MODPKDLP LA    1,MODPARM                                                                    
+009AC6 58F0 C088            09B10   385          L     15,=V(PARSEDEC)  LOAD EXTERNAL ADDRESS                                       
+009ACA 05EF                         386          BALR  14,15            INVOKE PARSEDEC                                             
+                                    387 *                                                                                           
+009ACC 59F0 C08C            09B14   388          C     15,=F'0'       TEST RETURN CODE                                              
+009AD0 4770 C060            09AE8   389          BNE   NEXREC         IF RC NOT 0 THEN DONE PARSING RECORD                          
+                                    390 *                                                                                           
+009AD4 F877 2000 C0D8 00000 09B60   391          ZAP   0(8,2),TEMPMOD(8)                                                            
+009ADA 4122 0008            00008   392          LA    2,8(2)                                                                       
+009ADE D203 C0E8 C0E0 09B70 09B68   393          MVC   MODBADD(4),NEXTMOD                                                           
+                                    394 *                             SET RETURNED ADDRESS AS BEGIN                                 
+
+                                                                                                               PAGE    8            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+009AE4 47F0 C03A            09AC2   395          B     MODPKDLP       GET NEXT VALUE                                                
+                                    396 *                                                                                           
+009AE8 4164 0000            00000   397 NEXREC   LA    6,0(4)       RESET PARSE START ADDR FOR NEXT LINE                            
+009AEC 5060 C0E8            09B70   398          ST    6,MODBADD    STORE AS PARSE BEGIN ADDRESS PARAM                              
+                                    399 *                                                                                           
+009AF0 E004 0000 0050 00000         400          XREAD 0(4),80                                                                      
+009AF6 47F0 C032            09ABA   401          B     MODRDLP                                                                      
+                                    402 *                                                                                           
+                                    403 *  RESTORE ALL OF THE CALLER'S REGISTERS AND RETURN                                         
+                                    404 *                                                                                           
+009AFA 1BFF                         405 MODEXI   SR    15,15          R15 = RETURN CODE OF 0                                        
+009AFC 58D0 D004            00004   406          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+009B00 58E0 D00C            0000C   407          L     14,12(,13)     RESTORE REGISTER 14                                           
+009B04 980C D014            00014   408          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+009B08 07FE                         409          BR    14             RETURN TO CALLER                                              
+                                    410 *                                                                                           
+                                    411          LTORG                LITERAL ORGANIZATION                                          
+009B10 00009FD0                     412                =V(PARSEDEC)                                                                 
+009B14 00000000                     413                =F'0'                                                                        
+                                    414 *                                                                                           
+009B18 FFFFFFFFFFFFFFFF             415 MODSAVE   DC   18F'-1'     SAVE AREA                                                        
+009B60 000000000000000C             416 TEMPMOD   DC   PL8'0'      TEMP FOR FORMATTING                                              
+009B68                              417 NEXTMOD   DS   F           NEXT MODEL ADDRESS                                               
+009B6C                              418 MODIMP    DS   F           NUM OF IMPLIED DECIMALS                                          
+009B70                              419 MODPARM   DS   0H          PARAMETERS                                                       
+009B70                              420 MODBADD   DS   F           BEGIN ADDRESS                                                    
+009B74                              421 MODTADD   DS   F           TAIL ADDRESS                                                     
+009B78 00009B6000009B68             422           DC   A(TEMPMOD,NEXTMOD,MODIMP)   SETUP PARMS                                      
+                                    423 *                                                                                           
+                                    424 ******************************************************************                          
+                                    425 *                                                                *                          
+                                    426 * EXTERNAL SUBPROGRAM: PROCTABL                                  *                          
+                                    427 *                                                                *                          
+                                    428 * PARAMLIST:                                                     *                          
+                                    429 *   R2: (F)    START OF DATA TABLE                               *                          
+                                    430 *   R3: (F)    START OF MODEL TABLE                              *                          
+                                    431 *   R4: (F)    START OF LITERAL NUMBER OF BYTES TO GET ROW       *                          
+                                    432 *                                                                *                          
+                                    433 * REGISTER USAGE:                                                *                          
+                                    434 *   R2 - HOLDS ADDRESS OF DATA TABLE                             *                          
+                                    435 *   R3 - HOLDS END ADDRESS OF DATA TABLE                         *                          
+                                    436 *   R4 - HOLDS LITERAL NUMBER OF BYTES TO GET ROW                *                          
+                                    437 *   R5 - HOLDS 12000 OFF DATA TABLE                              *                          
+                                    438 *   R6 - HOLDS LITERAL DATA OF DATA TABLE                        *                          
+                                    439 *                                                                *                          
+                                    440 ******************************************************************                          
+009B88                              441 PROCTABL CSECT                                                                              
+009B88 90EC D00C            0000C   442          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+009B8C 18CF                         443          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+009B88                              444          USING PROCTABL,12    ESTABLISH R12 AS THE BASE REG                                 
+009B8E 41E0 C060            09BE8   445          LA    14,PRTSAVE     R14 POINTS TO THIS CSECT'S SAVE AREA                          
+009B92 50E0 D008            00008   446          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+009B96 50D0 E004            00004   447          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+009B9A 18DE                         448          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    449 *                                                                                           
+                                    450 *  DEREFERENCE PARAMETER LIST                                                               
+                                    451 *                                                                                           
+
+                                                                                                               PAGE    9            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+009B9C 9824 1000            00000   452          LM    2,4,0(1)        LOAD PARAMETER ADDRESES INTO R2,3                            
+009BA0 4152 0FA0            00FA0   453          LA    5,4000(2)       | LOAD 12000 OFF DATA TABLE                                  
+009BA4 4155 0FA0            00FA0   454          LA    5,4000(5)       |                                                            
+009BA8 4155 0FA0            00FA0   455          LA    5,4000(5)       V                                                            
+009BAC 5A34 0000            00000   456          A     3,0(4)          ADD PASSED OFFSET                                            
+009BB0                              457 INPTLP   DS    0H              INPUT LOOP                                                   
+009BB0 1925                         458          CR    2,5             IF AT END                                                    
+009BB2 4780 C04E            09BD6   459          BE    EOINLP          LEAVE LOOP                                                   
+                                    460 *                                                                                           
+009BB6 4162 0000            00000   461          LA    6,0(2)          LOAD DATA TABLE INTO 6                                       
+009BBA 5060 C0A8            09C30   462          ST    6,INPUTADR      STORE IN INPUT ADDRESS                                       
+009BBE 4163 0000            00000   463          LA    6,0(3)          STORE MODEL TABLE INTO 6                                     
+009BC2 5060 C0AC            09C34   464          ST    6,WEIGTADR      STORE IN WEIGT ADDRESS                                       
+009BC6 4110 C0A8            09C30   465          LA    1,PROCPARM      LOAD SUBRTN PARAMS                                           
+009BCA 45B0 C0C4            09C4C   466          BAL   11,CRSSPROD     BRANCH AND LINK CRSSPROD                                     
+                                    467 *                                                                                           
+009BCE 4122 0078            00078   468          LA    2,120(2)        GO 120 OFF THE DATA TABLE                                    
+009BD2 47F0 C028            09BB0   469          B     INPTLP          BACK TO TOP OF LOOP                                          
+009BD6                              470 EOINLP   DS    0H              END OF INPUT LOOP                                            
+                                    471 *                                                                                           
+                                    472 *  RESTORE ALL OF THE CALLER'S REGISTERS AND RETURN                                         
+                                    473 *                                                                                           
+009BD6 1BFF                         474          SR    15,15          R15 = RETURN CODE OF 0                                        
+009BD8 58D0 D004            00004   475          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+009BDC 58E0 D00C            0000C   476          L     14,12(,13)     RESTORE REGISTER 14                                           
+009BE0 980C D014            00014   477          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+009BE4 07FE                         478          BR    14             RETURN TO CALLER                                              
+                                    479 *                                                                                           
+                                    480          LTORG                LITERAL ORGANIZATION                                          
+                                    481 *                                                                                           
+009BE8 FFFFFFFFFFFFFFFF             482 PRTSAVE   DC   18F'-1'     SAVE AREA                                                        
+009C30                              483 PROCPARM  DS   0H          PROC PARAMETERS                                                  
+009C30                              484 INPUTADR  DS   F           INPUT/BHD ADDRESS                                                
+009C34                              485 WEIGTADR  DS   F           WEIGHT ADRESS                                                    
+009C38 000000000000000C             486 OUTPUT    DC   PL8'0'      OUTPUT STORAGE                                                   
+009C40 00009C30                     487           DC   A(INPUTADR)  SETUP PARMS                                                     
+009C44 00009C34                     488           DC   A(WEIGTADR)  |                                                               
+009C48 00009C38                     489           DC   A(OUTPUT)    V                                                               
+                                    490 *                                                                                           
+                                    491 ******************************************************************                          
+                                    492 *                                                                *                          
+                                    493 * CRSSPROD SUBROUTINE                                            *                          
+                                    494 *                                                                *                          
+                                    495 * PARAMLIST:                                                     *                          
+                                    496 *   R2: X, LIST OF INPUTS                                        *                          
+                                    497 *   R3: W, LIST OF WEIGHTS                                       *                          
+                                    498 *   R4: Y, OUTPUT                                                *                          
+                                    499 *                                                                *                          
+                                    500 * REGISTER USAGE:                                                *                          
+                                    501 *   R2 - STORE INPUT  VALUE                                      *                          
+                                    502 *   R3 - STORE OUTPUT VALUE                                      *                          
+                                    503 *   R4 - Y, OUTPUT                                               *                          
+                                    504 *   R5 - END OF CURRENT MODEL ADDRESS                            *                          
+                                    505 *                                                                *                          
+                                    506 ******************************************************************                          
+009C4C 9025 C118            09CA0   507 CRSSPROD STM   2,5,CRSAVE                                                                   
+009C50 9824 1000            00000   508          LM    2,4,0(1)        LOAD PARAMER ADDRESES INTO R2,3                              
+
+                                                                                                               PAGE   10            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    509 *                                                                                           
+009C54 4153 0068            00068   510          LA    5,104(3)        LOAD END OF FIRST MODEL INTO R5                              
+009C58                              511 CRSSLP   DS    0H                                                                           
+009C58 1935                         512          CR    3,5             IF AT END OF FIRST MODEL                                     
+009C5A 4780 C0F4            09C7C   513          BE    EOCRLP          GO TO END OF LOOP                                            
+                                    514 *        MULTIPLY X1-13 WITH W1-13                                                          
+009C5E F8F7 C128 2000 09CB0 00000   515          ZAP   CRTEMP(16),0(8,2)  ZAP INPUT INTO LARGER FIELD FOR MP                        
+009C64 FCF7 C128 3000 09CB0 00000   516          MP    CRTEMP(16),0(8,3)  MULTIPLY WITH WEIGHT                                      
+009C6A FAFF C138 C128 09CC0 09CB0   517          AP    CROUT(16),CRTEMP(16)                                                         
+                                    518 *                                                                                           
+009C70 4122 0008            00008   519          LA    2,8(2)             MOVE INPUT  FORWARD 8 BYTES                               
+009C74 4133 0008            00008   520          LA    3,8(3)             MOVE WEIGHT FORWARD 8 BYTES                               
+009C78 47F0 C0D0            09C58   521          B     CRSSLP             BRANCH TO TOP OF LOOP                                     
+009C7C                              522 EOCRLP   DS    0H                                                                           
+009C7C F8F7 C128 3000 09CB0 00000   523          ZAP   CRTEMP(16),0(8,3)                                                            
+009C82 F0F0 C128 0007 09CB0 00007   524          SRP   CRTEMP(16),7,0       SHIFT TO FIT IN 10 BYTES                                
+009C88 FAFF C138 C128 09CC0 09CB0   525          AP    CROUT(16),CRTEMP(16) ADD FINAL TO BIAS                                       
+009C8E F0F5 C138 003D 09CC0 0003D   526          SRP   CROUT(16),64-3,5    SHIFT TO FIT IN 8 BYTES,ROUND                            
+009C94 F87F 2008 C138 00008 09CC0   527          ZAP   8(8,2),CROUT(16)                                                             
+                                    528 *                                                                                           
+009C9A 9825 C118            09CA0   529          LM    2,5,CRSAVE     RESTORE R2,3                                                  
+009C9E 07FB                         530          BR    11                                                                           
+                                    531          LTORG             LITERAL ORGANIZATION                                             
+                                    532 *                                                                                           
+009CA0                              533 CRSAVE   DS    4F          SAVE STORAGE                                                     
+009CB0 0000000000000000             534 CRTEMP   DC    PL16'0'     TEMP FOR FORMAT                                                  
+009CC0 0000000000000000             535 CROUT    DC    PL16'0'     OUTPUT STORAGE                                                   
+                                    536 *                                                                                           
+                                    537 *                                                                                           
+                                    538 ******************************************************************                          
+                                    539 *                                                                *                          
+                                    540 * EXTERNAL SUBPROGRAM: EVALMODL                                  *                          
+                                    541 *                                                                *                          
+                                    542 * PARAMLIST:                                                     *                          
+                                    543 *   R2: (F)    START OF DATA TABLE                               *                          
+                                    544 *   R3: (F)    START OF EVAL TABLE                               *                          
+                                    545 *   R4: (F)    OFFSET                                            *                          
+                                    546 *                                                                *                          
+                                    547 * REGISTER USAGE:                                                *                          
+                                    548 *   R2 - HOLDS ADDRESS OF DATA TABLE                             *                          
+                                    549 *   R3 - HOLDS ADDRESS OF EVAL TABLE                             *                          
+                                    550 *   R4 - HOLDS LITERAL NUMBER OF BYTES OFF OFFSET TO GET TO MSE  *                          
+                                    551 *   R5 - HOLDS WHAT TABLE WE'RE CURRENTLY READING                *                          
+                                    552 *   R6 - HOLDS ADDRESS OF EVAL TABLE                             *                          
+                                    553 *   R7 - COUNTER                                                 *                          
+                                    554 *                                                                *                          
+                                    555 ******************************************************************                          
+009CD0                              556 EVALMODL CSECT                                                                              
+009CD0 90EC D00C            0000C   557          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+009CD4 18CF                         558          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+009CD0                              559          USING EVALMODL,12    ESTABLISH R12 AS THE BASE REG                                 
+009CD6 41E0 C080            09D50   560          LA    14,EVASAVE     R14 POINTS TO THIS CSECT'S SAVE AREA                          
+009CDA 50E0 D008            00008   561          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+009CDE 50D0 E004            00004   562          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+009CE2 18DE                         563          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    564 *                                                                                           
+                                    565 *  DEREFERENCE PARAMETER LIST                                                               
+
+                                                                                                               PAGE   11            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    566 *                                                                                           
+009CE4 9824 1000            00000   567          LM    2,4,0(1)                                                                     
+                                    568 *                                                                                           
+009CE8 4162 0000            00000   569          LA    6,0(2)                                                                       
+009CEC 5060 C0C8            09D98   570          ST    6,DATRADR       TODO: ADD BYTES TO GET TO ROW                                
+009CF0 4162 0FA0            00FA0   571          LA    6,4000(2)       LOAD END OF EVAL TABLE                                       
+009CF4 4166 0FA0            00FA0   572          LA    6,4000(6)       |                                                            
+009CF8 4166 0FA0            00FA0   573          LA    6,4000(6)       |                                                            
+009CFC 4166 0FA0            00FA0   574          LA    6,4000(6)       |                                                            
+009D00 4166 0FA0            00FA0   575          LA    6,4000(6)       |                                                            
+009D04 4166 0FA0            00FA0   576          LA    6,4000(6)       |                                                            
+009D08 4166 0FA0            00FA0   577          LA    6,4000(6)       |                                                            
+009D0C 4166 0FA0            00FA0   578          LA    6,4000(6)       V                                                            
+009D10 4170 0000            00000   579          LA    7,0             LOAD 0 INTO COUNTER                                          
+009D14                              580 OFFLP    DS    0H              CALCULATE OFFSET LOOP                                        
+                                    581 *                                                                                           
+009D14 1975                         582          CR    7,5             IF OFFSET ENOUGH                                             
+009D16 4780 C056            09D26   583          BE    EOFLP           BRANCH END OF OFFSET LOOP                                    
+                                    584 *                                                                                           
+009D1A 4166 0078            00078   585          LA    6,120(6)        GO TO NEXT EVAL TABLE                                        
+                                    586 *                                                                                           
+009D1E 4177 0001            00001   587          LA    7,1(7)          INCREMENT COUNTER                                            
+009D22 47F0 C044            09D14   588          B     OFFLP           BRANCH TO OFFSET LOOP                                        
+009D26                              589 EOFLP    DS    0H              END OF OFFSET LOOP                                           
+009D26 5A64 0000            00000   590          A     6,0(4)          ADD BYTES TO GET TO NEXT MSE POSITION                        
+009D2A 5060 C0CC            09D9C   591          ST    6,MSERADR       TODO: ADD BYTES TO GET TO ROW                                
+009D2E 4110 C0C8            09D98   592          LA    1,MSEPARAM      LOAD SUBRTN PARAMS                                           
+009D32 45B0 C0D8            09DA8   593          BAL   11,MSE          BRANCH AND LINK CRSSPROD                                     
+009D36 4110 C0C8            09D98   594          LA    1,MSEPARAM      LOAD SUBRTN PARAMS                                           
+009D3A 45B0 C172            09E42   595          BAL   11,RSQ          BRANCH AND LINK CRSSPROD                                     
+                                    596 *                                                                                           
+                                    597 *  RESTORE ALL OF THE CALLER'S REGISTERS AND RETURN                                         
+                                    598 *                                                                                           
+009D3E 1BFF                         599          SR    15,15          R15 = RETURN CODE OF 0                                        
+009D40 58D0 D004            00004   600          L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+009D44 58E0 D00C            0000C   601          L     14,12(,13)     RESTORE REGISTER 14                                           
+009D48 980C D014            00014   602          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+009D4C 07FE                         603          BR    14             RETURN TO CALLER                                              
+                                    604 *                                                                                           
+                                    605          LTORG                LITERAL ORGANIZATION                                          
+                                    606 *                                                                                           
+009D50 FFFFFFFFFFFFFFFF             607 EVASAVE   DC   18F'-1'     SAVE AREA                                                        
+009D98                              608 MSEPARAM  DS   0H          LOAD MSE PARAMETER                                               
+009D98                              609 DATRADR   DS   F           DATA ADDRESS                                                     
+009D9C                              610 MSERADR   DS   F           MSE TABLE ADDRESS                                                
+009DA0 00009D98                     611           DC   A(DATRADR)  SETUP PARMS                                                      
+009DA4 00009D9C                     612           DC   A(MSERADR)  V                                                                
+                                    613 *                                                                                           
+                                    614 ******************************************************************                          
+                                    615 *                                                                *                          
+                                    616 * MSE SUBROUTINE                                                 *                          
+                                    617 *                                                                *                          
+                                    618 * PARAMLIST:                                                     *                          
+                                    619 *   R2: DATA                                                     *                          
+                                    620 *   R3: MSE ROW                                                  *                          
+                                    621 *                                                                *                          
+                                    622 * REGISTER USAGE:                                                *                          
+
+                                                                                                               PAGE   12            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    623 *   R2 - STORE INPUT  VALUE                                      *                          
+                                    624 *   R3 - STORE OUTPUT VALUE                                      *                          
+                                    625 *   R5 - 12000 OFF DATA TABLE                                    *                          
+                                    626 *                                                                *                          
+                                    627 ******************************************************************                          
+009DA8 9025 C138            09E08   628 MSE      STM   2,5,MSSAVE                                                                   
+009DAC 9823 1000            00000   629          LM    2,3,0(1)        LOAD PARAMER ADDRESES INTO R2,3                              
+                                    630 *                                                                                           
+009DB0 4152 0FA0            00FA0   631          LA    5,4000(2)       LOAD 12000 OFF INPUTS                                        
+009DB4 4155 0FA0            00FA0   632          LA    5,4000(5)       |                                                            
+009DB8 4155 0FA0            00FA0   633          LA    5,4000(5)       V                                                            
+009DBC                              634 MSDTLP   DS    0H              LOOP                                                         
+009DBC 1925                         635          CR    2,5              IF AT END OF DATA                                           
+009DBE 4780 C118            09DE8   636          BE    EOMDLP           BRANCH END                                                  
+                                    637 *                                                                                           
+009DC2 F877 C140 2070 09E10 00070   638          ZAP   MSTEMP(8),112(8,2)      INPUT INTO TEMP                                      
+009DC8 FB77 C140 2068 09E10 00068   639          SP    MSTEMP(8),104(8,2)      SUBTRACT INPUT FROM TEMP                             
+009DCE F8F7 C148 C140 09E18 09E10   640          ZAP   MSTEMP2(16),MSTEMP(8)   PUT TEMP IN BIGGER                                   
+009DD4 FCF7 C148 C140 09E18 09E10   641          MP    MSTEMP2(16),MSTEMP(8)   SQUARE                                               
+009DDA FAFF C158 C148 09E28 09E18   642          AP    MSSUM(16),MSTEMP2(16)   ADD IT TO SUMM                                       
+                                    643 *                                                                                           
+009DE0 4122 0078            00078   644          LA    2,120(2)                GO NEXT DATA                                         
+009DE4 47F0 C0EC            09DBC   645          B     MSDTLP                  BRANCH TOP                                           
+009DE8                              646 EOMDLP   DS    0H                      END OF LOOP                                          
+009DE8 F0F5 C158 003E 09E28 0003E   647          SRP   MSSUM(16),64-2,5        DIVIDE VALUE BY 100                                  
+009DEE F0F5 C158 0037 09E28 00037   648          SRP   MSSUM(16),64-9,5        SHIFT TO FIT IN 10 BYTES                             
+009DF4 F89F C168 C158 09E38 09E28   649          ZAP   MSFIN(10),MSSUM(16)     ZAP INTO 10 BYTE FIELD                               
+009DFA F899 3000 C168 00000 09E38   650          ZAP   0(10,3),MSFIN(10)                                                            
+                                    651 *                                                                                           
+009E00 9823 C138            09E08   652          LM    2,3,MSSAVE     RESTORE R2,3                                                  
+009E04 07FB                         653          BR    11                                                                           
+                                    654          LTORG             LITERAL ORGANIZATION                                             
+                                    655 *                                                                                           
+009E08                              656 MSSAVE   DS    2F          SAVE STORAGE                                                     
+009E10 000000000000000C             657 MSTEMP   DC    PL8'0'      TEMP BYTES                                                       
+009E18 0000000000000000             658 MSTEMP2  DC    PL16'0'     LARGE TEMP FOR MULTI                                             
+009E28 0000000000000000             659 MSSUM    DC    PL16'0'     SUM TEMP                                                         
+009E38 0000000000000000             660 MSFIN    DC    PL10'0'     FINAL VALUE                                                      
+                                    661 *                                                                                           
+                                    662 ******************************************************************                          
+                                    663 *                                                                *                          
+                                    664 * RSQ SUBROUTINE                                                 *                          
+                                    665 *                                                                *                          
+                                    666 * PARAMLIST:                                                     *                          
+                                    667 *   R2: DATA                                                     *                          
+                                    668 *   R3: MSE ROW                                                  *                          
+                                    669 *                                                                *                          
+                                    670 * REGISTER USAGE:                                                *                          
+                                    671 *   R2 - STORE INPUT  VALUE                                      *                          
+                                    672 *   R3 - STORE OUTPUT VALUE                                      *                          
+                                    673 *   R5 - 12000 OFF DATA                                          *                          
+                                    674 *   R6 - HOLDS TEMP OF INPUT DATA                                *                          
+                                    675 *   R7 - TEMP HOLDS FOR END OF LOOP                              *                          
+                                    676 *                                                                *                          
+                                    677 ******************************************************************                          
+009E42 9027 C244            09F14   678 RSQ      STM   2,7,RSQSAVE                                                                  
+009E46 9823 1000            00000   679          LM    2,3,0(1)        LOAD PARAMER ADDRESES INTO R2,3                              
+
+                                                                                                               PAGE   13            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    680 *                                                                                           
+009E4A 4162 0000            00000   681          LA    6,0(2)          LOAD INPUT TABLE INTO R6                                     
+009E4E 4152 0FA0            00FA0   682          LA    5,4000(2)       LOAD 12000 OFF INPUT INTO R5                                 
+009E52 4155 0FA0            00FA0   683          LA    5,4000(5)       |                                                            
+009E56 4155 0FA0            00FA0   684          LA    5,4000(5)       V                                                            
+                                    685 *CALCULATE RSS                                                                              
+009E5A F8FF C294 C2BC 09F64 09F8C   686          ZAP   RSS,ZEROOUT(16) PUT ZEROOUT INTO RSS                                         
+009E60                              687 RSQLP1   DS    0H              RSQ LOOP                                                     
+009E60 1925                         688          CR    2,5             IF AT END                                                    
+009E62 4780 C1BC            09E8C   689          BE    ERSQLP1         GO TO END OF LOOP                                            
+                                    690 *                                                                                           
+009E66 F877 C27C 2070 09F4C 00070   691          ZAP   RSSTEMP1(8),112(8,2)  PUT 112 OFF INPUT INTO TEMP                            
+009E6C FB77 C27C 2068 09F4C 00068   692          SP    RSSTEMP1(8),104(8,2)  PUT 104 INTO TEMP                                      
+009E72 F8F7 C284 C27C 09F54 09F4C   693          ZAP   RSSTEMP2(16),RSSTEMP1(8) PUT TEMP IN BIGGER                                  
+009E78 FCF7 C284 C27C 09F54 09F4C   694          MP    RSSTEMP2(16),RSSTEMP1(8) SQUARE                                              
+009E7E FAFF C294 C284 09F64 09F54   695          AP    RSS(16),RSSTEMP2(16)     ADD TO RSS                                          
+                                    696 *                                                                                           
+009E84 4122 0078            00078   697          LA    2,120(2)              GO NEXT INPUT                                          
+009E88 47F0 C190            09E60   698          B     RSQLP1                LOOP TO TOP                                            
+009E8C                              699 ERSQLP1  DS    0H                    END OF LOOP                                            
+                                    700 *CALCULATING TSS VALUE******************                                                    
+009E8C 4126 0000            00000   701          LA    2,0(6)                LOAD INPUT BACK INTO 2                                 
+                                    702 *ADDING UP SQUARED VALUES                                                                   
+009E90                              703 RSQLP2   DS    0H                    RS LOOP 2                                              
+009E90 1925                         704          CR    2,5                   IF AT END                                              
+009E92 4780 C214            09EE4   705          BE    ERSQLP2               BRANCH END OF LOOP                                     
+                                    706 *CALCULATING AVERAGE Y FOR TSS                                                              
+009E96 F8FF C2CC C2BC 09F9C 09F8C   707          ZAP   TSSAVG(16),ZEROOUT(16)  PUT ZERO OUT INTO AVG                                
+009E9C 4176 0068            00068   708          LA    7,104(6)                LOAD 104 INTO 7                                      
+009EA0                              709 RSQLP3   DS    0H                      LOOP 3                                               
+009EA0 1967                         710          CR    6,7                     IF AT 104 OFF BRANCH END                             
+009EA2 4780 C1E4            09EB4   711          BE    ERSQLP3                 V                                                    
+009EA6 FAF7 C2CC 6000 09F9C 00000   712          AP    TSSAVG(16),0(8,6)       ADD CURRENT TO AVG                                   
+009EAC 4166 0008            00008   713          LA    6,8(6)                  GO NEXT OFF 6                                        
+009EB0 47F0 C1D0            09EA0   714          B     RSQLP3                  BRANCH TOP                                           
+009EB4                              715 ERSQLP3  DS    0H                      SQUARE LOOP                                          
+009EB4 4166 0010            00010   716          LA    6,16(6)                 LOAD 16 OFF CURRENT                                  
+                                    717 *DIVIDE TO GET AVG Y VALUE FOR DATASET.                                                     
+009EB8 FDF1 C2CC C240 09F9C 09F10   718          DP    TSSAVG(16),=PL2'13'     DIVIDE AVG BY 13                                     
+009EBE F877 C2B4 2070 09F84 00070   719          ZAP   TSSTEMP2(8),112(8,2)    PUT 112 OFF 2 IN TEMP                                
+009EC4 FB7D C2B4 C2CC 09F84 09F9C   720          SP    TSSTEMP2(8),TSSAVG(14)  SUBTRACT AVG FROM TEMP                               
+009ECA F8F7 C2A4 C2B4 09F74 09F84   721          ZAP   TSSTEMP1(16),TSSTEMP2(8) PUT TEMP IN BIGGER                                  
+009ED0 FCF7 C2A4 C2B4 09F74 09F84   722          MP    TSSTEMP1(16),TSSTEMP2(8) SQUARE                                              
+009ED6 FAFF C2DC C2A4 09FAC 09F74   723          AP    TSST(16),TSSTEMP1(16)    ADD TO TSST                                         
+009EDC 4122 0078            00078   724          LA    2,120(2)                GO TO NEXT                                           
+009EE0 47F0 C1C0            09E90   725          B     RSQLP2                  BRANCH TOP                                           
+009EE4                              726 ERSQLP2  DS    0H                      LOOP SQUARE 2                                        
+009EE4 F0F5 C2DC 002D 09FAC 0002D   727          SRP   TSST(16),64-19,5        ROUND                                                
+009EEA F85F C2EC C2DC 09FBC 09FAC   728          ZAP   TSS(6),TSST(16)         ZAP IT IN TSS                                        
+009EF0 F0F5 C294 003E 09F64 0003E   729          SRP   RSS(16),64-2,5          ROUND                                                
+009EF6 FDF5 C294 C2EC 09F64 09FBC   730          DP    RSS(16),TSS(6)          DIVIDE                                               
+009EFC FB99 C2F2 C294 09FC2 09F64   731          SP    RSQFIN(10),RSS(10)      SUBTRACT IT FROM RSQFINAL VAL                        
+009F02 F899 300A C2F2 0000A 09FC2   732          ZAP   10(10,3),RSQFIN(10)     PUT FINAL INTO OUTPUT                                
+009F08 9827 C244            09F14   733          LM    2,7,RSQSAVE     RESTORE R2,3                                                 
+009F0C 07FB                         734          BR    11              BREAK                                                        
+                                    735          LTORG             LITERAL ORGANIZATION                                             
+009F10 013C                         736                =PL2'13'                                                                     
+
+                                                                                                               PAGE   14            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    737 *                                                                                           
+009F14                              738 RSQSAVE   DS   14F           SAVE STOAGE                                                    
+009F4C 000000000000000C             739 RSSTEMP1  DC   PL8'0'        TEMP FOR MATH                                                  
+009F54 0000000000000000             740 RSSTEMP2  DC   PL16'0'       LARGER TEMP FOR MP                                             
+009F64 0000000000000000             741 RSS       DC   PL16'0'       RSS STORAGE                                                    
+009F74 0000000000000000             742 TSSTEMP1  DC   PL16'0'       BIG TSS TEMP FOR MATH                                          
+009F84 000000000000000C             743 TSSTEMP2  DC   PL8'0'        SMALL TSS TEMP FOR MATH                                        
+009F8C 0000000000000000             744 ZEROOUT   DC   PL16'0'       ZERO OUT                                                       
+009F9C 0000000000000000             745 TSSAVG    DC   PL16'0'       TSS AVG                                                        
+009FAC 0000000000000000             746 TSST      DC   PL16'0'       TSS T VALUE                                                    
+009FBC 00000000000C                 747 TSS       DC   PL6'0'        TSS PACKED OF 6                                                
+009FC2 0000000000000000             748 RSQFIN    DC   PL10'1'       RSQS FINAL VAL                                                 
+                                    749 *                                                                                           
+                                    750 ******************************************************************                          
+                                    751 *                                                                *                          
+                                    752 * DECIMAL PARSING EXTERNAL SUBPROGRAM                            *                          
+                                    753 *                                                                *                          
+                                    754 * TAKES AN EBCDIC REPRESENTATION OF A DECIMAL VALUE AND CONVERTS *                          
+                                    755 * IT TO A PACKED DECIMAL REPRESENTATION. THE PROVIDED START AND  *                          
+                                    756 * TRAILING ADDRESSES DETERMINE THE REGION OF STORAGE THAT WILL   *                          
+                                    757 * BE SCANNED, WITH THE TRAILING ADDRESS 1 POS PAST THE END. SETS *                          
+                                    758 * THE SIGN DIGIT OF THE RESULTING PACKED DECIMAL IF A PRECEDING  *                          
+                                    759 * SIGN CHARACTER ACCOMPANIES THE NUMERIC CHARACTERS. IF NO SIGN  *                          
+                                    760 * CHARACTER IS FOUND ASSUMES A POSITIVE QUANTITY. COUNTS AND     *                          
+                                    761 * RETURNS THE NUMBER OF IMPLIED DECIMAL PLACES, WHICH WILL BE    *                          
+                                    762 * BE NON-ZERO IF A DECIMAL CHARACTER IS FOUND.                   *                          
+                                    763 *                                                                *                          
+                                    764 * RETURN CODES:                                                  *                          
+                                    765 *   0 - PARSE WAS SUCCESSFUL                                     *                          
+                                    766 *   1 - PARSE WAS UNSUCCESSFUL                                   *                          
+                                    767 *                                                                *                          
+                                    768 *   NOTE: IF PARSE WAS UNSUCCESSFUL THEN RETURN FIELD WILL NOT   *                          
+                                    769 *         CONTAIN A VALID PACKED DECIMAL, BUT WILL CONTAIN PREV  *                          
+                                    770 *         DATA WITH THE LAST BYTE OVERWRITTEN WITH X'00'         *                          
+                                    771 *         (GUARANTEEING IT WILL NOT CONTAIN A VALID PACKED DEC)  *                          
+                                    772 *                                                                *                          
+                                    773 * PARSING WILL FAIL IN THE FOLLOWING CASES:                      *                          
+                                    774 *   1.) THE SUBPROGRAM ATTEMPTED TO PARSE AN INVALID CHARACTER   *                          
+                                    775 *       (I.E., NOT C'+', C'-', C'.' OR NUMERIC)                  *                          
+                                    776 *   2.) NO NUMERIC CHARACTERS WERE FOUND                         *                          
+                                    777 *   3.) NO TRAILING SPACE CHARACTER WAS FOUND                    *                          
+                                    778 *   4.) THE NUMBER BEING PARSED CONTAINED MORE THAN 15 DIGITS    *                          
+                                    779 *                                                                *                          
+                                    780 * TODO: IMPLEMENT PARSE END CONSTRAINTS (STOP AT BUFFER END,     *                          
+                                    781 *       > 15 SOURCE DIGITS)                                      *                          
+                                    782 *                                                                *                          
+                                    783 * REGISTER USAGE:                                                *                          
+                                    784 *   2 - (IN) PTR TO BUFFERING LOC BEGIN ADDR (F)                 *                          
+                                    785 *   3 - (IN) PTR TO BUFFERING LOC TRAILING ADDR (F)              *                          
+                                    786 *   4 - (OUT) PTR TO PACKED DECIMAL'S RECEIVING FIELD (PL8)      *                          
+                                    787 *   5 - (OUT) ADDRESS OF FIRST TRAILING SPACE IN BUFFER (F)      *                          
+                                    788 *   6 - (OUT) IMPLIED DECIMALS (F)                               *                          
+                                    789 *   7 - BUFFER READ PTR                                          *                          
+                                    790 *   8 - COPY FIELD WRITE PTR                                     *                          
+                                    791 *   9 - COUNTER, IMPLIED DECIMAL PLACES                          *                          
+                                    792 *                                                                *                          
+                                    793 ******************************************************************                          
+
+                                                                                                               PAGE   15            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+009FD0                              794 PARSEDEC CSECT                                                                              
+                                    795 * ==== Entry linkage ===========                                                            
+                                    796 *      Back up caller's register state                                                      
+009FD0 90EC D00C            0000C   797          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA                               
+                                    798 *      Establish local addressability                                                       
+009FD4 18CF                         799          LR    12,15          COPY CSECT ADDRESS INTO R12                                   
+009FD0                              800          USING PARSEDEC,12    ESTABLISH R12 AS THE BASE REG                                 
+                                    801 *      Store backwards, forwards pointers                                                   
+009FD6 41E0 C12C            0A0FC   802          LA    14,PARSSAVE    R14 POINTS TO THIS CSECT'S SAVE AREA                          
+009FDA 50D0 E004            00004   803          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA                           
+009FDE 50E0 D008            00008   804          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA                       
+                                    805 *      Preemptively point r13 at local save area                                            
+009FE2 18DE                         806          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA                           
+                                    807 *                                                                                           
+009FE4 9826 1000            00000   808          LM    2,6,0(1)       R2 -> PARSE START ADDR                                        
+                                    809 *                             R3 -> PARSE END ADDR                                          
+                                    810 *                             R4 -> PACKED RETURN FIELD                                     
+                                    811 *                             R5 -> ADDR IN BUFFER, TRAILING SPACE                          
+                                    812 *                             R6 -> IMPLIED DECIMAL PLACES                                  
+                                    813 *                                                                                           
+009FE8 9826 1000            00000   814          LM    2,6,0(1)       R2 -> PARSE START ADDR                                        
+                                    815 *                             R3 -> PARSE END ADDR                                          
+                                    816 *                             R4 -> PACKED RETURN FIELD                                     
+                                    817 *                             R5 -> ADDR IN BUFFER, TRAILING SPACE                          
+                                    818 *                             R6 -> IMPLIED DECIMAL PLACES                                  
+                                    819 *                                                                                           
+                                    820 * (RE)INITIALIZE STATE VARS                                                                 
+009FEC 9200 4007      00007         821          MVI   7(4),X'00'     SET LAST BYTE TO ERROR CODE                                   
+009FF0 9200 C174      0A144         822          MVI   SCODE,X'00'    (RE)SET DEFAULT SIGN CODE                                     
+009FF4 9200 C175      0A145         823          MVI   DECFLAG,X'00'  (RE)SET DECIMAL FLAG                                          
+009FF8 1872                         824          LR    7,2            SET SCAN HEAD TO BUFFER START                                 
+009FFA 4190 0000            00000   825          LA    9,0            RESET DECIMAL PLACE COUNTER                                   
+                                    826 *                                                                                           
+                                    827 * FAST-FORWARD PAST LEADING SPACES                                                          
+009FFE 9540 7000      00000         828 FFLOOP   CLI   0(7),C' '      TEST FOR LEADING SPACE                                        
+00A002 4770 C042            0A012   829          BNE   TESTNEG        NON-SPACE CHAR FOUND, BEGIN PARSE                             
+00A006 4120 2001            00001   830          LA    2,1(,2)        MOVE START ADDR FORWARD 1 POS                                 
+00A00A 4170 7001            00001   831          LA    7,1(,7)        MOVE READ HEAD FORWARD 1 POS                                  
+00A00E 47F0 C02E            09FFE   832          B     FFLOOP         TEST NEXT POS                                                 
+                                    833 *                                                                                           
+                                    834 ** TEST FOR LEADING +/-                                                                     
+                                    835 *                                                                                           
+                                    836 * TEST IF FIRST CHAR IS '-'                                                                 
+00A012 9560 7000      00000         837 TESTNEG  CLI   0(7),C'-'      TEST FOR NEGATIVE SIGN                                        
+00A016 4770 C056            0A026   838          BNE   TESTPOS        NO NEGATIVE SIGN, TEST FOR +                                  
+00A01A 92FF C174      0A144         839          MVI   SCODE,X'FF'    SET SIGN CODE BYTE TO -1                                      
+00A01E 4120 7001            00001   840          LA    2,1(,7)        MOVE BUFFER START PAST SIGN                                   
+00A022 47F0 C0BE            0A08E   841          B     UPDTSCHD       GO TO NEXT CHAR                                               
+                                    842 *                                                                                           
+                                    843 * TEST IF FIRST CHAR IS '+'                                                                 
+00A026 954E 7000      00000         844 TESTPOS  CLI   0(7),C'+'      TEST FOR POSITIVE SIGN                                        
+00A02A 4770 C066            0A036   845          BNE   SCANLOOP       NO POSITIVE SIGN, START SCANNING                              
+00A02E 4120 7001            00001   846          LA    2,1(,7)        MOVE BUFFER START PAST SIGN                                   
+00A032 4780 C0BE            0A08E   847          BE    UPDTSCHD       POS SIGN FOUND, GO TO NEXT CHAR                               
+                                    848 *                                                                                           
+                                    849 ** SCAN FROM LEFT TO RIGHT FOR FIRST TRAILING SPACE **                                      
+                                    850 *                                                                                           
+
+                                                                                                               PAGE   16            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+                                    851 * TEST AND HANDLE SPACE FOUND CASE                                                          
+00A036 9540 7000      00000         852 SCANLOOP CLI   0(7),C' '      TEST FOR SPACE CHAR                                           
+00A03A 4770 C07C            0A04C   853          BNE   TSTDEC         NOT A SPACE, TEST FOR DECIMAL CHAR                            
+00A03E 1972                         854          CR    7,2            TEST OFFSET INTO BUFFER                                       
+00A040 4770 C0D2            0A0A2   855          BNE   COPYPREP       FOUND TRAIL SPC, BEGIN NEXT STEPS                             
+00A044 41F0 0001            00001   856          LA    15,1           OTHERWISE SET R15 = 1 (PARSE ERROR)                           
+00A048 47F0 C11A            0A0EA   857          B     PARSEXIT       EXIT IMMEDIATELY                                              
+                                    858 *                                                                                           
+                                    859 * TEST FOR DECIMAL CHARACTER                                                                
+00A04C 954B 7000      00000         860 TSTDEC   CLI   0(7),C'.'      TEST FOR DECIMAL CHAR                                         
+00A050 4770 C09E            0A06E   861          BNE   TSTCXLOW       NOT FOUND, TEST FOR NON-NUMERIC                               
+00A054 9501 C175      0A145         862          CLI   DECFLAG,X'01'  TEST IF FLAG ALREADY SET                                      
+00A058 4770 C094            0A064   863          BNE   SETDFLAG       IF NOT THEN SET FLAG BYTE                                     
+00A05C 41F0 0001            00001   864          LA    15,1           OTHERWISE SET R15 = 1 (PARSE ERROR)                           
+00A060 47F0 C11A            0A0EA   865          B     PARSEXIT       EXIT IMMEDIATELY                                              
+00A064 9201 C175      0A145         866 SETDFLAG MVI   DECFLAG,X'01'  SET DECIMAL FLAG TO 1 (TRUE)                                  
+00A068 0690                         867          BCTR  9,0            SET COUNT TO -1 (IGNORES DEC CHAR)                            
+00A06A 47F0 C0BE            0A08E   868          B     UPDTSCHD       UPDATE AND CONTINUE                                           
+                                    869 *                                                                                           
+                                    870 * TEST FOR NON-NUMERIC CHARACTERS                                                           
+00A06E 95F0 7000      00000         871 TSTCXLOW CLI   0(7),X'F0'     TEST IF < X'F0' (CHAR 0)                                      
+00A072 47B0 C0AE            0A07E   872          BNL   TSTCXHI        IF NOT LOW THEN TEST IF HIGH                                  
+00A076 41F0 0001            00001   873          LA    15,1           R15 = 1 (PARSE ERROR)                                         
+00A07A 47F0 C11A            0A0EA   874          B     PARSEXIT       OTHERWISE DO NOTHING AND EXIT                                 
+00A07E 95F9 7000      00000         875 TSTCXHI  CLI   0(7),X'F9'     TEST IF > X'F9' (CHAR 9)                                      
+00A082 47D0 C0BE            0A08E   876          BNH   UPDTSCHD       IF NOT HIGH THEN UPDATE AND CONTINUE                          
+00A086 41F0 0001            00001   877          LA    15,1           OTHERWISE R15 = 1 (PARSE ERROR)                               
+00A08A 47F0 C11A            0A0EA   878          B     PARSEXIT       DO NOTHING AND EXIT                                           
+                                    879 *                                                                                           
+                                    880 * UPDATE AND CONTINUE                                                                       
+00A08E 4170 7001            00001   881 UPDTSCHD LA    7,1(,7)        INCREMENT READ PTR                                            
+00A092 9501 C175      0A145         882          CLI   DECFLAG,X'01'  TEST IF DECIMAL FLAG IS SET                                   
+00A096 4770 C066            0A036   883          BNE   SCANLOOP       IF NOT THEN TEST NEXT CHAR                                    
+00A09A 4190 9001            00001   884          LA    9,1(,9)        INCREMENT IMPLIED DEC COUNTER                                 
+00A09E 47F0 C066            0A036   885          B     SCANLOOP       TEST NEXT CHAR                                                
+                                    886 *                                                                                           
+                                    887 * PREPARE FOR COPY INTO TEMP FIELD                                                          
+00A0A2 5070 5000            00000   888 COPYPREP ST    7,0(,5)         WRITE OUT TRAILING SPACE ADDR                                
+00A0A6 92F0 C176      0A146         889          MVI   ZNTEMP,X'F0'    RESET COPY FIELD TO 0                                        
+00A0AA D20D C177 C176 0A147 0A146   890          MVC   ZNTEMP+1(14),ZNTEMP                                                          
+00A0B0 4180 C184            0A154   891          LA    8,ZNTEMP+14     GET ADDR OF LAST CHAR IN COPY FIELD                          
+00A0B4 0670                         892          BCTR  7,0             MOVE READ PTR BACK TO LAST DIGIT                             
+                                    893 *                                                                                           
+                                    894 * COPY EBCDIC CODES RIGHT TO LEFT INTO CONVERSION FIELD                                     
+00A0B6 954B 7000      00000         895 COPYLOOP CLI   0(7),C'.'      TEST IF DECIMAL CHARACTER                                     
+00A0BA 4780 C0F6            0A0C6   896          BE    UPDTNCPY       SKIP THIS POS IF SO (NO COPY)                                 
+00A0BE D200 8000 7000 00000 00000   897          MVC   0(1,8),0(7)    COPY EBCDIC CODE                                              
+00A0C4 0680                         898 UPDTCPY  BCTR  8,0            DECREMENT COPY HEAD                                           
+00A0C6 0670                         899 UPDTNCPY BCTR  7,0            DECREMENT SCAN HEAD                                           
+00A0C8 1972                         900          CR    7,2            TEST IF BACK AT FIRST DIGIT                                   
+00A0CA 47B0 C0E6            0A0B6   901          BNL   COPYLOOP       IF NOT THEN CONTINUE                                          
+                                    902 *                                                                                           
+                                    903 * SET RESULTS IN RECEIVER FIELDS                                                            
+00A0CE 5090 6000            00000   904          ST    9,0(,6)            WRITE BACK # IMPLIED DECIMALS                             
+00A0D2 F27E 4000 C176 00000 0A146   905          PACK  0(8,4),ZNTEMP(15)  WRITE BACK PACKED DECIMAL                                 
+00A0D8 95FF C174      0A144         906          CLI   SCODE,X'FF'        SET SIGN DIGIT IF NEGATIVE                                
+00A0DC 4770 C116            0A0E6   907          BNE   SETRCODE                                                                     
+
+                                                                                                               PAGE   17            
+
+  LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT                                                                          
+00A0E0 FC70 4000 C128 00000 0A0F8   908          MP    0(8,4),=PL1'-1'                                                              
+                                    909 *                                                                                           
+                                    910 * ==== Exit linkage ============                                                            
+00A0E6 41F0 0000            00000   911 SETRCODE LA    15,0           R15 = RETURN CODE OF 0                                        
+00A0EA 58D0 D004            00004   912 PARSEXIT L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA                               
+00A0EE 58E0 D00C            0000C   913          L     14,12(,13)     RESTORE REGISTER 14                                           
+00A0F2 980C D014            00014   914          LM    0,12,20(13)    RESTORE R0 THRU R12                                           
+00A0F6 07FE                         915          BR    14             RETURN TO CALLER                                              
+                                    916 *                                                                                           
+                                    917          LTORG                                                                              
+00A0F8 1D                           918                =PL1'-1'                                                                     
+                                    919 *                                                                                           
+00A0FC                              920 PARSSAVE DS    18F'-1'        PARSE SUBPROGRAM'S SAVE AREA                                  
+                                    921 *                                                                                           
+00A144 00                           922 SCODE    DC    X'00'          SIGN CODE BYTE, DEFAULT 0 (POSITIVE)                          
+00A145 00                           923 DECFLAG  DC    X'00'          DECIMAL FOUND FLAG, DEFAULT 0 (FALSE)                         
+00A146                              924 ZNTEMP   DS    CL15           CONVERSION COPY FIELD                                         
+                                    925          END   MAIN                                                                         
+
+***  NO   STATEMENTS FLAGGED -  NO   WARNINGS,  NO   ERRORS                                                                         
+
+*** DYNAMIC CORE AREA USED:  LOW:   78748 HIGH:    3532 LEAVING:  411288 FREE BYTES. AVERAGE:       88 BYTES/STMT ***               
+
+*** ASSEMBLY TIME =    0.001 SECS,   926000 STATEMENTS/SEC ***                                                                      
+
+*** PROGRAM EXECUTION BEGINNING - ANY OUTPUT BEFORE EXECUTION TIME MESSAGE IS PRODUCED BY USER PROGRAM ***                          
+Model:                                                                                                                              
+   Architecture:                                                                                                                    
+      weight  1:       0.06599225                                                                                                   
+      weight  2:       0.07139507                                                                                                   
+      weight  3:       0.03729287                                                                                                   
+      weight  4:       2.41094565                                                                                                   
+      weight  5:       2.47316003                                                                                                   
+      weight  6:       3.86828661                                                                                                   
+      weight  7:       0.01273625                                                                                                   
+      weight  8:       0.71886146                                                                                                   
+      weight  9:       0.16814603                                                                                                   
+      weight 10:       0.00861415                                                                                                   
+      weight 11:       0.06550614                                                                                                   
+      weight 12:       0.01398158                                                                                                   
+      weight 13:       0.58525050                                                                                                   
+   Evaluation:                                                                                                                      
+      Dataset MSE           Rµ2                                                                                                     
+      1        79.47336035  640.6252576                                                                                             
+      2       273.38983800  405.6187533                                                                                             
+      3       832.66362539   91.4046337                                                                                             
+Model:                                                                                                                              
+   Architecture:                                                                                                                    
+      weight  1:       0.06458999                                                                                                   
+      weight  2:       0.07090518                                                                                                   
+      weight  3:       0.02094220                                                                                                   
+      weight  4:       2.62270665                                                                                                   
+      weight  5:       0.96668035                                                                                                   
+      weight  6:       3.31593943                                                                                                   
+      weight  7:       0.03736530                                                                                                   
+      weight  8:       0.53639638                                                                                                   
+      weight  9:       0.15575583                                                                                                   
+      weight 10:       0.00881866                                                                                                   
+      weight 11:       0.07860143                                                                                                   
+      weight 12:       0.01767300                                                                                                   
+
+      weight 13:       0.64151263                                                                                                   
+   Evaluation:                                                                                                                      
+      Dataset MSE           Rµ2                                                                                                     
+      1       341.60380453  767.7824045                                                                                             
+      2       503.96435249  495.0199921                                                                                             
+      3       991.00709200  141.7764731                                                                                             
+Model:                                                                                                                              
+   Architecture:                                                                                                                    
+      weight  1:       0.07297438                                                                                                   
+      weight  2:       0.06688751                                                                                                   
+      weight  3:       0.04073594                                                                                                   
+      weight  4:       2.53975153                                                                                                   
+      weight  5:       2.43896127                                                                                                   
+      weight  6:       3.85647631                                                                                                   
+      weight  7:       0.01403606                                                                                                   
+      weight  8:       0.72974873                                                                                                   
+      weight  9:       0.16779564                                                                                                   
+      weight 10:       0.00887946                                                                                                   
+      weight 11:       0.04221104                                                                                                   
+      weight 12:       0.01622506                                                                                                   
+      weight 13:       0.57877493                                                                                                   
+   Evaluation:                                                                                                                      
+      Dataset MSE           Rµ2                                                                                                     
+      1       241.59963755  943.4654682                                                                                             
+      2       423.58122688  599.4948929                                                                                             
+      3       950.66098496  193.8618916                                                                                             
+Model:                                                                                                                              
+   Architecture:                                                                                                                    
+      weight  1:       0.07064304                                                                                                   
+      weight  2:       0.07399049                                                                                                   
+      weight  3:       0.04283938                                                                                                   
+      weight  4:       2.62719679                                                                                                   
+      weight  5:       1.53245842                                                                                                   
+      weight  6:       3.61528254                                                                                                   
+      weight  7:       0.02183498                                                                                                   
+      weight  8:       0.69920236                                                                                                   
+      weight  9:       0.16313806                                                                                                   
+      weight 10:       0.00869490                                                                                                   
+      weight 11:       0.02810550                                                                                                   
+      weight 12:       0.01652541                                                                                                   
+      weight 13:       0.60925794                                                                                                   
+   Evaluation:                                                                                                                      
+      Dataset MSE           Rµ2                                                                                                     
+      1       164.61520672  196.7067191                                                                                             
+      2       333.27740163  729.5804331                                                                                             
+      3       828.50595055  252.1534923                                                                                             
+Model:                                                                                                                              
+   Architecture:                                                                                                                    
+      weight  1:       0.08060562                                                                                                   
+      weight  2:       0.06589970                                                                                                   
+      weight  3:       0.03666098                                                                                                   
+      weight  4:       2.28898644                                                                                                   
+      weight  5:       1.95890403                                                                                                   
+      weight  6:       4.10443544                                                                                                   
+      weight  7:       0.01202175                                                                                                   
+      weight  8:       0.71920621                                                                                                   
+      weight  9:       0.17210189                                                                                                   
+      weight 10:       0.00927506                                                                                                   
+      weight 11:       0.11293807                                                                                                   
+      weight 12:       0.01487169                                                                                                   
+      weight 13:       0.56494009                                                                                                   
+   Evaluation:                                                                                                                      
+      Dataset MSE           Rµ2                                                                                                     
+
+      1        48.30316045   37.5777372                                                                                             
+      2       224.36827519  917.9969078                                                                                             
+      3       755.39291506  315.1199285                                                                                             
+Model:                                                                                                                              
+   Architecture:                                                                                                                    
+      weight  1:       0.07501851                                                                                                   
+      weight  2:       0.06991200                                                                                                   
+      weight  3:       0.03339640                                                                                                   
+      weight  4:       2.45876622                                                                                                   
+      weight  5:       0.97575343                                                                                                   
+      weight  6:       4.04846811                                                                                                   
+      weight  7:       0.01779934                                                                                                   
+      weight  8:       0.73276365                                                                                                   
+      weight  9:       0.17419337                                                                                                   
+      weight 10:       0.00866795                                                                                                   
+      weight 11:       0.07005788                                                                                                   
+      weight 12:       0.01527646                                                                                                   
+      weight 13:       0.58054590                                                                                                   
+   Evaluation:                                                                                                                      
+      Dataset MSE           Rµ2                                                                                                     
+      1       242.57208231  212.5957698                                                                                             
+      2       428.71344808   21.3403067                                                                                             
+      3       977.70016176  366.0412263                                                                                             
+
+*** EXECUTION TIME =    0.501 SECS.   1697153 INSTRUCTIONS EXECUTED -  3387530 INSTRUCTIONS/SEC ***                                 
+
+*** AM004 - NORMAL USER TERMINATION BY RETURN ***                                                                                   
+!! END OF JES SPOOL FILE !!
